@@ -1,6 +1,5 @@
 # Server ignores
 /server/node_modules
-/server/node_modules/qs
 /server/.env
 
 # dependencies
