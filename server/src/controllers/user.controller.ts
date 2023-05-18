@@ -65,19 +65,19 @@ export const getCustomerOrder = async (req: IAuthRequest, res: Response) => {
 
 export const getAllCustomers = async (req: IAuthRequest, res: Response) => {
 
-  const { sortBy: reqSortBy, orderBy: reqOrderBy, limit: reqLimit, page: reqPage, filters: reqFilters, search }: any = req.query;
+  const { sortBy: reqSortBy, orderBy: reqOrderBy, limit: reqLimit, page: reqPage, search }: any = req.query;
   
-  const filters = { ...JSON.parse(reqFilters), id: req.auth?.uid } || { ...DEFAULT_FILTERS, id: req.auth?.uid };
   const orderBy = reqOrderBy || DEFAULT_ORDER_BY;
   const sortBy = reqSortBy || DEFAULT_SORT_BY;
   const limit = Number(reqLimit) || DEFAULT_LIMIT;
   const page = Number(reqPage) || DEFAULT_PAGE;
+
   let users;
   let usersOrders: { items: any[], count: number }[] = [];
 
   try {
     if (!!search) {
-      users = await User.find({ ...filters, $or: [
+      users = await User.find({ $or: [
         { name: { $regex: search, $options: 'i' } },
         { email: { $regex: search, $options: 'i' } }] 
       })
@@ -87,7 +87,7 @@ export const getAllCustomers = async (req: IAuthRequest, res: Response) => {
         .select('-password')
         .exec();
     } else {
-      users = await User.find(filters)
+      users = await User.find()
         .limit(limit)
         .skip((page - 1) * limit)
         .sort([[sortBy, orderBy]])
@@ -129,24 +129,80 @@ export const getAllCustomers = async (req: IAuthRequest, res: Response) => {
 };
 
 export const updateCustomer = async (req: IAuthRequest, res: Response) => {
+  const { ids } = req.query;
 
-  const userIDs =  JSON.parse(req.params.uid);
+  if (!ids) {
+    return res.json({
+      ok: false,
+      msg: 'Customer id is needed.'
+    });
+  }
+
+  if (req.body.role !== 'ADMIN' && req.body.role !== 'SUPERADMIN' && req.body.role !== 'CUSTOMER') {
+    return res.json({
+      ok: false,
+      msg: `${ req.body.role } is not accepted.`
+    });
+  }
+
   const update = req.body;
 
   try {
-    await User.updateMany({ _id: { $in: userIDs } }, update);
+    await User.updateMany({ _id: { $in: JSON.parse(ids as string) } }, update);
 
     return res.json({
       ok: true,
-      msg: 'Product updated.'
+      msg: 'User updated.'
     });
 
-  } catch (error) {
+  } catch (error: any) {
     console.log(error);
+
+    if (error.name === 'CastError') {
+      return res.status(500).json({
+        ok: false,
+        msg: "Invalid customer ID."
+      });
+    }
 
     return res.status(500).json({
       ok: false,
       msg: 'Internal server error.'
+    });
+  }
+};
+
+export const deleteCustomer = async (req: IAuthRequest, res: Response) => {
+  const { ids } = req.query;
+
+  if (!ids) {
+    return res.json({
+      ok: false,
+      msg: 'Customer id is needed.'
+    });
+  }
+
+  try {
+    await User.deleteMany({ _id: { $in: JSON.parse(ids as string) } });
+
+    return res.json({
+      ok: true,
+      msg: 'Customer deleted.'
+    });
+
+  } catch (error: any) {
+    console.log(error);
+
+    if (error.name === 'CastError') {
+      return res.status(500).json({
+        ok: false,
+        msg: "Invalid customer ID."
+      });
+    }
+
+    return res.status(500).json({
+      ok: false,
+      msg: error
     });
   }
 };
