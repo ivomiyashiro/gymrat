@@ -1,14 +1,14 @@
 import { Router } from 'express';
 import { validateCustomer, validateJWTAdmin, validateJWTSuperAdmin } from '../middlewares';
-import { deleteCustomer, getAllCustomers, getCustomerOrder, getCustomerOrders, updateCustomer } from '../controllers/user.controller';
+import { deleteUser, getAllUsers, getCustomerOrder, getCustomerOrders, updateUser } from '../controllers/user.controller';
  
 const router = Router();
 
-router.get('/', validateJWTAdmin, getAllCustomers);
+router.get('/', validateJWTAdmin, getAllUsers);
 
-router.delete('/', validateJWTSuperAdmin, deleteCustomer);
+router.delete('/:id', validateJWTSuperAdmin, deleteUser);
 
-router.put('/', validateJWTSuperAdmin, updateCustomer);
+router.put('/', validateJWTSuperAdmin, updateUser);
 
 router.get('/:uid/orders', validateCustomer, getCustomerOrders);
 

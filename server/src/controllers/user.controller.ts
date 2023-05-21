@@ -1,6 +1,7 @@
 import { Response } from 'express';
 import { Order, User } from '../models';
-import { IAuthRequest } from '../interfaces';
+import { IAuthRequest, IDataReq } from '../interfaces';
+import { SortOrder } from 'mongoose';
 
 const DEFAULT_LIMIT = 10;
 const DEFAULT_PAGE = 1;
@@ -63,9 +64,9 @@ export const getCustomerOrder = async (req: IAuthRequest, res: Response) => {
   }
 };
 
-export const getAllCustomers = async (req: IAuthRequest, res: Response) => {
+export const getAllUsers = async (req: IAuthRequest, res: Response) => {
 
-  const { sortBy: reqSortBy, orderBy: reqOrderBy, limit: reqLimit, page: reqPage, search }: any = req.query;
+  const { sortBy: reqSortBy, orderBy: reqOrderBy, limit: reqLimit, page: reqPage, search } = req.query as IDataReq;
   
   const orderBy = reqOrderBy || DEFAULT_ORDER_BY;
   const sortBy = reqSortBy || DEFAULT_SORT_BY;
@@ -83,14 +84,14 @@ export const getAllCustomers = async (req: IAuthRequest, res: Response) => {
       })
         .limit(limit)
         .skip((page - 1) * limit)
-        .sort([[sortBy, orderBy]])
+        .sort([[sortBy, orderBy as SortOrder]])
         .select('-password')
         .exec();
     } else {
       users = await User.find()
         .limit(limit)
         .skip((page - 1) * limit)
-        .sort([[sortBy, orderBy]])
+        .sort([[sortBy, orderBy as SortOrder]])
         .select('-password')
         .exec();
     }
@@ -128,7 +129,8 @@ export const getAllCustomers = async (req: IAuthRequest, res: Response) => {
   }
 };
 
-export const updateCustomer = async (req: IAuthRequest, res: Response) => {
+export const updateUser = async (req: IAuthRequest, res: Response) => {
+
   const { ids } = req.query;
 
   if (!ids) {
@@ -161,7 +163,7 @@ export const updateCustomer = async (req: IAuthRequest, res: Response) => {
     if (error.name === 'CastError') {
       return res.status(500).json({
         ok: false,
-        msg: "Invalid customer ID."
+        msg: 'Invalid customer ID.'
       });
     }
 
@@ -172,10 +174,11 @@ export const updateCustomer = async (req: IAuthRequest, res: Response) => {
   }
 };
 
-export const deleteCustomer = async (req: IAuthRequest, res: Response) => {
-  const { ids } = req.query;
+export const deleteUser = async (req: IAuthRequest, res: Response) => {
 
-  if (!ids) {
+  const usersIDs = JSON.parse(req.params.id);
+
+  if (usersIDs.length === 0) {
     return res.json({
       ok: false,
       msg: 'Customer id is needed.'
@@ -183,7 +186,7 @@ export const deleteCustomer = async (req: IAuthRequest, res: Response) => {
   }
 
   try {
-    await User.deleteMany({ _id: { $in: JSON.parse(ids as string) } });
+    await User.deleteMany({ _id: { $in: usersIDs } });
 
     return res.json({
       ok: true,
@@ -196,7 +199,7 @@ export const deleteCustomer = async (req: IAuthRequest, res: Response) => {
     if (error.name === 'CastError') {
       return res.status(500).json({
         ok: false,
-        msg: "Invalid customer ID."
+        msg: 'Invalid customer ID.'
       });
     }
 

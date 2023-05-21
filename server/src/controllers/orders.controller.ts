@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { IAuthRequest } from 'interfaces';
+import { IAuthRequest } from '../interfaces';
 import { Order, Seq } from '../models';
 
 const DEFAULT_LIMIT = 10;

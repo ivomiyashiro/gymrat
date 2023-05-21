@@ -1,6 +1,5 @@
 import { Schema, model } from 'mongoose';
 import { IProduct } from '../interfaces';
-import { Category, Vendor } from './';
 
 const ProductSchema = new Schema<IProduct>({
   title: {
@@ -10,41 +9,24 @@ const ProductSchema = new Schema<IProduct>({
   description: {
     type: String,
   },
-  options: {
-    type: [{
-      name: {
-        type: String,
-        require: true
-      },
-      values: {
-        type: [String]
-      }
-    }],
-    default: []
+  price: { 
+    type: Number,
+    default: 0
   },
-  price: {
-    type: String,
+  colors: {
+    type: [String],
+    required: true,
+  },
+  sizes: {
+    type: [String]
   },
   discountPrice: {
-    type: String
+    type: Number,
+    default: null
   },
-  inventory: {
+  totalInventory: {
     type: Number,
     default: 0,
-  },
-  sku: {
-    type: String,
-  },
-  barcode: {
-    type: String,
-  },
-  variants: [{
-    type: Schema.Types.ObjectId,
-    ref: 'Variant'
-  }],
-  vendor: {
-    type: Schema.Types.ObjectId,
-    ref: 'Vendor'
   },
   category: {
     type: Schema.Types.ObjectId,
@@ -59,13 +41,44 @@ const ProductSchema = new Schema<IProduct>({
     type: [String]
   },
   slug: {
-    type: String
+    type: String,
+    unique: true,
+    required: true
+  },
+  tags: {
+    type: [String],
+    default: []
+  },
+  variants: {
+    type: [{
+      name: {
+        type: String,
+        required: true
+      },
+      color: {
+        type: String
+      },
+      size: {
+        type: String,
+        enum: ['XS', 'S', 'M', 'L', 'XL', 'UNIQUE']
+      },
+      inventory: {
+        type: Number,
+        default: 0
+      },
+      images: {
+        type: [String],
+        default: []
+      }
+    }],
+    required: true
   }
 }, { 
   timestamps: {
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
-  }
+  },
+  versionKey: false
 });
 
 export default model<IProduct>('Product', ProductSchema);

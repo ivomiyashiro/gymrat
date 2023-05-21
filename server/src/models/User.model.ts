@@ -25,7 +25,8 @@ const UserSchema = new Schema<IUser>({
   timestamps: {
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
-  }
+  },
+  versionKey: false
 });
 
 UserSchema.pre<IUser>('save', async function(next) {

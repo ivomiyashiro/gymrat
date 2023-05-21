@@ -1,6 +1,6 @@
 import { NextFunction, Response } from 'express';
 import jwt, { JwtPayload } from 'jsonwebtoken';
-import { IAuthRequest } from 'interfaces';
+import { IAuthRequest } from '../interfaces';
 
 export const validateJWT = (req: IAuthRequest, res: Response, next: NextFunction) => {
 
@@ -24,7 +24,7 @@ export const validateJWT = (req: IAuthRequest, res: Response, next: NextFunction
     return next();
     
   } catch (error) {
-    console.log(error)
+    console.log(error);
 
     return res.status(401).json({
       ok: false,

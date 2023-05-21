@@ -4,3 +4,5 @@ export * from './validateJWTSuperAdmin.middleware';
 export * from './validateJWTAdmin.middleware';
 export * from './validateJWTCustomer.middleware';
 export * from './validateCustomer.middleware';
+export * from './validateSlug.middleware';
+export * from './validateStatusFilter.middleware';

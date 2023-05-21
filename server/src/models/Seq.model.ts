@@ -13,6 +13,8 @@ const Seq = new Schema<ISeq>({
   number: {
     type: Number
   }
+}, {
+  versionKey: false
 });
 
 export default model<ISeq>('Seq', Seq);

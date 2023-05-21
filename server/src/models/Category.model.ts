@@ -10,6 +10,8 @@ const Category = new Schema<ICategory>({
     default: '',
     unique: true
   }
+}, {
+  versionKey: false
 });
 
 export default model<ICategory>('Category', Category);

@@ -1,6 +1,6 @@
 import { NextFunction, Response } from 'express';
 import jwt, { JwtPayload } from 'jsonwebtoken';
-import { IAuthRequest } from 'interfaces';
+import { IAuthRequest } from '../interfaces';
 
 export const validateJWTSuperAdmin = (req: IAuthRequest, res: Response, next: NextFunction) => {
 

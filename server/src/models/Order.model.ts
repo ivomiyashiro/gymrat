@@ -61,7 +61,8 @@ const OrderScheme = new Schema<IOrder>({
   timestamps: {
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
-  }
+  },
+  versionKey: false
 });
 
 export default model<IOrder>('Order', OrderScheme);

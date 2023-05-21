@@ -1,5 +1,6 @@
 import { Request } from 'express';
-import { Document } from 'mongoose';
+import { Document, SortOrder } from 'mongoose';
+import QueryString from 'qs';
 
 export interface IAuthRequest extends Request {
   auth?: {
@@ -10,40 +11,39 @@ export interface IAuthRequest extends Request {
 }
 
 export interface IUser extends Document {
-  name: string;
+  _id: string;
   email: string;
+  name: string;
   password: string;
   role: 'CUSTOMER' | 'ADMIN' | 'SUPERADMIN';
+  // eslint-disable-next-line no-unused-vars
   comparePassword: (password: string) => Promise<boolean>;
 }
 
 export interface IProduct {
-  _id?: string;
-  title: string;
-  description: string;
-  options: { name: string; values: string[] }[]
-  variants?: IVariant[];
-  price?: string;
-  discountPrice?: string;
-  inventory?: number;
-  sku?: string;
+  _id: string;
   barcode?: string;
-  vendor: { name: string };
-  category: { name: string };
-  status: 'ACTIVE' | 'DRAFT';
+  category: ICategory;
+  colors: string[];
+  description: string;
+  discountPrice?: number;
   images: string[];
+  price: number;
+  sizes: string[];
+  sku?: string;
   slug: string;
+  status: 'ACTIVE' | 'DRAFT';
+  tags: string[];
+  title: string;
+  totalInventory: number;
+  variants: any;
 }
 
 export interface IVariant {
-  _id?: string;
+  _id: string;
   name: string;
-  inventory: number;
-  price: string;
-  discountPrice: string;
-  sku: string;
-  barcode: string;
   images: string[];
+  inventory: number;
 }
 
 export interface IOrder extends Document {
@@ -65,4 +65,29 @@ export interface IOrder extends Document {
     apartment?: string;
     zip: string;
   }
+}
+
+export interface ICategory extends Document {
+  name: string;
+}
+
+export interface IFilters {
+  category?: string;
+  color?: string;
+  includeOutOfStock?: boolean;
+  size?: 'XS' | 'S' | 'M' | 'L' | 'XL';
+  status?: 'ACTIVE' | 'DRAFT';
+  price?: {
+    max: number;
+    min: number;
+  };
+}
+
+export interface IDataReq extends QueryString.ParsedQs {
+  sortBy: string;
+  orderBy: string;
+  limit: string;
+  page: string;
+  filters: string;
+  search: string;
 }
