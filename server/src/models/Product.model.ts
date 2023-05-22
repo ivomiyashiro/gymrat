@@ -29,8 +29,9 @@ const ProductSchema = new Schema<IProduct>({
     default: 0,
   },
   category: {
-    type: Schema.Types.ObjectId,
-    ref: 'Category'
+    type: String,
+    enum: ['SHORTS', 'SPORT BRAS', 'HOODIES & JACKETS', 'T-SHIRTS & TOPS', 'TANK TOPS', 'ACCESSORIES', 'JOGGERS & SWEATPANTS'],
+    required: true,
   },
   status: {
     type: String,
@@ -48,6 +49,10 @@ const ProductSchema = new Schema<IProduct>({
   tags: {
     type: [String],
     default: []
+  },
+  fitType: {
+    type: String,
+    enum: ['REGULAR', 'SLIM', 'OVERSIZED']
   },
   variants: {
     type: [{
