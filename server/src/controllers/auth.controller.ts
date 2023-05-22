@@ -151,8 +151,8 @@ export const googleOauthHandler = async (req: Request, res: Response) => {
 
     if (!code) {
       return res.status(401).json({
-        status: "fail",
-        message: "Authorization code not provided!",
+        ok: false,
+        msg: 'Authorization code not provided!',
       });
     }
 
