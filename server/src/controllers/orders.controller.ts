@@ -1,6 +1,8 @@
 import { Request, Response } from 'express';
-import { IAuthRequest } from '../interfaces';
-import { Order, Seq } from '../models';
+import { SortOrder } from 'mongoose';
+import { Order, Seq, User } from '../models';
+import { IAuthRequest, IDataReq } from '../interfaces';
+import { adaptOrderReqFilters } from '../helpers';
 
 const DEFAULT_LIMIT = 10;
 const DEFAULT_PAGE = 1;
@@ -10,23 +12,41 @@ const DEFAULT_ORDER_BY = 'asc';
 
 export const getAllOrders = async (req: Request, res: Response) => {
 
-  const { sortBy: reqSortBy, orderBy: reqOrderBy, limit: reqLimit, page: reqPage, filters: reqFilters, search }: any = req.query;
+  const { 
+    sortBy: reqSortBy, 
+    orderBy: reqOrderBy, 
+    limit: reqLimit, 
+    page: reqPage, 
+    filters: reqFilters, 
+    search 
+  } = req.query as IDataReq;
 
-  const filters = JSON.parse(reqFilters) || DEFAULT_FILTERS;
+  let orders;
+
   const orderBy = reqOrderBy || DEFAULT_ORDER_BY;
   const sortBy = reqSortBy || DEFAULT_SORT_BY;
   const limit = Number(reqLimit) || DEFAULT_LIMIT;
   const page = Number(reqPage) || DEFAULT_PAGE;
 
   try {
-    const orders = await Order.find({ ...filters, $or: [
-      { number: { $regex: search, $options: 'i' } }] 
-    })
-      .populate('customer', '-password -email -role -createdAt -updatedAt -__v')
-      .limit(limit)
-      .skip((page - 1) * limit)
-      .sort([[sortBy, orderBy]])
-      .exec();
+    const filters = adaptOrderReqFilters(reqFilters ? JSON.parse(reqFilters as unknown as string) : DEFAULT_FILTERS);
+
+    if (!!search) {
+      orders = await Order.find({ ...filters, $or: [
+        { number: { $regex: search, $options: 'i' } },
+        { 'customerInfo.name': { $regex: search, $options: 'i' } }
+      ] })
+        .limit(limit)
+        .skip((page - 1) * limit)
+        .sort([[sortBy, orderBy as SortOrder]])
+        .exec();
+    } else {
+      orders = await Order.find(filters)
+        .limit(limit)
+        .skip((page - 1) * limit)
+        .sort([[sortBy, orderBy as SortOrder]])
+        .exec();
+    }
 
     const count = await Order.count();
 
@@ -50,7 +70,7 @@ export const getOneOrder = async (req: Request, res: Response) => {
 
   try {
     const order = await Order.findById(req.params.id)
-      .populate('customer', '-password -role -createdAt -updatedAt -__v');
+      .populate('customer', '-password -role -createdAt -updatedAt');
 
     return res.json({
       ok: true,
@@ -84,8 +104,17 @@ export const createOrder = async (req: IAuthRequest, res: Response) => {
       await newSeq.save();
     } else orderNumber = seq.number;
 
+    const customer = (await User.find({ _id: req.body.customerInfo.customer }))[0];
+
     const order = new Order({
       ...req.body,
+      customerInfo: {
+        ...req.body.customerInfo,
+        _id: customer.id,
+        name: customer.name,
+        email: customer.email,
+        phoneNumber: req.body.customerInfo.phoneNumber
+      },
       number: orderNumber
     });
 
@@ -128,40 +157,3 @@ export const updateOrderStatus = async (req: Request, res: Response) => {
     });
   }
 };
-
-export const searchOrder = async (req: Request, res: Response) => {
-
-  const { sortBy: reqSortBy, orderBy: reqOrderBy, limit: reqLimit, page: reqPage }: any = req.query;
-
-  const search = req.params.search || '';
-  const orderBy = reqOrderBy || DEFAULT_ORDER_BY;
-  const sortBy = reqSortBy || DEFAULT_SORT_BY;
-  const limit = Number(reqLimit) || DEFAULT_LIMIT;
-  const page = Number(reqPage) || DEFAULT_PAGE;
-
-  try {
-    const orders = await Order.find({ number: { $regex: search, $options: 'i' } })
-      .limit(limit)
-      .skip((page - 1) * limit)
-      .sort([[sortBy, orderBy]])
-      .exec();
-
-    const count = await Order.count();
-
-    return res.json({
-      ok: true,
-      orders,
-      totalPages: Math.ceil(count / limit)
-    });
-    
-  } catch (error) {
-    console.log(error);
-
-    return res.status(500).json({
-      ok: false,
-      msg: 'Internal server error.'
-    });
-  }
-};
-
-

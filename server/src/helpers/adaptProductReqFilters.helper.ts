@@ -1,6 +1,6 @@
-import { IFilters } from '../interfaces';
+import { IProductFilters } from '../interfaces';
 
-export const adaptProductReqFilters = (filtersReq: IFilters[]) => {
+export const adaptProductReqFilters = (filtersReq: IProductFilters[]) => {
 
   const filters: any = {};
 

@@ -1,6 +1,6 @@
 import { Product } from '../models';
 
-export const validateSlug = async (value: string) => {
+export const isDBSlugCorrect = async (value: string) => {
   const slug = await Product.find({ slug: value });
   
   if (slug.length > 0) {

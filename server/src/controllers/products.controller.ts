@@ -12,7 +12,14 @@ const DEFAULT_ORDER_BY = 'asc';
 
 export const getAllProducts = async (req: Request, res: Response) => {
 
-  const { sortBy: reqSortBy, orderBy: reqOrderBy, limit: reqLimit, page: reqPage, filters: reqFilters, search } = req.query as IDataReq;
+  const { 
+    sortBy: reqSortBy, 
+    orderBy: reqOrderBy, 
+    limit: reqLimit, 
+    page: reqPage, 
+    filters: reqFilters, 
+    search 
+  } = req.query as IDataReq;
 
   let products;
 

@@ -1,7 +1,8 @@
 import { Router } from 'express';
 import { check } from 'express-validator';
-import { validateFields, validateJWTSuperAdmin, validateSlug, validateStatusFilter } from '../middlewares';
+import { validateFields, validateJWTSuperAdmin, validateStatusFilter } from '../middlewares';
 import { createProduct, deleteProduct, getAllProducts, getOneProduct, updateProduct } from '../controllers/products.controller';
+import { isDBSlugCorrect } from '../helpers';
 
 const router = Router();
  
@@ -18,7 +19,7 @@ router.post('/',[
   check('fitType', 'FitType is not valid.').isIn(['REGULAR', 'SLIM', 'OVERSIZED', undefined]),
   check('colors', 'Color is required.').not().isEmpty(),
   check('slug', 'Slug are required.').not().isEmpty(),
-  check('slug').custom(validateSlug),
+  check('slug').custom(isDBSlugCorrect),
   check('status', 'Status must be either "ACTIVE" or "DRAFT".').isIn(['ACTIVE', 'DRAFT']),
   check('title', 'Title is required.').not().isEmpty(),
   check('variants', 'Variants are required.').not().isEmpty(),

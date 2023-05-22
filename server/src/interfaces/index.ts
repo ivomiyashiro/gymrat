@@ -1,5 +1,5 @@
 import { Request } from 'express';
-import { Document } from 'mongoose';
+import { Document, Schema } from 'mongoose';
 import QueryString from 'qs';
 
 type TRole = 'CUSTOMER' | 'ADMIN' | 'SUPERADMIN';
@@ -13,7 +13,6 @@ type TProductSize = 'XS' | 'S' | 'M' | 'L' | 'XL';
 type TProductStatus = 'ACTIVE' | 'DRAFT';
 
 type TOrderStatus = 'DELIVERED' | 'PENDING' | 'CANCELLED';
-
 
 export interface IAuthRequest extends Request {
   auth?: {
@@ -70,9 +69,13 @@ export interface IOrder extends Document {
   }[];
   totalPrice: number;
   status: TOrderStatus;
-  phoneNumber: string;
-  customer: IUser;
-  shippingAddress: {
+  customerInfo: {
+    _id: typeof Schema.Types.ObjectId,
+    name: string,
+    email: string,
+    phoneNumber: string;
+  }
+  shippingInfo: {
     city: string;
     locality: string;
     address: string;
@@ -85,7 +88,7 @@ export interface ICategory extends Document {
   name: string;
 }
 
-export interface IFilters {
+export interface IProductFilters {
   category?: string;
   color?: string;
   fitType?: TFitType;
@@ -93,6 +96,14 @@ export interface IFilters {
   size?: TProductSize;
   status?: TProductStatus;
   price?: {
+    max: number;
+    min: number;
+  };
+}
+
+export interface IOrderFilters {
+  status?: TOrderStatus;
+  totalPrice?: {
     max: number;
     min: number;
   };

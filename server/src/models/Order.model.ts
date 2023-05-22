@@ -5,54 +5,65 @@ const OrderScheme = new Schema<IOrder>({
   number: {
     type: String,
     unique: true,
-    require: true
+    required: true
   },
   items: [{
     type: {
-      product: { type: Schema.Types.ObjectId, ref: 'Product' },
-      title: String,
-      variant: {
-        name: String 
+      product: { 
+        type: Schema.Types.ObjectId, 
+        ref: 'Product',
       },
-      quantity: Number,
-      price: Number,
-      image: String,
-    }
+      variant: { 
+        type: Schema.Types.ObjectId
+      },
+      price: {
+        type: Number,
+      },
+      quantity: {
+        type: Number,
+      },
+    },
+    required: true
   }],
   totalPrice: {
     type: Number,
     default: 0
-  },
-  phoneNumber: {
-    type: String,
-    required: true
   },
   status: {
     type: String,
     enum: ['DELIVERED', 'PENDING', 'CANCELLED'],
     default: 'PENDING'
   },
-  customer: { 
-    type: Schema.Types.ObjectId, 
-    ref: 'User' 
+  customerInfo: {
+    type: { 
+      _id: {
+        type: Schema.Types.ObjectId
+      },
+      name: {
+        type: String
+      },
+      email: {
+        type: String
+      },
+      phoneNumber: {
+        type: String,
+      }
+    },
+    required: true
   },
-  shippingAddress: {
+  shippingInfo: {
     type: {
       city: {
         type: String,
-        required: true
       },
       locality: {
         type: String,
-        require: true,
       },
       address: {
         type: String,
-        require: true,
       },
       zip: {
         type: String,
-        require: true,
       }
     },
     required: true
