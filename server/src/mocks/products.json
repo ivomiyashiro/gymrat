@@ -1,0 +1,179 @@
+[
+    {
+        "title": "ESSENTIAL OVERSIZED T-SHIRT",
+        "description": "Our Essential collection takes it back to basics and does it well. Classic styles, versatile colours and simple designs mean no gym bag is complete without one of these pieces, whether you’re training, commuting, or resting.",
+        "category": "T-SHIRTS & TOPS",
+        "price": 26,
+        "status": "ACTIVE",
+        "fitType": "OVERSIZED",
+        "slug": "essential-oversized-t-shirt",
+        "images": [
+            "https://cdn.shopify.com/s/files/1/0156/6146/products/OversizedT-ShirtBlackA1A3E.A-Edit_BK_7d16b9bc-ec87-4935-bb82-ff50a4309582_1200x.jpg?v=1647041695",
+            "https://cdn.shopify.com/s/files/1/0156/6146/products/OversizedT-ShirtBlackA1A3E.B-Edit_BK_6988a627-5afc-4f9f-a947-3837ae9e50c0_640x.jpg?v=1647041695",
+            "https://cdn.shopify.com/s/files/1/0156/6146/products/OversizedT-ShirtBlackA1A3E.C-Edit_BK_20194901-0733-4cd1-b3f9-92cf390a6f18_640x.jpg?v=1647041695",
+            "https://cdn.shopify.com/s/files/1/0156/6146/products/OversizedT-ShirtBlackA1A3E.D1-Edit_BK_750x.jpg?v=1647041695",
+            "https://cdn.shopify.com/s/files/1/0156/6146/products/OversizedT-ShirtNavyA1A3E.A-Edit_BK_2d3a8f43-330a-4608-9bab-9fbc3da7f5ba.jpg?v=1647041693",
+            "https://cdn.shopify.com/s/files/1/0156/6146/products/OversizedT-ShirtNavyA1A3E.B-Edit_BK_77061c37-ee42-429a-8e88-b95f4e3b5e94_640x.jpg?v=1647041693",
+            "https://cdn.shopify.com/s/files/1/0156/6146/products/OversizedT-ShirtNavyA1A3E.C-Edit_BK_4e739abc-b8f2-44cf-8a5a-e0d2dabd3852_640x.jpg?v=1647041693",
+            "https://cdn.shopify.com/s/files/1/0156/6146/products/OversizedT-ShirtNavyA1A3E.D2-Edit_BK_be1a7c07-8e50-4f16-b095-d40dc7d3cca8_750x.jpg?v=1647041693"
+        ],
+        "colors": [
+            "Black",
+            "Navy"
+        ],
+        "sizes": [
+            "xs",
+            "s",
+            "m",
+            "l",
+            "xl"
+        ],
+        "variants": [
+            {
+                "name": "Black / XS",
+                "color": "Black",
+                "size": "XS",
+                "inventory": 3,
+                "images": [
+                    "https://cdn.shopify.com/s/files/1/0156/6146/products/OversizedT-ShirtBlackA1A3E.A-Edit_BK_7d16b9bc-ec87-4935-bb82-ff50a4309582_1200x.jpg?v=1647041695",
+                    "https://cdn.shopify.com/s/files/1/0156/6146/products/OversizedT-ShirtBlackA1A3E.B-Edit_BK_6988a627-5afc-4f9f-a947-3837ae9e50c0_640x.jpg?v=1647041695",
+                    "https://cdn.shopify.com/s/files/1/0156/6146/products/OversizedT-ShirtBlackA1A3E.C-Edit_BK_20194901-0733-4cd1-b3f9-92cf390a6f18_640x.jpg?v=1647041695",
+                    "https://cdn.shopify.com/s/files/1/0156/6146/products/OversizedT-ShirtBlackA1A3E.D1-Edit_BK_750x.jpg?v=1647041695"
+                ]
+            },
+            {
+                "name": "Black / S",
+                "color": "Black",
+                "size": "S",
+                "inventory": 8,
+                "images": [
+                    "https://cdn.shopify.com/s/files/1/0156/6146/products/OversizedT-ShirtBlackA1A3E.A-Edit_BK_7d16b9bc-ec87-4935-bb82-ff50a4309582_1200x.jpg?v=1647041695",
+                    "https://cdn.shopify.com/s/files/1/0156/6146/products/OversizedT-ShirtBlackA1A3E.B-Edit_BK_6988a627-5afc-4f9f-a947-3837ae9e50c0_640x.jpg?v=1647041695",
+                    "https://cdn.shopify.com/s/files/1/0156/6146/products/OversizedT-ShirtBlackA1A3E.C-Edit_BK_20194901-0733-4cd1-b3f9-92cf390a6f18_640x.jpg?v=1647041695",
+                    "https://cdn.shopify.com/s/files/1/0156/6146/products/OversizedT-ShirtBlackA1A3E.D1-Edit_BK_750x.jpg?v=1647041695"
+                ]
+            },
+            {
+                "name": "Black / M",
+                "color": "Black",
+                "size": "M",
+                "inventory": 14,
+                "images": [
+                    "https://cdn.shopify.com/s/files/1/0156/6146/products/OversizedT-ShirtBlackA1A3E.A-Edit_BK_7d16b9bc-ec87-4935-bb82-ff50a4309582_1200x.jpg?v=1647041695",
+                    "https://cdn.shopify.com/s/files/1/0156/6146/products/OversizedT-ShirtBlackA1A3E.B-Edit_BK_6988a627-5afc-4f9f-a947-3837ae9e50c0_640x.jpg?v=1647041695",
+                    "https://cdn.shopify.com/s/files/1/0156/6146/products/OversizedT-ShirtBlackA1A3E.C-Edit_BK_20194901-0733-4cd1-b3f9-92cf390a6f18_640x.jpg?v=1647041695",
+                    "https://cdn.shopify.com/s/files/1/0156/6146/products/OversizedT-ShirtBlackA1A3E.D1-Edit_BK_750x.jpg?v=1647041695"
+                ]
+            },
+            {
+                "name": "Black / L",
+                "color": "Black",
+                "size": "L",
+                "inventory": 9,
+                "images": [
+                    "https://cdn.shopify.com/s/files/1/0156/6146/products/OversizedT-ShirtBlackA1A3E.A-Edit_BK_7d16b9bc-ec87-4935-bb82-ff50a4309582_1200x.jpg?v=1647041695",
+                    "https://cdn.shopify.com/s/files/1/0156/6146/products/OversizedT-ShirtBlackA1A3E.B-Edit_BK_6988a627-5afc-4f9f-a947-3837ae9e50c0_640x.jpg?v=1647041695",
+                    "https://cdn.shopify.com/s/files/1/0156/6146/products/OversizedT-ShirtBlackA1A3E.C-Edit_BK_20194901-0733-4cd1-b3f9-92cf390a6f18_640x.jpg?v=1647041695",
+                    "https://cdn.shopify.com/s/files/1/0156/6146/products/OversizedT-ShirtBlackA1A3E.D1-Edit_BK_750x.jpg?v=1647041695"
+                ]
+            },
+            {
+                "name": "Black / XL",
+                "color": "Black",
+                "size": "XL",
+                "inventory": 4,
+                "images": [
+                    "https://cdn.shopify.com/s/files/1/0156/6146/products/OversizedT-ShirtBlackA1A3E.A-Edit_BK_7d16b9bc-ec87-4935-bb82-ff50a4309582_1200x.jpg?v=1647041695",
+                    "https://cdn.shopify.com/s/files/1/0156/6146/products/OversizedT-ShirtBlackA1A3E.B-Edit_BK_6988a627-5afc-4f9f-a947-3837ae9e50c0_640x.jpg?v=1647041695",
+                    "https://cdn.shopify.com/s/files/1/0156/6146/products/OversizedT-ShirtBlackA1A3E.C-Edit_BK_20194901-0733-4cd1-b3f9-92cf390a6f18_640x.jpg?v=1647041695",
+                    "https://cdn.shopify.com/s/files/1/0156/6146/products/OversizedT-ShirtBlackA1A3E.D1-Edit_BK_750x.jpg?v=1647041695"
+                ]
+            },
+            {
+                "name": "Navy / XS",
+                "color": "Navy",
+                "size": "XS",
+                "inventory": 5,
+                "images": [
+                    "https://cdn.shopify.com/s/files/1/0156/6146/products/OversizedT-ShirtNavyA1A3E.A-Edit_BK_2d3a8f43-330a-4608-9bab-9fbc3da7f5ba.jpg?v=1647041693",
+                    "https://cdn.shopify.com/s/files/1/0156/6146/products/OversizedT-ShirtNavyA1A3E.B-Edit_BK_77061c37-ee42-429a-8e88-b95f4e3b5e94_640x.jpg?v=1647041693",
+                    "https://cdn.shopify.com/s/files/1/0156/6146/products/OversizedT-ShirtNavyA1A3E.C-Edit_BK_4e739abc-b8f2-44cf-8a5a-e0d2dabd3852_640x.jpg?v=1647041693",
+                    "https://cdn.shopify.com/s/files/1/0156/6146/products/OversizedT-ShirtNavyA1A3E.D2-Edit_BK_be1a7c07-8e50-4f16-b095-d40dc7d3cca8_750x.jpg?v=1647041693"
+                ]
+            },
+            {
+                "name": "Navy / S",
+                "color": "Navy",
+                "size": "S",
+                "inventory": 10,
+                "images": [
+                    "https://cdn.shopify.com/s/files/1/0156/6146/products/OversizedT-ShirtNavyA1A3E.A-Edit_BK_2d3a8f43-330a-4608-9bab-9fbc3da7f5ba.jpg?v=1647041693",
+                    "https://cdn.shopify.com/s/files/1/0156/6146/products/OversizedT-ShirtNavyA1A3E.B-Edit_BK_77061c37-ee42-429a-8e88-b95f4e3b5e94_640x.jpg?v=1647041693",
+                    "https://cdn.shopify.com/s/files/1/0156/6146/products/OversizedT-ShirtNavyA1A3E.C-Edit_BK_4e739abc-b8f2-44cf-8a5a-e0d2dabd3852_640x.jpg?v=1647041693",
+                    "https://cdn.shopify.com/s/files/1/0156/6146/products/OversizedT-ShirtNavyA1A3E.D2-Edit_BK_be1a7c07-8e50-4f16-b095-d40dc7d3cca8_750x.jpg?v=1647041693"
+                ]
+            },
+            {
+                "name": "Navy / M",
+                "color": "Navy",
+                "size": "M",
+                "inventory": 6,
+                "images": [
+                    "https://cdn.shopify.com/s/files/1/0156/6146/products/OversizedT-ShirtNavyA1A3E.A-Edit_BK_2d3a8f43-330a-4608-9bab-9fbc3da7f5ba.jpg?v=1647041693",
+                    "https://cdn.shopify.com/s/files/1/0156/6146/products/OversizedT-ShirtNavyA1A3E.B-Edit_BK_77061c37-ee42-429a-8e88-b95f4e3b5e94_640x.jpg?v=1647041693",
+                    "https://cdn.shopify.com/s/files/1/0156/6146/products/OversizedT-ShirtNavyA1A3E.C-Edit_BK_4e739abc-b8f2-44cf-8a5a-e0d2dabd3852_640x.jpg?v=1647041693",
+                    "https://cdn.shopify.com/s/files/1/0156/6146/products/OversizedT-ShirtNavyA1A3E.D2-Edit_BK_be1a7c07-8e50-4f16-b095-d40dc7d3cca8_750x.jpg?v=1647041693"
+                ]
+            },
+            {
+                "name": "Navy / L",
+                "color": "Navy",
+                "size": "L",
+                "inventory": 12,
+                "images": [
+                    "https://cdn.shopify.com/s/files/1/0156/6146/products/OversizedT-ShirtNavyA1A3E.A-Edit_BK_2d3a8f43-330a-4608-9bab-9fbc3da7f5ba.jpg?v=1647041693",
+                    "https://cdn.shopify.com/s/files/1/0156/6146/products/OversizedT-ShirtNavyA1A3E.B-Edit_BK_77061c37-ee42-429a-8e88-b95f4e3b5e94_640x.jpg?v=1647041693",
+                    "https://cdn.shopify.com/s/files/1/0156/6146/products/OversizedT-ShirtNavyA1A3E.C-Edit_BK_4e739abc-b8f2-44cf-8a5a-e0d2dabd3852_640x.jpg?v=1647041693",
+                    "https://cdn.shopify.com/s/files/1/0156/6146/products/OversizedT-ShirtNavyA1A3E.D2-Edit_BK_be1a7c07-8e50-4f16-b095-d40dc7d3cca8_750x.jpg?v=1647041693"
+                ]
+            },
+            {
+                "name": "Navy / XL",
+                "color": "Navy",
+                "size": "XL",
+                "inventory": 3,
+                "images": [
+                    "https://cdn.shopify.com/s/files/1/0156/6146/products/OversizedT-ShirtNavyA1A3E.A-Edit_BK_2d3a8f43-330a-4608-9bab-9fbc3da7f5ba.jpg?v=1647041693",
+                    "https://cdn.shopify.com/s/files/1/0156/6146/products/OversizedT-ShirtNavyA1A3E.B-Edit_BK_77061c37-ee42-429a-8e88-b95f4e3b5e94_640x.jpg?v=1647041693",
+                    "https://cdn.shopify.com/s/files/1/0156/6146/products/OversizedT-ShirtNavyA1A3E.C-Edit_BK_4e739abc-b8f2-44cf-8a5a-e0d2dabd3852_640x.jpg?v=1647041693",
+                    "https://cdn.shopify.com/s/files/1/0156/6146/products/OversizedT-ShirtNavyA1A3E.D2-Edit_BK_be1a7c07-8e50-4f16-b095-d40dc7d3cca8_750x.jpg?v=1647041693"
+                ]
+            }
+        ]
+    },
+    {
+        "title": "FIGURE 8 LIFTING STRAPS",
+        "slug": "figure-8-lifting-straps",
+        "description": "Give your workout the boost it needs with the Gymshark Figure 8 Lifting Straps. With highly durable materials you can lift more, whilst reducing grip fatigue. Your safety is always our main priority, so put your trust in us; we'd never let you down.",
+        "price": 18,
+        "category": "ACCESSORIES",
+        "status": "ACTIVE",
+        "images": [
+            "https://cdn.shopify.com/s/files/1/0156/6146/products/LiftingStraps_Strongmanetc_BlackI1A5A-BBBB155_3840x.jpg?v=1679324845",
+            "https://cdn.shopify.com/s/files/1/0156/6146/products/LiftingStraps_Strongmanetc_BlackI1A5A-BBBB156_1200x.jpg?v=1679324845"
+        ],
+        "colors": [
+            "Black"
+        ],
+        "variants": [
+            {
+                "name": "Black",
+                "inventory": 20,
+                "images": [
+                    "https://cdn.shopify.com/s/files/1/0156/6146/products/LiftingStraps_Strongmanetc_BlackI1A5A-BBBB155_3840x.jpg?v=1679324845",
+                    "https://cdn.shopify.com/s/files/1/0156/6146/products/LiftingStraps_Strongmanetc_BlackI1A5A-BBBB156_1200x.jpg?v=1679324845"
+                ]
+            }
+        ]
+    }
+]

@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import { SortOrder } from 'mongoose';
-import { Category, Product } from '../models';
+import { Product } from '../models';
 import { IDataReq, IProduct, IVariant } from '../interfaces';
 import { adaptProductReqFilters } from '../helpers';
 
@@ -89,22 +89,8 @@ export const getOneProduct = async (req: Request, res: Response) => {
 export const createProduct = async (req: Request, res: Response) => {
 
   const body: IProduct = req.body;
-  let categoryID: string[] = [];
 
   try {
-    // Check if request category exists
-    const dbCategory = await Category.find({ name: body.category });
-
-    if (dbCategory.length < 0) {
-      // Creates category if not exists
-      const category = new Category({ name: body.category });
-      category.save();
-
-      categoryID = category.id;
-    } else {
-      categoryID = dbCategory[0].id;
-    }
-
     // Calculate totalInventory
     const totalInventory = body.variants?.reduce((acc: number, variant: IVariant) => {
       return acc + variant.inventory;
@@ -113,7 +99,6 @@ export const createProduct = async (req: Request, res: Response) => {
     // Create product and saves it
     const product = new Product({
       ...body,
-      category: categoryID,
       totalInventory,
     });
     await product.save();

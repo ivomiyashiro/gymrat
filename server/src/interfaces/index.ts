@@ -1,12 +1,25 @@
 import { Request } from 'express';
-import { Document, SortOrder } from 'mongoose';
+import { Document } from 'mongoose';
 import QueryString from 'qs';
+
+type TRole = 'CUSTOMER' | 'ADMIN' | 'SUPERADMIN';
+
+type TCategory = 'SHORTS' | 'SPORT BRAS' | 'HOODIES & JACKETS' | 'T-SHIRTS & TOPS' | 'TANK TOPS' | 'ACCESSORIES' | 'JOGGERS & SWEATPANTS';
+
+type TFitType = 'REGULAR' | 'SLIM' | 'OVERSIZED';
+
+type TProductSize = 'XS' | 'S' | 'M' | 'L' | 'XL';
+
+type TProductStatus = 'ACTIVE' | 'DRAFT';
+
+type TOrderStatus = 'DELIVERED' | 'PENDING' | 'CANCELLED';
+
 
 export interface IAuthRequest extends Request {
   auth?: {
     uid: string;
     name: string;
-    role: 'CUSTOMER' | 'ADMIN' | 'SUPERADMIN';
+    role: TRole;
   }
 }
 
@@ -15,7 +28,7 @@ export interface IUser extends Document {
   email: string;
   name: string;
   password: string;
-  role: 'CUSTOMER' | 'ADMIN' | 'SUPERADMIN';
+  role: TRole;
   // eslint-disable-next-line no-unused-vars
   comparePassword: (password: string) => Promise<boolean>;
 }
@@ -23,16 +36,17 @@ export interface IUser extends Document {
 export interface IProduct {
   _id: string;
   barcode?: string;
-  category: ICategory;
+  category: TCategory;
   colors: string[];
   description: string;
   discountPrice?: number;
+  fitType: TFitType;
   images: string[];
   price: number;
   sizes: string[];
   sku?: string;
   slug: string;
-  status: 'ACTIVE' | 'DRAFT';
+  status: TProductStatus;
   tags: string[];
   title: string;
   totalInventory: number;
@@ -55,7 +69,7 @@ export interface IOrder extends Document {
     price: number;
   }[];
   totalPrice: number;
-  status: 'DELIVERED' | 'PENDING' | 'CANCELLED';
+  status: TOrderStatus;
   phoneNumber: string;
   customer: IUser;
   shippingAddress: {
@@ -74,9 +88,10 @@ export interface ICategory extends Document {
 export interface IFilters {
   category?: string;
   color?: string;
+  fitType?: TFitType;
   includeOutOfStock?: boolean;
-  size?: 'XS' | 'S' | 'M' | 'L' | 'XL';
-  status?: 'ACTIVE' | 'DRAFT';
+  size?: TProductSize;
+  status?: TProductStatus;
   price?: {
     max: number;
     min: number;

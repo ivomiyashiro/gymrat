@@ -46,7 +46,11 @@ export const adaptProductReqFilters = (filtersReq: IFilters[]) => {
 
     if (keys.includes('status') && filtersReq[i].status === 'DRAFT') {
       filters['status'] = 'DRAFT';
-    } 
+    }
+
+    if (keys.includes('fitType')) {
+      filters['fitType'] = { $in: filtersReq[i].fitType };
+    }
   }
 
   return filters;
