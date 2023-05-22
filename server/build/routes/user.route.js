@@ -1,0 +1,12 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var express_1 = require("express");
+var middlewares_1 = require("../middlewares");
+var user_controller_1 = require("../controllers/user.controller");
+var router = (0, express_1.Router)();
+router.get('/', middlewares_1.validateJWTAdmin, user_controller_1.getAllUsers);
+router.delete('/:id', middlewares_1.validateJWTSuperAdmin, user_controller_1.deleteUser);
+router.put('/', middlewares_1.validateJWTSuperAdmin, user_controller_1.updateUser);
+router.get('/:uid/orders', middlewares_1.validateCustomer, user_controller_1.getCustomerOrders);
+router.get('/:uid/orders/:id', middlewares_1.validateCustomer, user_controller_1.getCustomerOrder);
+exports.default = router;
