@@ -13,7 +13,6 @@
       "no-var": "error", // No utilizar la declaración var para variables
       // "no-unused-vars": "error", // Detectar variables no utilizadas
       "strict": ["error", "never"], // No utilizar el modo estricto (strict mode)
-      "prefer-const": "error", // Utilizar const en lugar de let para variables que no cambian de valor
-      "camelcase": "error" // Utilizar camelCase para nombres de variables y propiedades de objetos
+      "prefer-const": "error" // Utilizar const en lugar de let para variables que no cambian de valor
    }
 }
