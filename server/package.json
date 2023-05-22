@@ -3,11 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "type": "module",
   "scripts": {
     "dev": "npx nodemon",
     "build": "rimraf ./build && tsc",
-    "start": "npm run build && node build/index.js",
+    "start": "node build/index.js",
     "lint": "eslint .  --ext .ts --fix",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
