@@ -1,19 +1,11 @@
 {
   "extends": "next/core-web-vitals",
-  "root": true,
-  "parser": "@typescript-eslint/parser",
-  "plugins": [
-    "@typescript-eslint/eslint-plugin"
-  ],
   "rules": {
     "eol-last": ["error", "always"],
     "semi": ["error", "always"],
     "indent": ["error", 2],
     "quotes": ["error", "single"],
     "object-curly-spacing": ["error", "always"],
-    "no-var": "error", // No utilizar la declaración var para variables
-    // "no-unused-vars": "error", // Detectar variables no utilizadas
-    "strict": ["error", "never"], // No utilizar el modo estricto (strict mode)
-    "prefer-const": "error" // Utilizar const en lugar de let para variables que no cambian de valor
- }
+    "react/jsx-curly-spacing": ["error", "always"]
+  }
 }
