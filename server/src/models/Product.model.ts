@@ -17,6 +17,11 @@ const ProductSchema = new Schema<IProduct>({
     type: [String],
     required: true,
   },
+  gender: {
+    type: String,
+    enum: ['WOMEN', 'MEN', 'NOGEN'],
+    require: true
+  },
   sizes: {
     type: [String]
   },

@@ -8,6 +8,8 @@ type TCategory = 'SHORTS' | 'SPORT BRAS' | 'HOODIES & JACKETS' | 'T-SHIRTS & TOP
 
 type TFitType = 'REGULAR' | 'SLIM' | 'OVERSIZED';
 
+type TGender = 'WOMEN' | 'MEN' | 'NOGEN';
+
 type TProductSize = 'XS' | 'S' | 'M' | 'L' | 'XL';
 
 type TProductStatus = 'ACTIVE' | 'DRAFT';
@@ -40,6 +42,7 @@ export interface IProduct {
   description: string;
   discountPrice?: number;
   fitType: TFitType;
+  gender: TGender;
   images: string[];
   price: number;
   sizes: string[];
@@ -92,6 +95,7 @@ export interface IProductFilters {
   category?: string;
   color?: string;
   fitType?: TFitType;
+  gender?: TGender;
   includeOutOfStock?: boolean;
   size?: TProductSize;
   status?: TProductStatus;

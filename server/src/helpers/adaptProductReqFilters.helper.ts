@@ -51,6 +51,10 @@ export const adaptProductReqFilters = (filtersReq: IProductFilters[]) => {
     if (keys.includes('fitType')) {
       filters['fitType'] = { $in: filtersReq[i].fitType };
     }
+
+    if (keys.includes('gender')) {
+      filters['gender'] = { $in: filtersReq[i].gender };
+    }
   }
 
   return filters;
