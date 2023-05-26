@@ -55,13 +55,6 @@ export interface IProduct {
   variants: any;
 }
 
-export interface IVariant {
-  _id: string;
-  name: string;
-  images: string[];
-  inventory: number;
-}
-
 export interface IOrder extends Document {
   number: string;
   items: {
