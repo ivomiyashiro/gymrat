@@ -13,7 +13,7 @@ dbConnection();
 
 // Config
 app.use(cors({
-  origin: [ 'http://localhost:4000', 'http://127.0.0.1', 'http://104.142.122.231' ],
+  origin: [ 'http://localhost:4000', 'http://localhost:4040', 'http://127.0.0.1', 'http://104.142.122.231' ],
   credentials: true,
   exposedHeaders: ['set-cookie'],
 }));
