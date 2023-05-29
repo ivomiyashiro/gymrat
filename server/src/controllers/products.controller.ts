@@ -36,7 +36,11 @@ export const getAllProducts = async (req: Request, res: Response) => {
       products = await Product.aggregate([
         {
           $match: {
-            'variants.inventory': { $gt: 0 }
+            'variants.inventory': { $gt: 0 },
+            $or: [
+              { title: { $regex: search, $options: 'i' } },
+              { 'variants.color': { $regex: search, $options: 'i' } }
+            ]
           }
         },
         {
