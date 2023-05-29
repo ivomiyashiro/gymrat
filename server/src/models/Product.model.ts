@@ -46,11 +46,6 @@ const ProductSchema = new Schema<IProduct>({
   images: {
     type: [String]
   },
-  slug: {
-    type: String,
-    unique: true,
-    required: true
-  },
   tags: {
     type: [String],
     default: []
@@ -75,6 +70,11 @@ const ProductSchema = new Schema<IProduct>({
       inventory: {
         type: Number,
         default: 0
+      },
+      slug: {
+        type: String,
+        unique: true,
+        required: true
       },
       images: {
         type: [String],
