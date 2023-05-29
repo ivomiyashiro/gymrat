@@ -16,6 +16,16 @@ type TProductStatus = 'ACTIVE' | 'DRAFT';
 
 type TOrderStatus = 'DELIVERED' | 'PENDING' | 'CANCELLED';
 
+export type TVariant = {
+  _id: string;
+  color: string;
+  images: string[];
+  inventory: number;
+  name: string;
+  size: TProductSize;
+  slug: string;
+}
+
 export interface IAuthRequest extends Request {
   auth?: {
     uid: string;
@@ -52,7 +62,7 @@ export interface IProduct {
   tags: string[];
   title: string;
   totalInventory: number;
-  variants: any;
+  variants: TVariant[];
 }
 
 export interface IOrder extends Document {

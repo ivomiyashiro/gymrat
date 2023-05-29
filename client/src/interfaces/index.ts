@@ -13,6 +13,16 @@ export type TProductStatus = 'ACTIVE' | 'DRAFT';
 
 export type TOrderStatus = 'DELIVERED' | 'PENDING' | 'CANCELLED';
 
+export type TVariant = {
+  _id: string;
+  color: string;
+  images: string[];
+  inventory: number;
+  name: string;
+  size: TProductSize;
+  slug: string;
+}
+
 export interface IUser extends Document {
   _id: string;
   email: string;
@@ -33,12 +43,11 @@ export interface IProduct {
   price: number;
   sizes: TProductSize[];
   sku?: string;
-  slug: string;
   status: TProductStatus;
   tags: string[];
   title: string;
   totalInventory: number;
-  variants: any;
+  variants: TVariant[];
 }
 
 export interface IOrder extends Document {
