@@ -8,6 +8,7 @@ import { DesktopNavItems, MobileMenu, SearchMenu } from './components';
 
 export const Header = () => {
 
+  const [inputValue, setInputValue] = useState('');
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isSearchMenuOpen, setSearchMenuOpen] = useState(false);
 
@@ -53,7 +54,13 @@ export const Header = () => {
         <div className='flex justify-end items-center gap-5 lg:gap-7'>
           <button className='hidden xl:flex w-[50%] bg-gray-100 hover:bg-gray-200 items-center p-3 rounded-md gap-2' onClick={ () => setSearchMenuOpen(true) }>
             <Search width={ 25 } height={ 25 } />
-            <p className='text-gray-500 text-sm'>Try a product or color</p>
+            <p className='text-sm'>
+              { 
+                inputValue 
+                  ? <span> { inputValue } </span>
+                  : <span className='text-gray-500'> Try a product or color </span>
+              }
+            </p>
           </button>
           <button className='hidden lg:block xl:hidden' onClick={ () => setSearchMenuOpen(true) }>
             <Search width={ 30 } height={ 30 } />
@@ -73,7 +80,9 @@ export const Header = () => {
         handleOpenSearchMenu={ setSearchMenuOpen } 
       />
       <SearchMenu 
+        inputValue={ inputValue }
         open={ isSearchMenuOpen } 
+        handleInputValue={ setInputValue }
         handleOpen={ setSearchMenuOpen } 
       />
     </header>
