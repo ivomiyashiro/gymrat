@@ -14,6 +14,7 @@ export const useSearchMenu = ({ open, inputValue }: Props) => {
 
   const [products, setProducts] = useState<IProduct[]>([]);
   const [focus, setFocus] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const inputRef = useRef<HTMLInputElement>(null);
   const debouncedValue = useDebounce<string>(inputValue, 500);
@@ -23,6 +24,12 @@ export const useSearchMenu = ({ open, inputValue }: Props) => {
       inputRef.current.focus();
     }
   }, [open]);
+  
+  useEffect(() => {
+    if (inputValue !== '') {
+      setLoading(true);
+    }
+  }, [inputValue]);
 
   useEffect(() => {
     if (debouncedValue === '') {
@@ -43,13 +50,15 @@ export const useSearchMenu = ({ open, inputValue }: Props) => {
             ...product,
             variants: product.variants.filter(variant => {
               if (!(colors.includes(variant.color))){
-                colors = [...colors, variant.color];
+                colors = [ ...colors, variant.color ];
                 return variant;
               }
             })
           };
         })
       );
+
+      setLoading(false);
     };
 
     searchProduct();
@@ -57,6 +66,7 @@ export const useSearchMenu = ({ open, inputValue }: Props) => {
   }, [debouncedValue]);
 
   return {
+    loading,
     inputRef,
     inputValue,
     products,
