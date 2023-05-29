@@ -1,12 +1,15 @@
 'use client';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import Link from 'next/link';
 import { MenuScale, Search, ShoppingBag, User } from 'iconoir-react';
 
 import { GymratLogo } from '@/components/svgs';
 import { DesktopNavItems, MobileMenu, SearchMenu } from './components';
+import { CartContext } from '@/context';
 
 export const Header = () => {
+
+  const { cart } = useContext(CartContext);
 
   const [inputValue, setInputValue] = useState('');
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -68,8 +71,15 @@ export const Header = () => {
           <Link href='/signin'>
             <User width={ 30 } height={ 30 } />
           </Link>
-          <button>
+          <button className='relative'>
             <ShoppingBag width={ 30 } height={ 30 } />
+            {
+              cart.length > 0
+              &&
+              <span className='absolute top-[-0.5em] left-5 text-xs w-5 h-5 bg-blue-600 text-white flex items-center justify-center rounded-full'>
+                { cart.length }
+              </span>
+            }
           </button>
         </div>
       </div>

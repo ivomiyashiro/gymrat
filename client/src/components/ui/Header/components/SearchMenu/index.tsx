@@ -1,5 +1,5 @@
 import { ChangeEvent, Dispatch, SetStateAction } from 'react';
-import { Cancel, NavArrowLeft, Search } from 'iconoir-react';
+import { Cancel, NavArrowLeft } from 'iconoir-react';
 
 import { useSearchMenu } from './useSearchMenu';
 
@@ -35,7 +35,7 @@ export const SearchMenu = ({ inputValue, open, handleInputValue, handleOpen }: P
             </button>
             <SearchbarInput
               focus={ focus }
-              ref={ inputRef }
+              reference={ inputRef }
               value={ inputValue }
               loading={ loading }
               onClick={ () => handleInputValue('') }

@@ -1,2 +1,3 @@
-export * from './getGoogleOAuthURL.utils';
-export * from './capitalizeWords.utils';
+export * from './getGoogleOAuthURL';
+export * from './capitalizeWords';
+export * from './getOneColorForVariant';

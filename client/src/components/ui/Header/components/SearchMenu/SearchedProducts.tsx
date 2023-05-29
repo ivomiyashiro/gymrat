@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { IProduct } from '@/interfaces';
 
-import { ProductsList } from '@/components/ui/ProductsList';
+import { ProductCardsList } from '@/components/ui/ProductCardsList';
 import { TrendingSearches } from './TrendingSearches';
 
 interface Props {
@@ -18,7 +18,7 @@ export const SearchedProducts = ({ products, inputValue }: Props) => {
             ? (
               <>
                 <p className='block lg:border-b font-semibold lg:pb-2'>PRODUCTS</p>
-                <ProductsList products={ products } />
+                <ProductCardsList products={ products } />
                 {
                   products.length < 6
                   &&

@@ -2,6 +2,7 @@ import './globals.css';
 import { Poppins } from 'next/font/google';
 
 import { Header } from '@/components/ui';
+import { CartProvider } from '@/context';
 
 const poppins = Poppins({ 
   subsets: ['latin'],
@@ -17,8 +18,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <body className={ poppins.className }>
-        <Header />
-        {children}
+        <CartProvider>
+          <Header />
+          {children}
+        </CartProvider>
       </body>
     </html>
   );

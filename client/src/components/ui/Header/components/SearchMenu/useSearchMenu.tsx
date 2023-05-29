@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { useDebounce } from '@/hooks';
 
 import { IProduct } from '@/interfaces';
+import { getOneColorForVariant } from '@/utils/getOneColorForVariant';
 
 const API_BASE_URL = process.env.API_BASE_URL;
 
@@ -42,21 +43,7 @@ export const useSearchMenu = ({ open, inputValue }: Props) => {
 
       if (!ok) return;
 
-      setProducts(
-        // Filter product variants to get just one color for each variant
-        products.map(product => {
-          let colors: string[] = [];
-          return {
-            ...product,
-            variants: product.variants.filter(variant => {
-              if (!(colors.includes(variant.color))){
-                colors = [ ...colors, variant.color ];
-                return variant;
-              }
-            })
-          };
-        })
-      );
+      setProducts(getOneColorForVariant(products));
 
       setLoading(false);
     };

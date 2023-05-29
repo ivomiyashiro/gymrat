@@ -1,42 +1,45 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { TFitType } from '@/interfaces';
+import { IProduct, TVariant } from '@/interfaces';
 
 import { capitalizeWords } from '@/utils';
+import { VariantsMenu } from './VariantsMenu';
 
 interface Props {
-  discountPrice?: number;
-  featImageUrl: string;
-  fitType: TFitType;
-  price: number;
-  title: string;
-  color: string;
-  slug: string;
+  product: IProduct;
+  variant: TVariant;
+  withMenu: boolean;
 }
 
-export const ProductCard = ({ featImageUrl, fitType, price, color, title, slug }: Props) => {
+export const ProductCard = ({ product, variant, withMenu = false }: Props) => {
+
   return (
-    <article className='flex flex-col min-w-0 relative'>
+    <article className='flex flex-col min-w-0 relative group'>
       <div className='relative'>
         <div className='relative'>
-          <Link href={ `/products/${ slug }` }>
+          <Link href={ `/products/${ variant.slug }` }>
             <div className='relative w-full h-full pt-[119%]'>
               <Image
-                src={ featImageUrl }
+                src={ product.images[0] }
                 sizes='(min-width: 1024px) 25vw, (min-width: 768px) 33vw, (min-width: 300px) 50vw'
                 fill
-                alt={ title }
+                alt={ product.title }
               />
             </div>
-          </Link>
+          </Link> 
+          {
+            withMenu
+            &&
+            <VariantsMenu product={ product } color={ variant.color } />
+          }
         </div>
         <div className='pt-2'>
-          <h4 className='leading-[1.3em] text-sm'>{ capitalizeWords(title) }</h4>
+          <h4 className='leading-[1.3em] text-sm'>{ capitalizeWords(product.title) }</h4>
           <p className='text-gray-400 text-xs my-1'>
-            { fitType && (fitType.charAt(0).toUpperCase() + fitType.slice(1).toLowerCase()) + ' ' +  '· ' }  { color } 
+            { product.fitType && (product.fitType.charAt(0).toUpperCase() + product.fitType.slice(1).toLowerCase()) + ' ' +  '· ' }  { variant.color } 
           </p>
-          <p className='font-semibold'>${ price }</p>
+          <p className='font-semibold'>${ product.price }</p>
         </div>
       </div >
     </article>

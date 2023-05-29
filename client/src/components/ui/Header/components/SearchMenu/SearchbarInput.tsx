@@ -1,11 +1,11 @@
-import { ChangeEventHandler, FocusEventHandler, LegacyRef, MouseEventHandler } from 'react';
+import { ChangeEventHandler, FocusEventHandler, ForwardedRef, MouseEventHandler } from 'react';
 import { Cancel, Search } from 'iconoir-react';
 
 import { Spinner } from '@/components/ui/Spinner';
 
 interface Props {
   focus: boolean;
-  ref: LegacyRef<HTMLInputElement>;
+  reference: ForwardedRef<HTMLInputElement>;
   value: string;
   loading: boolean;
   onChange: ChangeEventHandler<HTMLInputElement>;
@@ -14,7 +14,7 @@ interface Props {
   onClick: MouseEventHandler<HTMLButtonElement>;
 }
 
-export const SearchbarInput = ({ focus, ref, value, loading, onChange, onFocus, onBlur, onClick }: Props) => {
+export const SearchbarInput = ({ focus, reference, value, loading, onChange, onFocus, onBlur, onClick }: Props) => {
   return (
     <div className={ `relative w-full bg-gray-100 hover:bg-gray-200 flex items-center p-3 rounded-md gap-2 border lg:w-[400px] ${ focus ? 'border-black bg-gray-200' : 'border-transparent'}` }>
       <Search width={ 25 } height={ 25 } />
@@ -22,7 +22,7 @@ export const SearchbarInput = ({ focus, ref, value, loading, onChange, onFocus, 
         type="text" 
         placeholder='Try a product or color'
         className='bg-transparent outline-none w-full text-sm'
-        ref={ ref }
+        ref={ reference }
         value={ value }
         onChange={ onChange }
         onFocus={ onFocus }
@@ -30,7 +30,7 @@ export const SearchbarInput = ({ focus, ref, value, loading, onChange, onFocus, 
       />
       {
         loading
-          ? <Spinner size='5' contrast />
+          ? <Spinner size='4' contrast />
           : (
             value.length > 0 
             && 

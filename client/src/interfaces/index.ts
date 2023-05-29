@@ -48,6 +48,18 @@ export interface IProduct {
   title: string;
   totalInventory: number;
   variants: TVariant[];
+  variantsToPrint?: TVariant[];
+}
+
+export interface IProductCart {
+  _id: string;
+  discountPrice?: number;
+  fitType: TFitType;
+  featImageUrl: string;
+  quantity: number;
+  price: number;
+  title: string;
+  variant: TVariant;
 }
 
 export interface IOrder extends Document {
@@ -73,4 +85,13 @@ export interface IOrder extends Document {
     apartment?: string;
     zip: string;
   }
+}
+
+// Context interfaces
+
+export interface ICartState { 
+  cart: IProductCart[];
+  orderPrice: number;
+  orderDiscount: number;
+  orderTotalPrice: number;
 }
