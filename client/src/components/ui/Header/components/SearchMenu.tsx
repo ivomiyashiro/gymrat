@@ -18,10 +18,10 @@ const TRENDING_SEARCHES = ['SHORTS', 'SPORT BRAS', 'HOODIES & JACKETS', 'T-SHIRT
 const API_BASE_URL = process.env.API_BASE_URL;
 
 export const SearchMenu = ({ open, handleOpen }: Props) => {
-
   const [inputValue, setInputValue] = useState('');
   const [products, setProducts] = useState<IProduct[]>([]);
   const [isFocus, setFocus] = useState(false);
+  let productPrints = 0;
   
   const inputRef = useRef<HTMLInputElement>(null);
   const debouncedValue = useDebounce<string>(inputValue, 500);
@@ -39,20 +39,30 @@ export const SearchMenu = ({ open, handleOpen }: Props) => {
     
     const searchProduct = async () => {
       const resp = await fetch(API_BASE_URL + `/products?search=${ debouncedValue }`);
-      const { ok, products } = await resp.json();
+      const { ok, products } = await resp.json() as { ok: boolean, products: IProduct[] };
 
       if (!ok) return;
 
-      setProducts(products);
+      setProducts(
+        // Filter product variants to get just one color for each variant
+        products.map(product => {
+          let colors: string[] = [];
+          return {
+            ...product,
+            variants: product.variants.filter(variant => {
+              if (!(colors.includes(variant.color))){
+                colors = [...colors, variant.color];
+                return variant;
+              }
+            })
+          };
+        })
+      );
     };
 
     searchProduct();
 
   }, [debouncedValue]);
-
-  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setInputValue(e.target.value);
-  };
 
   return (
     <>
@@ -70,7 +80,7 @@ export const SearchMenu = ({ open, handleOpen }: Props) => {
                 className='bg-transparent outline-none w-full text-sm'
                 ref={ inputRef }
                 value={ inputValue }
-                onChange={ handleInputChange }
+                onChange={ (e: ChangeEvent<HTMLInputElement>) => setInputValue(e.target.value) }
                 onFocus={ () => setFocus(true) }
                 onBlur={ () => setFocus(false) }
               />
@@ -84,21 +94,28 @@ export const SearchMenu = ({ open, handleOpen }: Props) => {
               ? (
                 <div className='p-4 max-w-[975px] mx-auto'>
                   <p className='block lg:border-b font-semibold lg:pb-2'>PRODUCTS</p>
-                  <div className='grid grid-cols-2 lg:grid-cols-5 gap-2 my-4'>
+                  <div className='grid grid-cols-2 lg:grid-cols-5 gap-2 gap-y-6 my-4 overflow-hidden'>
                     {
-                      products.map(({ _id, title, discountPrice, images, fitType, price, slug, variants }, i) => {
-                        if (i < 6) {
+                      products.map(({ title, discountPrice, fitType, price, variants }, i) => {
+                        if (productPrints < 6) {
                           return (
-                            <ProductCard
-                              key={ _id } 
-                              title={ title }
-                              discountPrice={ discountPrice }
-                              featImageUrl={ images[0] }
-                              fitType={ fitType }
-                              price={ price }
-                              variants={ variants }
-                              slug={ slug }
-                            /> 
+                            variants.map(({ _id, color, images, slug }, i) => {
+                              if (i < 6) {
+                                productPrints += 1;
+                                return (
+                                  <ProductCard
+                                    key={ _id } 
+                                    title={ title }
+                                    discountPrice={ discountPrice }
+                                    featImageUrl={ images[0] }
+                                    fitType={ fitType }
+                                    price={ price }
+                                    color={ color }
+                                    slug={ slug }
+                                  /> 
+                                );
+                              }
+                            })
                           );
                         }
                       })
