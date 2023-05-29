@@ -1,14 +1,15 @@
 import { Request, Response } from 'express';
-import { SortOrder } from 'mongoose';
+
 import { Product } from '../models';
-import { IDataReq, IProduct, IVariant } from '../interfaces';
+import { IDataReq, IProduct, TVariant } from '../interfaces';
+
 import { adaptProductReqFilters } from '../helpers';
 
 const DEFAULT_LIMIT = 10;
 const DEFAULT_PAGE = 1;
 const DEFAULT_FILTERS = [{}];
 const DEFAULT_SORT_BY = 'title';
-const DEFAULT_ORDER_BY = 'asc';
+const DEFAULT_ORDER_BY = 1;
 
 export const getAllProducts = async (req: Request, res: Response) => {
 
@@ -32,19 +33,46 @@ export const getAllProducts = async (req: Request, res: Response) => {
     const filters = adaptProductReqFilters(reqFilters ? JSON.parse(reqFilters as unknown as string) : DEFAULT_FILTERS);
 
     if (!!search) {
-      products = await Product.find({ ...filters, $or: [
-        { title: { $regex: search, $options: 'i' } },
-        { category: { $regex: search, $options: 'i' } }] 
-      })
+      products = await Product.aggregate([
+        {
+          $match: {
+            'variants.inventory': { $gt: 0 }
+          }
+        },
+        {
+          $project: {
+            title: 1,
+            description: 1,
+            price: 1,
+            colors: 1,
+            gender: 1,
+            sizes: 1,
+            discountPrice: 1,
+            totalInventory: 1,
+            category: 1,
+            status: 1,
+            images: 1,
+            tags: 1,
+            fitType: 1,
+            variants: {
+              $filter: {
+                input: '$variants',
+                as: 'variant',
+                cond: { $gt: ['$$variant.inventory', 0] }
+              }
+            }
+          }
+        },
+        { $sort: { [sortBy]: Number(orderBy) as 1 | -1 } },
+      ])
         .limit(limit)
         .skip((page - 1) * limit)
-        .sort([[sortBy, orderBy as SortOrder]])
         .exec();
+
     } else {
       products = await Product.find(filters)
         .limit(limit)
         .skip((page - 1) * limit)
-        .sort([[sortBy, orderBy as SortOrder]])
         .exec();
     }
 
@@ -99,7 +127,7 @@ export const createProduct = async (req: Request, res: Response) => {
 
   try {
     // Calculate totalInventory
-    const totalInventory = body.variants?.reduce((acc: number, variant: IVariant) => {
+    const totalInventory = body.variants?.reduce((acc: number, variant: TVariant) => {
       return acc + variant.inventory;
     }, 0);
 
