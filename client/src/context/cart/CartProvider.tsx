@@ -37,13 +37,19 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
 
   },[]);
 
+  // Calculates total products count
   useEffect(() => {
     if (state.cart.length > 0) {
-      dispatch({
+      return dispatch({
         type: '[CART] - UPDATE TOTAL PRODUCTS QUANTITY',
         payload: state.cart.map(product => product.quantity).reduce((accumulator, quantity) => (accumulator + quantity))
       });
     }
+
+    dispatch({
+      type: '[CART] - UPDATE TOTAL PRODUCTS QUANTITY',
+      payload: 0
+    });
 
   }, [state.cart]);
 
