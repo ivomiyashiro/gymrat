@@ -19,15 +19,11 @@ export const SearchedProducts = ({ products, inputValue }: Props) => {
               <>
                 <p className='block lg:border-b font-semibold lg:pb-2'>PRODUCTS</p>
                 <ProductCardsList products={ products } />
-                {
-                  products.length < 6
-                  &&
-                  <div className='py-4 border-t flex justify-end mt-10 lg:mt-4'>
-                    <Link href={ `/products?search=${ inputValue }` }>
+                <div className='py-4 border-t flex justify-end mt-10 lg:mt-4'>
+                  <Link href={ `/products?search=${ inputValue }` }>
                       View all &quot;<span className='font-semibold underline'>{ inputValue }</span>&quot;
-                    </Link>
-                  </div>
-                }
+                  </Link>
+                </div>
               </>
             )
             : (
