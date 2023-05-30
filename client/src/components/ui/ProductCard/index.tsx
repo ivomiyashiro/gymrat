@@ -9,12 +9,12 @@ import { QuickAddMenu } from './QuickAddMenu';
 interface Props {
   product: IProduct;
   variant: TVariant;
-  withMenu: boolean;
+  width?: string;
 }
 
-export const ProductCard = ({ product, variant, withMenu = false }: Props) => {
+export const ProductCard = ({ product, variant, width = 'auto' }: Props) => {
   return (
-    <article className='flex flex-col min-w-0 relative group flex-shrink-0 lg:flex-[1_1] w-[17rem]'>
+    <article className='flex flex-col min-w-0 relative group flex-shrink-0 lg:flex-[1_1]' style={ { width } }>
       <div className='relative'>
         <Link href={ `/products/${ variant.slug }` }>
           <div className='relative w-full h-full pt-[119%]'>
@@ -26,9 +26,7 @@ export const ProductCard = ({ product, variant, withMenu = false }: Props) => {
             />
           </div>
         </Link> 
-        { withMenu
-            && 
-            <QuickAddMenu product={ product } variant={ variant } /> }
+        <QuickAddMenu product={ product } variant={ variant } /> 
       </div>
       <div className='pt-2'>
         <h4 className='leading-[1.3em] text-[0.925rem]'>{ capitalizeWords(product.title) }</h4>
