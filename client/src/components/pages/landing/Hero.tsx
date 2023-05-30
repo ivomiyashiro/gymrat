@@ -11,13 +11,13 @@ export const Hero = () => {
         <h1 className='block text-white font-bold leading-[1.15em]'>
           UNLEASH YOUR
           <br />
-          INNER <span className='text-orange-600'>BEAST.</span>
+          INNER <span className='text-blue-500'>BEAST.</span>
         </h1>
         <p className='block transition duration-700 text-white mt-4 mb-8 max-w-[600px]'>
           Flex what you’ve built with physique-enhancing cuts,
           compressive fits and comfortable lifting essentials.
         </p>
-        <Link href='/products' className='bg-gray-500 text-white px-6 py-3 w-[165px] rounded flex justify-center items-center gap-2 font-semibold hover:bg-orange-600 transition'>
+        <Link href='/products' className='text-white px-6 py-3 w-[165px] rounded flex justify-center items-center gap-2 font-semibold bg-blue-600 transition hover:scale-95'>
           SEE MORE
           <NavArrowRight width={ 16 } height={ 16 } />
         </Link>

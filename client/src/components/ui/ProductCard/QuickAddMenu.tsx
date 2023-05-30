@@ -40,10 +40,11 @@ export const QuickAddMenu = ({ product, variant }: Props) => {
               product.variants.map(vari => {
                 if (vari.color === color) {
                   return (
-                    <button 
+                    <button
                       key={ vari._id } 
-                      className='bg-white w-8 h-8 rounded-md shadow-md hover:bg-black hover:text-white transition-colors'
+                      className={ `relative bg-white w-10 h-8 rounded-md shadow-md transition-colors ${ vari.inventory <= 0 ? '!bg-gray-200 before:content-[""] before:w-full before:h-[1px] before:bg-gray-500 before:absolute before:left-0 before:top-4 before:rotate-45 text-gray-500' : 'hover:bg-black hover:text-white' }` }
                       onClick={ () => handleAddProduct(vari.color, vari.size) }
+                      disabled={ vari.inventory <= 0 }
                     >
                       { vari.size }
                     </button>
@@ -55,7 +56,7 @@ export const QuickAddMenu = ({ product, variant }: Props) => {
         )
         : (
           <button 
-            className='bg-orange-600 text-white w-full py-2 rounded-md font-semibold'
+            className='bg-blue-600 text-white w-full py-2 rounded-md font-semibold transition hover:scale-95'
             onClick={ () => handleAddProduct(variant.color, variant.size) }
           >
             ADD TO BAG

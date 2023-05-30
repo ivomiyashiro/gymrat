@@ -67,7 +67,7 @@ export const CartMenu = ({ open, handleOpen }: Props) => {
                 <div className='grid place-content-center h-full text-center'>
                   <p className='font-semibold mb-5 text-2xl'>YOUR BAG IS EMPTY!</p>
                   <p className='mb-5'>There are no products in your bag.</p>
-                  <Link href='/products' className='font-semibold bg-blue-600 text-white py-2 rounded'>
+                  <Link href='/products' className='font-semibold bg-blue-600 text-white py-2 rounded w-[200px] mx-auto hover:scale-95 transition'>
                     SHOP PRODUCTS
                   </Link>
                 </div>
