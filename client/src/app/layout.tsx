@@ -6,7 +6,7 @@ import { CartProvider } from '@/context';
 
 const poppins = Poppins({ 
   subsets: ['latin'],
-  weight: ['200', '400', '600', '900'],
+  weight: ['200', '400', '600', '800'],
 });
 
 export const metadata = {
