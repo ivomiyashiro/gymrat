@@ -7,7 +7,7 @@ import { FadeUpContainer } from '@/components/ui';
 export const Hero = () => {
   return (
     <section className='relative h-[calc(100vh-102px)] max-h-[55rem]'>
-      <FadeUpContainer className='absolute top-0 z-10 flex h-full justify-center flex-col p-4 lg:px-10 w-full max-w-[1640px] mx-auto left-[50%] right-[50%] translate-x-[-50%]'>
+      <FadeUpContainer className='absolute top-0 z-10 flex h-full justify-center flex-col p-4 lg:px-24 w-full max-w-[1640px] mx-auto left-[50%] right-[50%] translate-x-[-50%]'>
         <h1 className='block text-white font-bold leading-[1.15em]'>
           UNLEASH YOUR
           <br />

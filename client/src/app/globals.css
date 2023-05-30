@@ -2,30 +2,25 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  color: #111827;
+body, html {
+  background: #fff;
+  color: #262626;
+  height: 100%;
+  margin: 0;
+  overscroll-behavior-y: none;
+  padding: 0;
+  scroll-behavior: smooth;
 }
 
 h1 {
-  font-size: 2.75rem;
+  font-size: clamp(2.75rem, 9vw, 3.5rem);
+}
+
+
+h2 {
+  font-size: clamp(2.25rem, 9vw, 3rem);
 }
 
 p {
-  font-size: 0.925rem;
-}
-
-@media (min-width: 768px) {
-  h1 {
-    font-size: 3.25rem;
-  }
-
-  p {
-    font-size: 1rem;
-  }
-}
-
-@media (min-width: 1024px) {
-  h1 {
-    font-size: 3.5rem;
-  }
+  font-size: clamp(0.925rem, 2vw, 1rem);
 }

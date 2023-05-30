@@ -14,7 +14,7 @@ interface Props {
 
 export const ProductCard = ({ product, variant, withMenu = false }: Props) => {
   return (
-    <article className='flex flex-col min-w-0 relative group'>
+    <article className='flex flex-col min-w-0 relative group flex-shrink-0 lg:flex-[1_1] w-[17rem]'>
       <div className='relative'>
         <Link href={ `/products/${ variant.slug }` }>
           <div className='relative w-full h-full pt-[119%]'>
@@ -31,8 +31,8 @@ export const ProductCard = ({ product, variant, withMenu = false }: Props) => {
             <QuickAddMenu product={ product } variant={ variant } /> }
       </div>
       <div className='pt-2'>
-        <h4 className='leading-[1.3em] text-sm'>{ capitalizeWords(product.title) }</h4>
-        <p className='text-gray-400 text-xs my-1'>
+        <h4 className='leading-[1.3em] text-[0.925rem]'>{ capitalizeWords(product.title) }</h4>
+        <p className='text-gray-400 text-sm my-1'>
           { product.fitType && (product.fitType.charAt(0).toUpperCase() + product.fitType.slice(1).toLowerCase()) + ' ' +  '· ' }  { variant.color } 
         </p>
         <p className='font-semibold'>${ product.price }</p>

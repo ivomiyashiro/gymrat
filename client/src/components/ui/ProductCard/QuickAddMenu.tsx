@@ -55,10 +55,10 @@ export const QuickAddMenu = ({ product, variant }: Props) => {
         )
         : (
           <button 
-            className='bg-blue-600 text-white w-full py-2 rounded-md font-semibold'
+            className='bg-orange-600 text-white w-full py-2 rounded-md font-semibold'
             onClick={ () => handleAddProduct(variant.color, variant.size) }
           >
-              ADD TO BAG
+            ADD TO BAG
           </button>
         ) }
     </div>
