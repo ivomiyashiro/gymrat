@@ -19,8 +19,8 @@ export const Header = () => {
 
   return (
     <header className='fixed top-0 w-full z-50 transition'>
-      <div className='block bg-gray-200 w-full py-1'>
-        <p className='text-xs text-center'>This is a full-stack project created with React.js and Node.js</p>
+      <div className='block bg-gray-950 w-full py-1'>
+        <p className='text-xs text-center text-white'>This is a full-stack project created with React.js and Node.js</p>
       </div>
       <div className='grid grid-cols-3 w-full items-center px-4 h-[78px] lg:px-10 2xl:px-16 shadow-md bg-white'>
         <div>
