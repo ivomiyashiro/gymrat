@@ -38,7 +38,7 @@ export const useSearchMenu = ({ open, inputValue }: Props) => {
     }; 
     
     const searchProduct = async () => {
-      const resp = await fetch(API_BASE_URL + `/products?search=${ debouncedValue }`);
+      const resp = await fetch(API_BASE_URL + `/products?limit=4&search=${ debouncedValue }`);
       const { ok, products } = await resp.json() as { ok: boolean, products: IProduct[] };
 
       if (!ok) return;
