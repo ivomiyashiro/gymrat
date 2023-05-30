@@ -1,50 +1,26 @@
-import { Dispatch, SetStateAction, useEffect, useRef } from 'react';
+import { Dispatch, SetStateAction } from 'react';
 import { Cancel, Search } from 'iconoir-react';
 
-import { MobileNavItems } from './MobileNavItems';
+import { useMobileMenu } from './useMobileMenu';
+
 import { GymratLogo } from '@/components/svgs';
+import { MobileNavItems } from './MobileNavItems';
 
 interface Props {
   open: boolean;
+  inputValue: string;
   handleOpen: Dispatch<SetStateAction<boolean>>;
   handleOpenSearchMenu: Dispatch<SetStateAction<boolean>>;
 }
 
-export const MobileMenu = ({ open, handleOpen, handleOpenSearchMenu }: Props) => {
+export const MobileMenu = ({ open, inputValue, handleOpen, handleOpenSearchMenu }: Props) => {
 
-  const mobileMenuRef = useRef<HTMLDivElement>(null);
-  
-  const handleTransitionEnd = () => {
-    setTimeout(() => {
-      if (mobileMenuRef.current) {
-        mobileMenuRef.current.style.opacity = '100';
-      }
-    });
-  };
-
-  useEffect(() => {
-    if (!open && mobileMenuRef.current) {
-      mobileMenuRef.current.style.opacity = '0';
-      mobileMenuRef.current.style.pointerEvents = 'none';
-    } else if (open && mobileMenuRef.current) {
-      mobileMenuRef.current.style.width = '100%';
-      mobileMenuRef.current.style.pointerEvents = 'all';
-    }
-
-    const timeout = setTimeout(() => {
-      if (!open && mobileMenuRef.current) {
-        mobileMenuRef.current.style.width = '0';
-      }
-    }, 700);
-
-    return () => clearTimeout(timeout);
-
-  }, [open]);
+  const { mobileMenuRef, handleTransitionEnd } = useMobileMenu({ open });
 
   return (
     <aside>
       <span 
-        className={ `fixed top-0 h-screen bg-black flex items-center justify-center transition-all ${ open ? 'w-full' : 'w-[0px] transition-none' }` }
+        className={ `fixed lg:hidden top-0 h-screen bg-black flex items-center justify-center transition-all ${ open ? 'w-full' : 'w-[0px] transition-none' }` }
         onTransitionEnd={ handleTransitionEnd }
       >
         <GymratLogo 
@@ -67,7 +43,13 @@ export const MobileMenu = ({ open, handleOpen, handleOpenSearchMenu }: Props) =>
             <h2 className='text-lg font-semibold mb-3'>SHOP</h2>
             <button className='w-full bg-gray-100 hover:bg-gray-200 flex items-center p-3 rounded-md gap-2' onClick={ () => handleOpenSearchMenu(true) }>
               <Search width={ 25 } height={ 25 } />
-              <p className='text-gray-500 text-sm'>Try a product or color</p>
+              <p className='text-sm'>
+                { 
+                  inputValue 
+                    ? <span> { inputValue } </span>
+                    : <span className='text-gray-500'> Try a product or color </span>
+                }
+              </p>
             </button>
           </div>
         </div>

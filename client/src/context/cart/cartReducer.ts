@@ -14,6 +14,7 @@ type CartActionType =
       }
     }
   | { type: '[CART] - RESET CART' }
+  | { type: '[CART] - UPDATE TOTAL PRODUCTS QUANTITY', payload: number }
 ;
 
 export const cartReducer = (state: ICartState, action: CartActionType): ICartState => {
@@ -59,6 +60,13 @@ export const cartReducer = (state: ICartState, action: CartActionType): ICartSta
       orderPrice: 0,
       orderDiscount: 0,
       orderTotalPrice: 0,
+      totalProducts: 0
+    };
+
+  case '[CART] - UPDATE TOTAL PRODUCTS QUANTITY':
+    return {
+      ...state,
+      totalProducts: action.payload
     };
 
   default:

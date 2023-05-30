@@ -7,7 +7,7 @@ export type TFitType = 'REGULAR' | 'SLIM' | 'OVERSIZED';
 
 export type TGender = 'WOMEN' | 'MEN' | 'NOGEN';
 
-export type TProductSize = 'XS' | 'S' | 'M' | 'L' | 'XL';
+export type TProductSize = 'XS' | 'S' | 'M' | 'L' | 'XL' | 'UNIQUE';
 
 export type TProductStatus = 'ACTIVE' | 'DRAFT';
 
@@ -94,4 +94,5 @@ export interface ICartState {
   orderPrice: number;
   orderDiscount: number;
   orderTotalPrice: number;
+  totalProducts: number;
 }

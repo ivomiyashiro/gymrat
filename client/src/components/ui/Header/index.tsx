@@ -3,17 +3,19 @@ import { useContext, useState } from 'react';
 import Link from 'next/link';
 import { MenuScale, Search, ShoppingBag, User } from 'iconoir-react';
 
-import { GymratLogo } from '@/components/svgs';
-import { DesktopNavItems, MobileMenu, SearchMenu } from './components';
 import { CartContext } from '@/context';
+
+import { GymratLogo } from '@/components/svgs';
+import { DesktopNavItems, MobileMenu, SearchMenu, CartMenu } from './components';
 
 export const Header = () => {
 
-  const { cart } = useContext(CartContext);
+  const { totalProducts } = useContext(CartContext);
 
   const [inputValue, setInputValue] = useState('');
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isSearchMenuOpen, setSearchMenuOpen] = useState(false);
+  const [isCartMenuOpen, setCartMenuOpen] = useState(false);
 
   return (
     <header className='fixed top-0 w-full z-50 transition'>
@@ -71,13 +73,13 @@ export const Header = () => {
           <Link href='/signin'>
             <User width={ 30 } height={ 30 } />
           </Link>
-          <button className='relative'>
+          <button className='relative' onClick={ () => setCartMenuOpen(true) }>
             <ShoppingBag width={ 30 } height={ 30 } />
             {
-              cart.length > 0
+              totalProducts > 0
               &&
               <span className='absolute top-[-0.5em] left-5 text-xs w-5 h-5 bg-blue-600 text-white flex items-center justify-center rounded-full'>
-                { cart.length }
+                { totalProducts }
               </span>
             }
           </button>
@@ -86,14 +88,19 @@ export const Header = () => {
 
       <MobileMenu 
         open={ isMobileMenuOpen } 
+        inputValue={ inputValue }
         handleOpen={ setMobileMenuOpen } 
         handleOpenSearchMenu={ setSearchMenuOpen } 
       />
       <SearchMenu 
-        inputValue={ inputValue }
         open={ isSearchMenuOpen } 
+        inputValue={ inputValue }
         handleInputValue={ setInputValue }
         handleOpen={ setSearchMenuOpen } 
+      />
+      <CartMenu 
+        open={ isCartMenuOpen }
+        handleOpen={ setCartMenuOpen }
       />
     </header>
   );

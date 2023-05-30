@@ -4,11 +4,12 @@ import Cookies from 'js-cookie';
 
 import { ICartState, IProductCart } from '@/interfaces';
 
-import { cartReducer } from './cartReducer';
 import { CartContext } from './CartContext';
+import { cartReducer } from './cartReducer';
 
 const CART_INIT_STATE: ICartState = { 
   cart: [],
+  totalProducts: 0,
   orderPrice: 0,
   orderDiscount: 0,
   orderTotalPrice: 0,
@@ -18,6 +19,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
 
   const [state, dispatch] = useReducer(cartReducer, CART_INIT_STATE);
 
+  // Load cart products from cookies
   useEffect(() => {
     try {
       const cookieProduct = Cookies.get('CART') ? JSON.parse(Cookies.get('CART')!) : [];
@@ -36,14 +38,30 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
   },[]);
 
   useEffect(() => {
+    if (state.cart.length > 0) {
+      dispatch({
+        type: '[CART] - UPDATE TOTAL PRODUCTS QUANTITY',
+        payload: state.cart.map(product => product.quantity).reduce((accumulator, quantity) => (accumulator + quantity))
+      });
+    }
+
+  }, [state.cart]);
+
+  // Strigify cart cookies data
+  useEffect(() => {
     Cookies.set('CART', JSON.stringify(state.cart));
 
   }, [state.cart]);
 
+  // Update order summary
   useEffect(() => {
-    const orderPrice = state.cart.reduce((prev: number, { price, quantity }: IProductCart) => (price * quantity) + prev, 0);
-    const orderDiscount = state.cart.reduce((prev: number, { price, discountPrice, quantity }: IProductCart) => ((price - (discountPrice ? discountPrice : 0)) * quantity) + prev, 0);
-    const orderTotalPrice = state.cart.reduce((prev: number, { discountPrice, quantity }: IProductCart) => ((discountPrice ? discountPrice : 1) * quantity) + prev, 0);
+    const orderPrice = state.cart.reduce((accumulator, product) => {
+      return accumulator + (product.price * product.quantity);
+    }, 0);
+    const orderDiscount = state.cart.reduce((accumulator, product) => {
+      return accumulator + ((product.discountPrice ? product.discountPrice : 0) * product.quantity);
+    }, 0);
+    const orderTotalPrice = orderPrice - orderDiscount;
 
     const orderSummary = {
       orderPrice,
@@ -56,51 +74,43 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
   }, [state.cart]);
 
   const addToCart = (product: IProductCart) => {
-    let productToAdd = product;
-    let isInCart = false;
 
-    state.cart.map((cartProduct: IProductCart) => {
-      if (cartProduct._id === product._id) {
-        isInCart = true;
-        productToAdd = {
-          ...product,
-          quantity: cartProduct.quantity + 1
-        };
-      }
-    });
-
-    if (isInCart) {
-      const newCartArr = state.cart.map((cartProduct: IProductCart)  => {
-        if (cartProduct._id !== product._id) return cartProduct;
-  
-        return productToAdd;
-      });
-      dispatch({ type: '[CART] - UPDATE PRODUCT CART QUANTITY', payload: newCartArr });
-
-    } else {
-      dispatch({ type: '[CART] - ADD TO CART', payload: productToAdd });
-
-    }
+    const productInCart = state.cart.find(prod => prod.variant._id === product.variant._id);
     
+    if (productInCart) {
+      return dispatch({ 
+        type: '[CART] - UPDATE PRODUCT CART QUANTITY', 
+        payload: state.cart.map(prod => {
+          if (prod.variant._id !== product.variant._id) return prod;
+
+          return {
+            ...prod,
+            quantity: prod.quantity + 1
+          };
+        })
+      });
+    };
+
+    dispatch({ type: '[CART] - ADD TO CART', payload: product });
   };
 
-  const removeFromCart = (id: string) => {
-    const newCartArr = state.cart.filter((product: IProductCart) => {
-      if (product._id !== id) return product;
-    });
+  const removeFromCart = (id: string) => (
+    dispatch({ 
+      type: '[CART] - REMOVE FROM CART', 
+      payload: state.cart.filter(product => ( product.variant._id !== id)) 
+    })
+  );
 
-    dispatch({ type: '[CART] - REMOVE FROM CART', payload: newCartArr });
-  };
+  const updateProductQuantity = (product: IProductCart) => (
+    dispatch({ 
+      type: '[CART] - UPDATE PRODUCT CART QUANTITY', 
+      payload: state.cart.map(cartProduct => {
+        if (cartProduct._id !== product._id) return cartProduct;
 
-  const updateProductQuantity = (product: IProductCart) => {
-    const newCartArr = state.cart.map((cartProduct: IProductCart) => {
-      if (cartProduct._id !== product._id) return cartProduct;
-
-      return product;
-    });
-
-    dispatch({ type: '[CART] - UPDATE PRODUCT CART QUANTITY', payload: newCartArr });
-  };
+        return product;
+      }) 
+    })
+  );
 
   const resetCart = () => dispatch({ type: '[CART] - RESET CART' });
 

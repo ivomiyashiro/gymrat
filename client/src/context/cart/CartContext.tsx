@@ -7,6 +7,7 @@ interface ContextProps {
   orderPrice: number;
   orderDiscount: number;
   orderTotalPrice: number;
+  totalProducts: number;
 
   //Methods
   addToCart: (product: IProductCart) => void;
