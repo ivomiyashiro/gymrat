@@ -1,1 +1,1 @@
-export * from './main/index';
+export * from './landing';
