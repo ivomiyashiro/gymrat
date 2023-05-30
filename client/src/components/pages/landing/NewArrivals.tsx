@@ -6,7 +6,7 @@ import { ProductCard } from '@/components/ui';
 
 export const NewArrivals = () => {
 
-  const { products, loading } = useProducts({ limit: 4 });
+  const { products } = useProducts({ limit: 4 });
 
   return (
     <>
@@ -22,7 +22,7 @@ export const NewArrivals = () => {
                       key={ variant._id } 
                       product={ restOfProducts }
                       variant={ variant }
-                      withMenu
+                      width='17rem'
                     /> 
                   );
                 })
@@ -39,7 +39,7 @@ export const NewArrivals = () => {
                         key={ variant._id } 
                         product={ restOfProducts }
                         variant={ variant }
-                        withMenu
+                        width='17rem'
                       /> 
                     );
                   })
