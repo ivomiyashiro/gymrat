@@ -1,8 +1,8 @@
 import './globals.css';
 import { Poppins } from 'next/font/google';
 
-import { Header } from '@/components/ui';
-import { CartProvider } from '@/context';
+import { CartProvider } from '@/context/cart';
+import { Footer, Header } from '@/components/ui';
 
 const poppins = Poppins({ 
   subsets: ['latin'],
@@ -21,6 +21,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <CartProvider>
           <Header />
           {children}
+          <Footer />
         </CartProvider>
       </body>
     </html>
