@@ -12,7 +12,7 @@ export const NewArrivals = () => {
     <>
       <section className='px-4 py-20 lg:px-20'>
         <h2 className='font-bold'>NEW ARRIVALS</h2>
-        <div className='flex gap-2 overflow-x-scroll scrollbar-hidden mt-6'>
+        <div className='flex gap-4 overflow-x-scroll scrollbar-hidden mt-6'>
           {
             products.map(({ variantsToPrint, ...restOfProducts }) => {
               return (

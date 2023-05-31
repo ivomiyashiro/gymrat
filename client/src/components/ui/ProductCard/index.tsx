@@ -17,7 +17,7 @@ export const ProductCard = ({ product, variant, width = 'auto' }: Props) => {
     <article className='flex flex-col min-w-0 relative group flex-shrink-0 lg:flex-[1_1]' style={ { width } }>
       <div className='relative'>
         <Link href={ `/products/${ variant.slug }` }>
-          <div className='relative w-full h-full pt-[119%]'>
+          <div className='relative w-full h-full pt-[119%] overflow-hidden rounded-[1rem]'>
             <Image
               src={ variant.images[0] }
               alt={ product.title }
@@ -28,7 +28,7 @@ export const ProductCard = ({ product, variant, width = 'auto' }: Props) => {
         </Link> 
         <QuickAddMenu product={ product } variant={ variant } /> 
       </div>
-      <div className='pt-2'>
+      <div className='p-3'>
         <h4 className='leading-[1.3em] text-[0.925rem]'>{ capitalizeWords(product.title) }</h4>
         <p className='text-gray-400 text-sm my-1'>
           { product.fitType && (product.fitType.charAt(0).toUpperCase() + product.fitType.slice(1).toLowerCase()) + ' ' +  '· ' }  { variant.color } 
