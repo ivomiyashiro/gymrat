@@ -8,7 +8,7 @@ interface Props {
 
 export const ProductCardsList = ({ products }: Props) => {
   return (
-    <div className='grid grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-2 gap-y-6 my-4 overflow-hidden'>
+    <div className='grid grid-cols-2 lg:grid-cols-4 gap-4 gap-y-6 my-4 overflow-hidden'>
       {
         products.map(({ variantsToPrint, ...restOfProducts }) => {
           return (
