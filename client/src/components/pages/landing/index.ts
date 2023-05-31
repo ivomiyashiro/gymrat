@@ -1,4 +1,4 @@
 export * from './Hero';
 export * from './Testimonials';
 export * from './NewArrivals';
-export * from './Banner';
+export * from './Banners';

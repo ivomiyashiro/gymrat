@@ -5,3 +5,4 @@ export * from './ProductCardsList';
 export * from './Spinner';
 export * from './FadeUpContainer';
 export * from './Footer';
+export * from './Banner';

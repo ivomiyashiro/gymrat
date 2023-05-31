@@ -14,7 +14,7 @@ interface Props {
 
 export const ProductCard = ({ product, variant, width = 'auto' }: Props) => {
   return (
-    <article className='flex flex-col min-w-0 relative group flex-shrink-0 lg:flex-[1_1]' style={ { width } }>
+    <article className='flex flex-col min-w-0 relative group flex-shrink-0 xl:flex-[1_1]' style={ { width } }>
       <div className='relative'>
         <Link href={ `/products/${ variant.slug }` }>
           <div className='relative w-full h-full pt-[119%] overflow-hidden rounded-[1rem]'>

@@ -3,7 +3,7 @@ import Link from 'next/link';
 export const Footer = () => {
   return (
     <footer className='bg-gray-950 text-white rounded-tl-[3.5rem]'>
-      <div className='py-20 flex flex-col justify-between lg:flex-row px-6 lg:px-10 2xl:px-16 gap-12 lg:gap-20 mx-auto'>
+      <div className='py-20 flex flex-col justify-between lg:flex-row px-4 lg:px-10 2xl:px-16 gap-12 lg:gap-20'>
         <div className='flex flex-col gap-6 max-w-[600px]'>
           <h3 className='font-semibold text-xl 2xl:text-2xl'>
             Get a first peek at new products, special offers, Gymrat how-tos, and so much more.

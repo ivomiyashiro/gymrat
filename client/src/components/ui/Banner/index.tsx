@@ -14,8 +14,8 @@ interface Props {
 
 export const Banner = ({ title, p1, p2, image, altText, reverse, buttonText }: Props) => {
   return (
-    <div className={ `flex flex-col md:flex-row gap-6 justify-between ${ reverse && 'md:!flex-row-reverse' }` }>
-      <div className='relative lg:w-[50%] w-full h-[450px] md:order-1'>
+    <div className={ `flex flex-col md:flex-row gap-8 2xl:gap-20 justify-between items-center  ${ reverse && 'md:!flex-row-reverse' }` }>
+      <div className='relative w-full lg:w-[50%] 2xl:w-[60%] h-[30rem] lg:h-[35rem] md:order-1'>
         <Image 
           src={ image } 
           alt={ altText }
