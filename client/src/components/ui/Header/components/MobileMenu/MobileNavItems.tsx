@@ -32,8 +32,8 @@ export const MobileNavItems = ({ open, href, imageUrl, altText, children }: Prop
               { children }
             </p>
           </div>
-          <button className='min-w-[35px] h-[35px] bg-white rounded-full flex items-center justify-center'>
-            <NavArrowRight width={ 25 } height={ 25 } />
+          <button className='min-w-[35px] h-[35px] bg-white rounded-full flex items-center justify-center animate-pulse'>
+            <NavArrowRight width={ 20 } height={ 20 } />
           </button>
         </div>
       </Link>

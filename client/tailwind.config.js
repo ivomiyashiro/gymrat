@@ -7,11 +7,25 @@ module.exports = {
   ],
   theme: {
     extend: {
-      backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic':
-          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+      keyframes: {
+        'pulse': {
+          '0%': {
+            boxShadow: '0 0 0 0 hsla(0,0%,100%,.43)'
+          },
+          '50%': {
+            opacity: 1
+          },
+          '70%': {
+            boxShadow: '0 0 0 0.492rem hsla(0,0%,100%,0)'
+          },
+          '100%': {
+            boxShadow: '0 0 0 0 hsla(0,0%,100%,0)'
+          }
+        }
       },
+      animation: {
+        'pulse': 'pulse 2s linear infinite'
+      }
     },
   },
   plugins: [],

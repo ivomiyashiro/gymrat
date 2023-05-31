@@ -34,7 +34,7 @@ export const Header = () => {
           </div>
           <div className='hidden lg:block'>
             <Link href='/'>
-              <GymratLogo color='#000' width={ 48 } height={ 48 } />
+              <GymratLogo width={ 48 } height={ 48 } />
             </Link>
           </div>
         </div>

@@ -10,7 +10,7 @@ export const NewArrivals = () => {
 
   return (
     <>
-      <section className='px-4 py-20 lg:px-20'>
+      <section className='px-4 py-20 md:py-32 lg:px-20'>
         <h2 className='font-bold'>NEW ARRIVALS</h2>
         <div className='flex gap-4 overflow-x-scroll scrollbar-hidden mt-6'>
           {
