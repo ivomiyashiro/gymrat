@@ -6,11 +6,11 @@ type TRole = 'CUSTOMER' | 'ADMIN' | 'SUPERADMIN';
 
 type TCategory = 'SHORTS' | 'SPORT BRAS' | 'HOODIES & JACKETS' | 'T-SHIRTS & TOPS' | 'TANK TOPS' | 'ACCESSORIES' | 'JOGGERS & SWEATPANTS';
 
-type TFitType = 'REGULAR' | 'SLIM' | 'OVERSIZED';
+type TFitType = 'REGULAR' | 'SLIM' | 'OVERSIZED' | 'UNIQUE';
 
-type TGender = 'WOMEN' | 'MEN' | 'NOGEN';
+type TGender = 'WOMEN' | 'MEN' | 'BOTH';
 
-type TProductSize = 'XS' | 'S' | 'M' | 'L' | 'XL';
+type TProductSize = 'XS' | 'S' | 'M' | 'L' | 'XL' | 'UNIQUE';
 
 type TProductStatus = 'ACTIVE' | 'DRAFT';
 
@@ -55,7 +55,7 @@ export interface IProduct {
   gender: TGender;
   images: string[];
   price: number;
-  sizes: string[];
+  sizes: TProductSize[];
   sku?: string;
   slug: string;
   status: TProductStatus;

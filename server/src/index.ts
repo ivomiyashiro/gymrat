@@ -4,7 +4,7 @@ import cors from 'cors';
 import cookieParser from 'cookie-parser';
 
 import { dbConnection } from './database';
-import { AuthRouter, OrdersRouter, ProductsRouter, SearchRounter, UserRouter } from './routes';
+import { AuthRouter, AdminProductsRouter, AdminOrdersRouter, AdminUserRouter, StorefrontOrdersRouter, StorefrontProductsRouter } from './routes';
 
 const app = express();
 
@@ -22,10 +22,13 @@ app.use(cookieParser());
 
 // Routes
 app.use('/api/auth', AuthRouter);
-app.use('/api/users', UserRouter);
-app.use('/api/products', ProductsRouter);
-app.use('/api/orders', OrdersRouter);
-app.use('/api/search', SearchRounter);
+
+app.use('/api/admin/products', AdminProductsRouter);
+app.use('/api/admin/users', AdminUserRouter);
+app.use('/api/admin/orders', AdminOrdersRouter);
+
+app.use('/api/storefront/user', StorefrontOrdersRouter);
+app.use('/api/storefront/products', StorefrontProductsRouter);
 
 app.listen(process.env.SERVER_PORT, () => {
   console.log(`Server running in port ${ process.env.SERVER_PORT }`);

@@ -1,5 +1,6 @@
 export { default as AuthRouter } from './auth.route';
-export { default as ProductsRouter } from './products.route';
-export { default as OrdersRouter } from './orders.route';
-export { default as UserRouter } from './user.route';
-export { default as SearchRounter } from './search.route';
+export { default as AdminProductsRouter } from './products.admin.route';
+export { default as AdminOrdersRouter } from './orders.admin.route';
+export { default as AdminUserRouter } from './user.admin.route';
+export { default as StorefrontOrdersRouter } from './user.storefront.route';
+export { default as StorefrontProductsRouter } from './products.storefront.route';

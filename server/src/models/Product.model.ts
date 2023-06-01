@@ -19,7 +19,7 @@ const ProductSchema = new Schema<IProduct>({
   },
   gender: {
     type: String,
-    enum: ['WOMEN', 'MEN', 'NOGEN'],
+    enum: ['WOMEN', 'MEN', 'BOTH'],
     require: true
   },
   sizes: {
@@ -73,7 +73,6 @@ const ProductSchema = new Schema<IProduct>({
       },
       slug: {
         type: String,
-        unique: true,
         required: true
       },
       images: {

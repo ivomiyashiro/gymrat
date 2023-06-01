@@ -5,8 +5,8 @@ import { createProduct, deleteProduct, getAllProducts, getOneProduct, updateProd
 import { isDBSlugCorrect } from '../helpers';
 
 const router = Router();
- 
-router.get('/', validateStatusFilter ,getAllProducts);
+
+router.get('/' ,getAllProducts);
  
 router.get('/:id', getOneProduct);
 
@@ -17,11 +17,9 @@ router.post('/',[
   check('category', 'Category is required.').not().isEmpty(),
   check('category', 'Category is not valid.').isIn(['SHORTS', 'SPORT BRAS', 'HOODIES & JACKETS', 'T-SHIRTS & TOPS', 'TANK TOPS', 'ACCESSORIES', 'JOGGERS & SWEATPANTS']),
   check('gender', 'Gender is required.'),
-  check('gender', 'Gender is not valid.').isIn(['WOMEN', 'MEN', 'NOGEN']),
+  check('gender', 'Gender is not valid.').isIn(['WOMEN', 'MEN', 'BOTH']),
   check('fitType', 'FitType is not valid.').isIn(['REGULAR', 'SLIM', 'OVERSIZED', undefined]),
   check('colors', 'Color is required.').not().isEmpty(),
-  check('slug', 'Slug are required.').not().isEmpty(),
-  check('slug').custom(isDBSlugCorrect),
   check('status', 'Status must be either "ACTIVE" or "DRAFT".').isIn(['ACTIVE', 'DRAFT']),
   check('title', 'Title is required.').not().isEmpty(),
   check('variants', 'Variants are required.').not().isEmpty(),
