@@ -1,5 +1,4 @@
-import { Hero, Testimonials, NewArrivals, Banners } from '@/components/pages';
-import { Categories } from '@/components/pages/landing/Categories';
+import { Hero, Testimonials, NewArrivals, Banners, Categories, ShopWomen, ShopMen } from '@/components/pages';
 
 export default function Home() {
   return (
@@ -8,8 +7,9 @@ export default function Home() {
       <Testimonials />
       <NewArrivals />
       <Banners />
-      <NewArrivals />
+      <ShopWomen />
       <Categories />
+      <ShopMen />
     </main>
   );
 }

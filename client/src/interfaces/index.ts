@@ -5,7 +5,7 @@ export type TCategory = 'SHORTS' | 'SPORT BRAS' | 'HOODIES & JACKETS' | 'T-SHIRT
 
 export type TFitType = 'REGULAR' | 'SLIM' | 'OVERSIZED';
 
-export type TGender = 'WOMEN' | 'MEN' | 'NOGEN';
+export type TGender = 'WOMEN' | 'MEN' | 'BOTH';
 
 export type TProductSize = 'XS' | 'S' | 'M' | 'L' | 'XL' | 'UNIQUE';
 
@@ -85,6 +85,20 @@ export interface IOrder extends Document {
     apartment?: string;
     zip: string;
   }
+}
+
+export interface IProductFilters {
+  category?: string;
+  color?: string;
+  fitType?: TFitType;
+  gender?: TGender;
+  includeOutOfStock?: boolean;
+  size?: TProductSize;
+  status?: TProductStatus;
+  price?: {
+    max: number;
+    min: number;
+  };
 }
 
 // Context interfaces

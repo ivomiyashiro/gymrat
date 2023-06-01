@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { IProduct } from '@/interfaces';
 
-import { ProductCardsList } from '@/components/ui/ProductCardsList';
+import { SearchedProductsList } from './SearchedProductsList';
 import { TrendingSearches } from './TrendingSearches';
 
 interface Props {
@@ -17,9 +17,9 @@ export const SearchedProducts = ({ products, inputValue }: Props) => {
           products.length > 0
             ? (
               <>
-                <p className='block lg:border-b font-semibold lg:pb-2'>PRODUCTS</p>
-                <ProductCardsList products={ products } />
-                <div className='py-4 border-t flex justify-end mt-10 lg:mt-4'>
+                <p className='block font-semibold lg:pb-2'>PRODUCTS</p>
+                <SearchedProductsList products={ products } />
+                <div className='border-t flex justify-end mt-10 lg:mt-4 pt-3'>
                   <Link href={ `/products?search=${ inputValue }` }>
                       View all &quot;<span className='font-semibold underline'>{ inputValue }</span>&quot;
                   </Link>

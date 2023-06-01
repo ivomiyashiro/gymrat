@@ -1,39 +1,39 @@
+'use client';
 import { useEffect, useState } from 'react';
 
-import { IProduct } from '@/interfaces';
+import { IProduct, IProductFilters } from '@/interfaces';
 import { getOneColorForVariant } from '@/utils';
 
-interface Props {
+interface IParams {
   limit: number;
   page?: number;
-  sortyBy?: string;
+  sortBy?: string;
   orderBy?: 1 | -1;
-  collection?: string; 
+  filters?: IProductFilters[];
 }
 
 const DEFAULT_LIMIT = 15;
 const DEFAULT_PAGE = 1;
 const DEFAULT_SORTBY = 'title';
 const DEFAULT_ORDERBY = 1;
+const DEFAULT_FILTERS = [{}];
 
-export const useProducts = ({ 
-  limit = DEFAULT_LIMIT, 
-  page = DEFAULT_PAGE, 
-  sortyBy = DEFAULT_SORTBY, 
-  orderBy = DEFAULT_ORDERBY
-}: Props) => {
+export const useProducts = (params: IParams, asAdmin: boolean = false) => {
 
   const [products, setProducts] = useState<IProduct[]>([]);
   const [pages, setPages] = useState(0);
   const [error, setError] = useState<string>();
   const [loading, setLoading] = useState(true);
 
+  const { limit = DEFAULT_LIMIT, page = DEFAULT_PAGE, sortBy = DEFAULT_SORTBY, orderBy = DEFAULT_ORDERBY, filters = DEFAULT_FILTERS } = params;
+  const adaptedFilters = encodeURIComponent(JSON.stringify(filters));
+
   useEffect(() => {
     const getProduct = async () => {
       setLoading(true);
 
       try {
-        const resp = await fetch(process.env.API_BASE_URL + `/products?limit=${ limit }&page=${ page }&sortBy=${ sortyBy }&orderBy=${ orderBy }`);
+        const resp = await fetch(process.env.API_BASE_URL + `/${ asAdmin ? 'admin' : 'storefront' }/products?limit=${ limit }&page=${ page }&sortBy=${ sortBy }&orderBy=${ orderBy }&filters=${ adaptedFilters }`);
         const { ok, products, totalPages } = await resp.json();
 
         if (!ok) return;
@@ -53,7 +53,7 @@ export const useProducts = ({
 
     getProduct();
 
-  }, [limit, page, sortyBy, orderBy]);
+  }, [limit, page, sortBy, orderBy, adaptedFilters, asAdmin]);
 
   return {
     loading,

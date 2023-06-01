@@ -48,17 +48,9 @@ export const SearchMenu = ({ inputValue, open, handleInputValue, handleOpen }: P
             </button>
           </div>
           {
-            inputValue !== ''
-              ? (
-                loading 
-                  ? <div className='h-[465px]'></div>
-                  : <SearchedProducts products={ products } inputValue={ inputValue } />
-              )
-              : (
-                <div className='p-4 max-w-[975px] mx-auto'>
-                  <TrendingSearches />
-                </div>
-              )
+            (inputValue !== '' && !loading)
+              ? <SearchedProducts products={ products } inputValue={ inputValue } />
+              : <div className='p-4 max-w-[975px] mx-auto'><TrendingSearches /></div>
           }
         </aside>
       </Modal>

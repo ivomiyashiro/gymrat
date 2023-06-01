@@ -9,7 +9,7 @@ export const Categories = () => {
 
   return (
     <>
-      <section className='px-4 pt-12 pb-40 lg:px-24 max-w-[1640px] mx-auto'>
+      <section className='px-4 pY-12 lg:px-24 max-w-[1640px] mx-auto'>
         <div className='flex md:flex-row flex-col md:overflow-x-scroll h-full w-full scrollbar-hidden gap-3'>
           {
             categories.map(card => (
