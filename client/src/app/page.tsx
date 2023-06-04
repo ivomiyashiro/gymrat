@@ -1,4 +1,4 @@
-import { Hero, Testimonials, NewArrivals, Banners, Categories, ShopWomen, ShopMen } from '@/components/pages';
+import { Hero, Testimonials, NewArrivals, Banners, Categories, ShopWomen, ShopMen } from '@/components/pages/landing';
 
 export default function Home() {
   return (
