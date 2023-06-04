@@ -13,6 +13,8 @@ export type TProductStatus = 'ACTIVE' | 'DRAFT';
 
 export type TOrderStatus = 'DELIVERED' | 'PENDING' | 'CANCELLED';
 
+export type TToastType = 'SUCCESS' | 'WARNING' | 'ERROR' | 'INFO';
+
 export type TVariant = {
   _id: string;
   color: string;
@@ -109,4 +111,11 @@ export interface ICartState {
   orderDiscount: number;
   orderTotalPrice: number;
   totalProducts: number;
+}
+
+export interface IToast {
+  visible: boolean;
+  type: TToastType;
+  title: string;
+  content: string;
 }
