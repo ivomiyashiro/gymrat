@@ -1,11 +1,12 @@
 'use client';
-import { ReactNode, useEffect, useReducer } from 'react';
+import { ReactNode, useContext, useEffect, useReducer } from 'react';
 import Cookies from 'js-cookie';
 
 import { ICartState, IProductCart } from '@/interfaces';
 
 import { CartContext } from './CartContext';
 import { cartReducer } from './cartReducer';
+import { ToastContext } from '../toast';
 
 const CART_INIT_STATE: ICartState = { 
   cart: [],
@@ -18,6 +19,7 @@ const CART_INIT_STATE: ICartState = {
 export const CartProvider = ({ children }: { children: ReactNode }) => {
 
   const [state, dispatch] = useReducer(cartReducer, CART_INIT_STATE);
+  const { showToast } = useContext(ToastContext);
 
   // Load cart products from cookies
   useEffect(() => {
@@ -80,10 +82,15 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
   }, [state.cart]);
 
   const addToCart = (product: IProductCart) => {
-
     const productInCart = state.cart.find(prod => prod.variant._id === product.variant._id);
     
     if (productInCart) {
+      showToast({ 
+        type: 'SUCCESS', 
+        title: `${product.title} | ${ product.variant.color?.toUpperCase() } ${ (product.variant.size !== 'UNIQUE') ? `| ${ product.variant.size }` : ''}`, 
+        content: 'Successfully added to cart.' 
+      });
+      
       return dispatch({ 
         type: '[CART] - UPDATE PRODUCT CART QUANTITY', 
         payload: state.cart.map(prod => {
@@ -98,6 +105,12 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
     };
 
     dispatch({ type: '[CART] - ADD TO CART', payload: product });
+
+    showToast({ 
+      type: 'SUCCESS', 
+      title: `${product.title} | ${ product.variant.color?.toUpperCase() } ${ (product.variant.size !== 'UNIQUE') ? `| ${ product.variant.size }` : ''}`, 
+      content: 'Successfully added to cart.' 
+    });
   };
 
   const removeFromCart = (id: string) => (
