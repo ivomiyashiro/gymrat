@@ -119,3 +119,13 @@ export interface IToast {
   title: string;
   content: string;
 }
+
+export interface ICatalog {
+  filters: any[];
+  orderBy: 1 | -1;
+  products: IProduct[];
+  sortBy: 'TITLE' | 'PRICE';
+  view: 'LIST' | 'GRID';
+  loadingFilters: boolean;
+  filterMenuOpen: boolean;
+}
