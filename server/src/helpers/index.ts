@@ -7,3 +7,4 @@ export * from './isDBSlugCorrect.helper.ts';
 export * from './isValidOrderStatus.helper';
 export * from './isValidPhoneNumber.helper';
 export * from './slugify.helper';
+export * from './getFiltersAttributes';

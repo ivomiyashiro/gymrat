@@ -1,8 +1,7 @@
 import { Router } from 'express';
 import { check } from 'express-validator';
-import { validateFields, validateJWTSuperAdmin, validateStatusFilter } from '../middlewares';
+import { validateFields, validateJWTSuperAdmin } from '../middlewares';
 import { createProduct, deleteProduct, getAllProducts, getOneProduct, updateProduct } from '../controllers/products.controller';
-import { isDBSlugCorrect } from '../helpers';
 
 const router = Router();
 
@@ -18,7 +17,7 @@ router.post('/',[
   check('category', 'Category is not valid.').isIn(['SHORTS', 'SPORT BRAS', 'HOODIES & JACKETS', 'T-SHIRTS & TOPS', 'TANK TOPS', 'ACCESSORIES', 'JOGGERS & SWEATPANTS']),
   check('gender', 'Gender is required.'),
   check('gender', 'Gender is not valid.').isIn(['WOMEN', 'MEN', 'BOTH']),
-  check('fitType', 'FitType is not valid.').isIn(['REGULAR', 'SLIM', 'OVERSIZED', undefined]),
+  check('fitType', 'FitType is not valid.').isIn(['REGULAR', 'SLIM', 'OVERSIZED', 'UNIQUE']),
   check('colors', 'Color is required.').not().isEmpty(),
   check('status', 'Status must be either "ACTIVE" or "DRAFT".').isIn(['ACTIVE', 'DRAFT']),
   check('title', 'Title is required.').not().isEmpty(),

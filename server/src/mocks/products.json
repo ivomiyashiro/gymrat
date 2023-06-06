@@ -327,9 +327,11 @@
         "title": "FIGURE 8 LIFTING STRAPS",
         "description": "Give your workout the boost it needs with the Gymshark Figure 8 Lifting Straps. With highly durable materials you can lift more, whilst reducing grip fatigue. Your safety is always our main priority, so put your trust in us; we'd never let you down.",
         "price": 18,
+        "discountPrice": 16,
         "category": "ACCESSORIES",
         "status": "ACTIVE",
         "gender": "BOTH",
+        "fitType": "UNIQUE",
         "sizes": [
             "BOTH"
         ],

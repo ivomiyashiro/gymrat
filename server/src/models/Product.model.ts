@@ -52,7 +52,8 @@ const ProductSchema = new Schema<IProduct>({
   },
   fitType: {
     type: String,
-    enum: ['REGULAR', 'SLIM', 'OVERSIZED']
+    enum: ['REGULAR', 'SLIM', 'OVERSIZED', 'UNIQUE'],
+    default: 'UNIQUE'
   },
   variants: {
     type: [{
