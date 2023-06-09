@@ -1,9 +1,9 @@
 import { Request, Response } from 'express';
+import mongoose from 'mongoose';
 import { Product } from '../models';
 import { getFiltersAttributes } from '../helpers';
-import { getProductsMinMaxPrice } from '../helpers/getVariantsMaxMinPrice';
 
-export const getProductsFilters = async (req: Request, res: Response) => {
+export const getProductsFilters = async (_req: Request, res: Response) => {
 
   try {
     const products = await Product.aggregate([
@@ -32,21 +32,19 @@ export const getProductsFilters = async (req: Request, res: Response) => {
     ])
       .exec();
 
-    const { sizes, colors, category, gender, fitType } = getFiltersAttributes(products);
-    const { maxPrice, minPrice } = getProductsMinMaxPrice(products);
-
+    const { sizes, colors, categories, genders, fitTypes } = getFiltersAttributes(products);
+    const priceValues = ['0$ - 10$', '10$ - 20$', '20$ - 30$', '30$ - 50$', '50$ - 75$', '75$ - 100$', '+ 100$'];
 
     return res.json({
       ok: true,
-      sizes,
-      colors,
-      category,
-      gender,
-      fitType,
-      price: {
-        min: minPrice,
-        max: maxPrice
-      }
+      filters: [
+        { _id: new mongoose.Types.ObjectId(), name: 'size', values: sizes },
+        { _id: new mongoose.Types.ObjectId(), name: 'color', values: colors },
+        { _id: new mongoose.Types.ObjectId(), name: 'category', values: categories },
+        { _id: new mongoose.Types.ObjectId(), name: 'gender', values: genders },
+        { _id: new mongoose.Types.ObjectId(), name: 'fitType', values: fitTypes },
+        { _id: new mongoose.Types.ObjectId(), name: 'price', values: priceValues },
+      ]
     });
     
   } catch (error) {

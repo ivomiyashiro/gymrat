@@ -8,20 +8,29 @@ export const adaptProductReqFilters = (filtersReq: IProductFilters[]) => {
     const keys = Object.keys(filtersReq[i]);
 
     if (keys.includes('price')) {
-      const priceKeys = Object.keys(filtersReq[i].price!);
+      const numbers = filtersReq[i].price!.map(item => {
+        const matches = item.match(/\d+/g);
+        return matches ? matches.map(Number) : [];
+      });
 
-      if (priceKeys.includes('min') && !priceKeys.includes('max')) {
-        filters['price'] = { $gte: filtersReq[i].price!.min };
-      }
-      else if (priceKeys.includes('max') && !priceKeys.includes('min')) {
-        filters['price'] = { $lte: filtersReq[i].price!.max };        
-      }
-      else {
-        filters['price'] = { 
-          $lte: filtersReq[i].price!.max,
-          $gte: filtersReq[i].price!.min
-        };        
-      }
+      let maxNumber = -Infinity;
+      let minNumber = Infinity;
+
+      numbers.forEach(item => {
+        item.forEach(number => {
+          if (number > maxNumber) {
+            maxNumber = number;
+          }
+          if (number < minNumber) {
+            minNumber = number;
+          }
+        });
+      });
+
+      filters['price'] = { 
+        $lte: maxNumber,
+        $gte: minNumber
+      };   
     }
 
     if (keys.includes('category')) {

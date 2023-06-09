@@ -21,8 +21,8 @@ export const getFiltersAttributes = (data: IProduct[]) => {
   return {
     colors: Array.from(colors),
     sizes: Array.from(sizes),
-    category:Array.from(category),
-    gender:Array.from(gender),
-    fitType:Array.from(fitType),
+    categories:Array.from(category),
+    genders:Array.from(gender),
+    fitTypes:Array.from(fitType),
   };
 };

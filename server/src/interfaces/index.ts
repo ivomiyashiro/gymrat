@@ -102,10 +102,7 @@ export interface IProductFilters {
   includeOutOfStock?: boolean;
   size?: TProductSize;
   status?: TProductStatus;
-  price?: {
-    max: number;
-    min: number;
-  };
+  price?: string[];
 }
 
 export interface IOrderFilters {
