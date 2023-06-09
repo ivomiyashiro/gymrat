@@ -90,17 +90,22 @@ export interface IOrder extends Document {
 }
 
 export interface IProductFilters {
-  category?: string;
-  color?: string;
-  fitType?: TFitType;
-  gender?: TGender;
-  includeOutOfStock?: boolean;
-  size?: TProductSize;
-  status?: TProductStatus;
-  price?: {
-    max: number;
-    min: number;
-  };
+  _id: string; 
+  name: string, 
+  values: { 
+    _id: number; 
+    value: string; 
+    checked: boolean
+  }[] 
+}
+
+export interface IProductPriceFilter {
+  _id: string;
+  name: string,
+  values: {
+    min?: string,
+    max?: string
+  }[]
 }
 
 // Context interfaces
@@ -121,11 +126,10 @@ export interface IToast {
 }
 
 export interface ICatalog {
-  filters: any[];
-  orderBy: 1 | -1;
+  filters: IProductFilters[];
   products: IProduct[];
+  orderBy: 1 | -1;
   sortBy: 'TITLE' | 'PRICE';
   view: 'LIST' | 'GRID';
-  loadingFilters: boolean;
   filterMenuOpen: boolean;
 }

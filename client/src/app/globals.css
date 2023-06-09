@@ -24,3 +24,7 @@ h2 {
 p {
   font-size: clamp(0.925rem, 2vw, 1rem);
 }
+
+.scrollbar-hidden::-webkit-scrollbar {
+  display: none;
+}

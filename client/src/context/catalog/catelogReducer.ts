@@ -1,21 +1,15 @@
 'use client';
-import { IProduct, ICatalog } from '@/interfaces';
+import { ICatalog, IProductFilters } from '@/interfaces';
 
 type productsActionType = 
-  | { type: '[CATALOG] - LOAD PRODUCTS', payload: { products: IProduct[] } }
   | { type: '[CATALOG] - CHANGE VIEW', payload: { view: 'LIST' | 'GRID'} }
   | { type: '[CATALOG] - TOGGLE FILTER MENU' }
+  | { type: '[CATALOG] - UPDATE FILTERS', payload: { filters: IProductFilters[] } }
 ;
 
 export const catalogReducer = (state: ICatalog, action: productsActionType): ICatalog => {
 
   switch (action.type) {
-
-  case '[CATALOG] - LOAD PRODUCTS':
-    return {
-      ...state,
-      products: action.payload.products
-    };
 
   case '[CATALOG] - CHANGE VIEW':
     return {
@@ -27,6 +21,12 @@ export const catalogReducer = (state: ICatalog, action: productsActionType): ICa
     return {
       ...state,
       filterMenuOpen: !state.filterMenuOpen
+    };
+
+  case '[CATALOG] - UPDATE FILTERS':
+    return {
+      ...state,
+      filters: action.payload.filters
     };
 
   default:

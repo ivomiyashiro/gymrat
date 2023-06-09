@@ -2,11 +2,12 @@ import { FilterList, List, ViewGrid } from 'iconoir-react';
 
 interface Props {
   view: 'LIST' | 'GRID';
+  checkedFiltersLength: number;
   handleView: (value: 'LIST' | 'GRID') => void;
   handleToggleMenu: () => void;
 }
 
-export const Header = ({ view, handleView, handleToggleMenu }: Props) => {
+export const Header = ({ view, checkedFiltersLength, handleView, handleToggleMenu }: Props) => {
 
   const handleViewChange = () => {
     if (view === 'GRID') {
@@ -42,9 +43,16 @@ export const Header = ({ view, handleView, handleToggleMenu }: Props) => {
           <div className='flex items-center justify-center peer-checked:translate-x-[calc(100%+12px)] peer-checked:border-white absolute left-[6px] bg-white rounded-lg h-[45px] w-[calc(50%-12px)] transition-all'>
           </div>
         </label>
-        <button className='w-full flex justify-center gap-4 items-center rounded-lg p-4 px-6 font-semibold md:h-[50px] bg-blue-600 text-white hover:scale-95 transition-all' onClick={ handleToggleMenu }>
+        <button className='w-full flex justify-center gap-4 items-center rounded-lg p-4 px-6 font-semibold md:h-[50px] bg-blue-600 text-white hover:scale-95 transition-all relative' onClick={ handleToggleMenu }>
           <FilterList width={ 24 } height={ 24 } />
           FILTERS
+          {
+            checkedFiltersLength !== 0
+            &&
+            <div className='absolute bg-orange-300 text-xs h-5 w-5 rounded-full flex items-center justify-center -top-2 -right-2 text-orange-900'>
+              { checkedFiltersLength }
+            </div>
+          }
         </button>
       </div>
     </div>

@@ -75,13 +75,6 @@ export const CartMenu = ({ open, handleOpen }: Props) => {
           }
         </div>
       </aside>
-
-      <style jsx>{`
-        .scrollbar-hidden::-webkit-scrollbar {
-          display: none;
-        }
-      `} 
-      </style>
     </>
   );
 };
