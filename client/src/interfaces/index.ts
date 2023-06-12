@@ -15,6 +15,10 @@ export type TOrderStatus = 'DELIVERED' | 'PENDING' | 'CANCELLED';
 
 export type TToastType = 'SUCCESS' | 'WARNING' | 'ERROR' | 'INFO';
 
+export type TOrderBy = 1 | -1 | undefined;
+
+export type TSortBy = 'PRICE' | 'CREATEDAT'
+
 export type TVariant = {
   _id: string;
   color: string;
@@ -106,6 +110,13 @@ export interface IProductPriceFilter {
     min?: string,
     max?: string
   }[]
+}
+
+export interface ICatalogSorting { 
+  title: string; 
+  orderBy: TOrderBy;
+  sortBy: TSortBy;
+  checked: boolean;
 }
 
 // Context interfaces

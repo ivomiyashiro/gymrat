@@ -8,3 +8,4 @@ export * from './isValidOrderStatus.helper';
 export * from './isValidPhoneNumber.helper';
 export * from './slugify.helper';
 export * from './getFiltersAttributes.helper';
+export * from './adaptSortBy.helper';

@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
-import { IProductFilters } from '@/interfaces';
+
+import { ICatalogSorting, IProductFilters } from '@/interfaces';
 import { adaptFiltersArr } from '@/utils';
 
 export const useFiltersMenu = () => {
@@ -8,6 +9,12 @@ export const useFiltersMenu = () => {
   const [error, setError] = useState<string>();
   const [loading, setLoading] = useState(true);
   const [checkedFilters, setCheckedFilters] = useState(0);
+  const [sortingOptions, setSortingOptions] = useState<ICatalogSorting[]>([
+    { title: 'NEWER', sortBy: 'CREATEDAT', orderBy: -1, checked: true },
+    { title: 'OLDER', sortBy: 'CREATEDAT', orderBy: 1, checked: false },
+    { title: 'HIGHER PRICE', sortBy: 'PRICE', orderBy: -1, checked: false },
+    { title: 'LOWER PRICE', sortBy: 'PRICE', orderBy: 1, checked: false },
+  ]);
 
   const router = useRouter();
   const pathName = usePathname();
@@ -25,7 +32,7 @@ export const useFiltersMenu = () => {
         if (!ok) return setError(apiError);
 
         const activeFilters: IProductFilters[] = JSON.parse(searchParams.get('filters') as string);
-
+        
         setFilters(fetchedFilters.map((filter: any) => {
           const activeFilter: any = activeFilters?.find(activeFilter => Object.keys(activeFilter)[0] === filter.name);
 
@@ -88,15 +95,37 @@ export const useFiltersMenu = () => {
       };
     });
 
+    const sortUrl = `sortBy=${ sortingOptions.filter(sortVal => sortVal.checked)[0].sortBy }&orderBy=${ sortingOptions.filter(sortVal => sortVal.checked)[0].orderBy }`;
+
     const adaptedFiltersArr = adaptFiltersArr(updatedFilters);
     const urlFilters = encodeURIComponent(JSON.stringify(adaptedFiltersArr));
 
-    router.push(`${ pathName }${ adaptedFiltersArr.length > 0 ? `?filters=${ urlFilters }` : '' }`);
+    router.push(`${ pathName }?${ adaptedFiltersArr.length > 0 ? `filters=${ urlFilters + '&' }` : '' }${ sortUrl }`);
 
     setFilters(updatedFilters);
   };
 
-  const resetFilters = () => {
+  const handleSortingChange = (index: number) => {
+    const updatedOptions = sortingOptions.map((option, i) => {
+      if (i === index) {
+        
+        const sortUrl = `sortBy=${ sortingOptions[i].sortBy }&orderBy=${ sortingOptions[i].orderBy }`;
+
+        const adaptedFiltersArr = adaptFiltersArr(filters);
+        const urlFilters = encodeURIComponent(JSON.stringify(adaptedFiltersArr));
+    
+        router.push(`${ pathName }?${ adaptedFiltersArr.length > 0 ? `filters=${ urlFilters + '&' }` : '' }${ sortUrl }`);
+
+        return { ...option, checked: true };
+      } else {
+        return { ...option, checked: false };
+      }
+    });
+
+    setSortingOptions(updatedOptions);
+  };
+
+  const handleResetFilters = () => {
     setFilters(prev => prev.map(filter => {
       return {
         ...filter,
@@ -107,7 +136,7 @@ export const useFiltersMenu = () => {
       };
     }));
 
-    router.push('/products');
+    router.push(pathName);
   };
 
   return {
@@ -115,7 +144,9 @@ export const useFiltersMenu = () => {
     error,
     filters,
     checkedFilters,
+    sortingOptions,
     toggleFilterCheckbox,
-    resetFilters
+    handleResetFilters,
+    handleSortingChange
   };
 };

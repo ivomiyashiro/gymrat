@@ -1,23 +1,25 @@
 'use client';
 import { createContext } from 'react';
-import { IProduct, IProductFilters } from '@/interfaces';
+import { ICatalogSorting, IProduct, IProductFilters } from '@/interfaces';
 
 export type SortKeys = 'TITLE' | 'PRICE' | 'BEST_SELLING'
 
 interface ContextProps {
-  products: IProduct[];
-  filters: IProductFilters[];
-  filterMenuOpen: boolean;
-  view: 'LIST' | 'GRID';
   checkedFilters: number;
-  loadingProducts: boolean;
+  filters: IProductFilters[];
   loadingFilters: boolean;
+  loadingProducts: boolean;
+  menuOpen: boolean;
+  products: IProduct[];
+  view: 'LIST' | 'GRID';
+  sortingOptions: ICatalogSorting[]
 
   //Methods
-  changeView: (value: 'LIST' | 'GRID') => void;
-  toggleFilterMenu: () => void;
+  handleResetFilters: () => void;
+  handleSortingChange: (index: number) => void;
+  handleView: () => void;
   toggleFilterCheckbox: (filterIndex: string, valueIndex: number) => void;
-  resetFilters: () => void;
+  toggleFilterMenu: () => void;
 }
 
 export const CatalogContext = createContext({} as ContextProps);

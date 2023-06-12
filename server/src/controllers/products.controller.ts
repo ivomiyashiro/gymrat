@@ -1,14 +1,15 @@
 import { Request, Response } from 'express';
+import { SortOrder } from 'mongoose';
 
 import { Product } from '../models';
 import { IAuthRequest, IDataReq, IProduct, TVariant } from '../interfaces';
 
-import { adaptProductReqFilters } from '../helpers';
+import { adaptProductReqFilters, adaptSortBy } from '../helpers';
 
 const DEFAULT_LIMIT = 10;
 const DEFAULT_PAGE = 1;
 const DEFAULT_FILTERS = [{}];
-const DEFAULT_SORT_BY = 'title';
+const DEFAULT_SORT_BY = 'createdAt';
 const DEFAULT_ORDER_BY = 1;
 
 export const getAllProducts = async (req: IAuthRequest, res: Response) => {
@@ -25,7 +26,7 @@ export const getAllProducts = async (req: IAuthRequest, res: Response) => {
   let products;
 
   const orderBy = reqOrderBy || DEFAULT_ORDER_BY;
-  const sortBy = reqSortBy || DEFAULT_SORT_BY;
+  const sortBy = adaptSortBy(reqSortBy) || DEFAULT_SORT_BY;
   const limit = Number(reqLimit) || DEFAULT_LIMIT;
   const page = Number(reqPage) || DEFAULT_PAGE;
 
@@ -116,7 +117,7 @@ export const getStorefrontProducts = async (req: Request, res: Response) => {
   let products;
 
   const orderBy = reqOrderBy || DEFAULT_ORDER_BY;
-  const sortBy = reqSortBy || DEFAULT_SORT_BY;
+  const sortBy = adaptSortBy(reqSortBy) || DEFAULT_SORT_BY;
   const limit = Number(reqLimit) || DEFAULT_LIMIT;
   const page = Number(reqPage) || DEFAULT_PAGE;
 
@@ -169,6 +170,7 @@ export const getStorefrontProducts = async (req: Request, res: Response) => {
       products = await Product.find({ ...filters, status: 'ACTIVE' })
         .limit(limit)
         .skip((page - 1) * limit)
+        .sort([[sortBy, orderBy as SortOrder]])
         .exec();
     }
 

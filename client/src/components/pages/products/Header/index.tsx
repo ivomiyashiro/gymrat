@@ -1,21 +1,9 @@
+import { useContext } from 'react';
 import { FilterList, List, ViewGrid } from 'iconoir-react';
+import { CatalogContext } from '@/context';
 
-interface Props {
-  view: 'LIST' | 'GRID';
-  checkedFiltersLength: number;
-  handleView: (value: 'LIST' | 'GRID') => void;
-  handleToggleMenu: () => void;
-}
-
-export const Header = ({ view, checkedFiltersLength, handleView, handleToggleMenu }: Props) => {
-
-  const handleViewChange = () => {
-    if (view === 'GRID') {
-      return handleView('LIST');
-    }
-
-    return handleView('GRID');
-  };
+export const Header = () => {
+  const { view, checkedFilters, handleView, toggleFilterMenu } = useContext(CatalogContext);
 
   return (
     <div className='flex justify-between md:items-end flex-col md:flex-row gap-6'>
@@ -29,7 +17,7 @@ export const Header = ({ view, checkedFiltersLength, handleView, handleToggleMen
             type="checkbox" 
             value="" 
             className="sr-only peer" 
-            onChange={ handleViewChange } 
+            onChange={ handleView } 
             checked={ view === 'GRID' } 
           />
           <div className="relative w-full h-full bg-gray-200 rounded-lg peer flex items-center">    
@@ -43,14 +31,17 @@ export const Header = ({ view, checkedFiltersLength, handleView, handleToggleMen
           <div className='flex items-center justify-center peer-checked:translate-x-[calc(100%+12px)] peer-checked:border-white absolute left-[6px] bg-white rounded-lg h-[45px] w-[calc(50%-12px)] transition-all'>
           </div>
         </label>
-        <button className='w-full flex justify-center gap-4 items-center rounded-lg p-4 px-6 font-semibold md:h-[50px] bg-blue-600 text-white hover:scale-95 transition-all relative' onClick={ handleToggleMenu }>
+        <button 
+          className='w-full flex justify-center gap-4 items-center rounded-lg p-4 px-6 font-semibold md:h-[50px] bg-blue-600 text-white hover:scale-95 transition-all relative' 
+          onClick={ toggleFilterMenu }
+        >
           <FilterList width={ 24 } height={ 24 } />
           FILTERS
           {
-            checkedFiltersLength !== 0
+            checkedFilters !== 0
             &&
             <div className='absolute bg-orange-300 text-xs h-5 w-5 rounded-full flex items-center justify-center -top-2 -right-2 text-orange-900'>
-              { checkedFiltersLength }
+              { checkedFilters }
             </div>
           }
         </button>

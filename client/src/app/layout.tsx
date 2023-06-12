@@ -1,7 +1,7 @@
 import './globals.css';
 import { Poppins } from 'next/font/google';
 
-import { ToastProvider, CatalogProvider, CartProvider } from '@/context';
+import { ToastProvider, CartProvider } from '@/context';
 import { Footer, Header, ToastContainer } from '@/components/ui';
 
 const poppins = Poppins({ 
@@ -20,11 +20,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className={ poppins.className }>
         <ToastProvider>
           <CartProvider>
-            <CatalogProvider>
-              <Header />
-              {children}
-              <Footer />
-            </CatalogProvider>
+            <Header />
+            {children}
+            <Footer />
           </CartProvider>
           <ToastContainer />
         </ToastProvider>

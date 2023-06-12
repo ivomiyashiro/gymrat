@@ -1,62 +1,61 @@
 'use client';
-import { FC, ReactNode, useReducer } from 'react';
-
-import { ICatalog } from '@/interfaces';
+import { FC, ReactNode, useState } from 'react';
 
 import { useProducts } from '@/hooks';
 
 import { useFiltersMenu } from './useFiltersMenu';
 import { CatalogContext } from './CatalogContext';
-import { catalogReducer } from './catelogReducer';
 
 interface Props { children: ReactNode }
 
-export const CATALOG_INIT_STATE: ICatalog = {
-  filters: [],
-  products: [],
-  orderBy: 1,
-  view: 'GRID',
-  sortBy: 'TITLE',
-  filterMenuOpen: false,
-}; 
-
 export const CatalogProvider: FC<Props> = ({ children }) => {
 
-  const [state, dispatch] = useReducer(catalogReducer, CATALOG_INIT_STATE);
-  const { filters, loading: loadingFilters, checkedFilters, toggleFilterCheckbox, resetFilters } = useFiltersMenu();
+  const [view, setView] = useState<'LIST' | 'GRID'>('GRID');
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const { 
+    filters, 
+    loading: loadingFilters, 
+    sortingOptions, 
+    checkedFilters, 
+    toggleFilterCheckbox, 
+    handleResetFilters,
+    handleSortingChange
+  } = useFiltersMenu();
+
   const { products, loading: loadingProducts } = useProducts({ 
     limit: 10,
-    sortBy: state.sortBy,
-    orderBy: state.orderBy,
+    sortBy: sortingOptions.filter(sortVal => sortVal.checked)[0].sortBy,
+    orderBy: sortingOptions.filter(sortVal => sortVal.checked)[0].orderBy,
   });
 
-  const changeView = (value: 'LIST' | 'GRID') => {
-    dispatch({
-      type: '[CATALOG] - CHANGE VIEW',
-      payload: { view: value }
-    });
+  const handleView = () => {
+    if (view === 'GRID') {
+      return setView('LIST');
+    }
+
+    setView('GRID');
   };
 
-  const toggleFilterMenu = () => {
-    dispatch({
-      type: '[CATALOG] - TOGGLE FILTER MENU'
-    });
-  };
+  const toggleFilterMenu = () => setMenuOpen(prev => !prev);
 
   return (
     <CatalogContext.Provider value={ {
-      ...state,
-      filters,
-      products,
       checkedFilters,
-      loadingProducts,
+      filters,
       loadingFilters,
+      loadingProducts,
+      menuOpen,
+      products,
+      sortingOptions,
+      view,
 
       //Methods
-      changeView,
-      toggleFilterMenu,
+      handleResetFilters,
+      handleSortingChange,
+      handleView,
       toggleFilterCheckbox,
-      resetFilters
+      toggleFilterMenu,
     } }>
       { children }
     </CatalogContext.Provider>

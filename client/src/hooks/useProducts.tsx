@@ -15,7 +15,7 @@ interface IParams {
 
 const DEFAULT_LIMIT = 15;
 const DEFAULT_PAGE = 1;
-const DEFAULT_SORTBY = 'title';
+const DEFAULT_SORTBY = 'CREATEDAT';
 const DEFAULT_ORDERBY = 1;
 
 export const useProducts = (params: IParams, asAdmin: boolean = false) => {
