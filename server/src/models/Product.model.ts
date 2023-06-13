@@ -55,34 +55,10 @@ const ProductSchema = new Schema<IProduct>({
     enum: ['REGULAR', 'SLIM', 'OVERSIZED', 'UNIQUE'],
     default: 'UNIQUE'
   },
-  variants: {
-    type: [{
-      name: {
-        type: String,
-        required: true
-      },
-      color: {
-        type: String
-      },
-      size: {
-        type: String,
-        enum: ['XS', 'S', 'M', 'L', 'XL', 'UNIQUE']
-      },
-      inventory: {
-        type: Number,
-        default: 0
-      },
-      slug: {
-        type: String,
-        required: true
-      },
-      images: {
-        type: [String],
-        default: []
-      }
-    }],
-    required: true
-  }
+  variants: [{
+    type: Schema.Types.ObjectId,
+    ref: 'Variant'
+  }]
 }, { 
   timestamps: {
     createdAt: 'createdAt',

@@ -12,7 +12,7 @@ interface Props {
 export const QuickAddMenu = ({ product, variant }: Props) => {
 
   const { addToCart } = useContext(CartContext);
-  const { color } = variant;
+  const products = product.variants.filter(vari => vari.color === variant.color);
 
   const handleAddProduct = (color: string, size: TProductSize) => {
     addToCart({ 
@@ -33,35 +33,35 @@ export const QuickAddMenu = ({ product, variant }: Props) => {
         <ShoppingBagAdd width={ 16 } height={ 16 } />
         QUICK ADD
       </p>
-      { product.variants.length !== 1
-        ? (
-          <div className='lg:flex flex-wrap gap-3 justify-center'>
-            {
-              product.variants.map(vari => {
-                if (vari.color === color) {
+      { 
+        products.length !== 1
+          ? (
+            <div className='lg:flex flex-wrap gap-3 justify-center'>
+              {
+                products.map(variant => {
                   return (
                     <button
-                      key={ vari._id } 
-                      className={ `relative bg-white w-10 h-8 rounded-md shadow-md transition-colors ${ vari.inventory <= 0 ? '!bg-gray-200 before:content-[""] before:w-full before:h-[1px] before:bg-gray-500 before:absolute before:left-0 before:top-4 before:rotate-45 text-gray-500' : 'hover:bg-black hover:text-white' }` }
-                      onClick={ () => handleAddProduct(vari.color, vari.size) }
-                      disabled={ vari.inventory <= 0 }
+                      key={ variant._id } 
+                      className={ `relative bg-white w-10 h-8 rounded-md shadow-md transition-colors ${ variant.inventory <= 0 ? '!bg-gray-200 before:content-[""] before:w-full before:h-[1px] before:bg-gray-500 before:absolute before:left-0 before:top-4 before:rotate-45 text-gray-500' : 'hover:bg-black hover:text-white' }` }
+                      onClick={ () => handleAddProduct(variant.color, variant.size) }
+                      disabled={ variant.inventory <= 0 }
                     >
-                      { vari.size }
+                      { variant.size }
                     </button>
                   );
-                }
-              })
-            }
-          </div>
-        )
-        : (
-          <button 
-            className='bg-blue-600 text-white w-full py-2 rounded-md font-semibold transition hover:scale-95'
-            onClick={ () => handleAddProduct(variant.color, variant.size) }
-          >
-            ADD TO BAG
-          </button>
-        ) }
+                })
+              }
+            </div>
+          )
+          : (
+            <button 
+              className='bg-blue-600 text-white w-full py-2 rounded-md font-semibold transition hover:scale-95'
+              onClick={ () => handleAddProduct(variant.color, variant.size) }
+            >
+              ADD { variant.size !== 'UNIQUE' ? ` SIZE ${ variant.size }` : ' TO CART' }
+            </button>
+          ) 
+      }
     </div>
   );
 };

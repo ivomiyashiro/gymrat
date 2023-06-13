@@ -1,10 +1,10 @@
 import { Request, Response } from 'express';
 import { SortOrder } from 'mongoose';
 
-import { Product } from '../models';
+import { Product, Variant } from '../models';
 import { IAuthRequest, IDataReq, IProduct, TVariant } from '../interfaces';
 
-import { adaptProductReqFilters, adaptSortBy } from '../helpers';
+import { adaptProductReqFilters, adaptSortBy, slugify } from '../helpers';
 
 const DEFAULT_LIMIT = 10;
 const DEFAULT_PAGE = 1;
@@ -76,8 +76,10 @@ export const getAllProducts = async (req: IAuthRequest, res: Response) => {
 
     } else {
       products = await Product.find(filters)
+        .populate('variants')
         .limit(limit)
         .skip((page - 1) * limit)
+        .sort([[sortBy, orderBy as SortOrder]])
         .exec();
     }
 
@@ -122,7 +124,7 @@ export const getStorefrontProducts = async (req: Request, res: Response) => {
   const page = Number(reqPage) || DEFAULT_PAGE;
 
   try {
-    const filters = adaptProductReqFilters(reqFilters ? JSON.parse(reqFilters as unknown as string) : DEFAULT_FILTERS);
+    const { modelFilters, populateFilters } = adaptProductReqFilters(reqFilters ? JSON.parse(reqFilters as unknown as string) : DEFAULT_FILTERS);
 
     if (!!search) {
       products = await Product.aggregate([
@@ -167,7 +169,11 @@ export const getStorefrontProducts = async (req: Request, res: Response) => {
         .exec();
 
     } else {
-      products = await Product.find({ ...filters, status: 'ACTIVE' })
+      products = await Product.find({ ...modelFilters, status: 'ACTIVE' })
+        .populate({
+          path: 'variants',
+          match: { ...populateFilters }
+        })
         .limit(limit)
         .skip((page - 1) * limit)
         .sort([[sortBy, orderBy as SortOrder]])
@@ -218,24 +224,42 @@ export const getOneProduct = async (req: Request, res: Response) => {
 
 export const createProduct = async (req: Request, res: Response) => {
 
-  const body: IProduct = req.body;
+  const body: IProduct[] = req.body;
+  let products: IProduct[] = [];
 
   try {
-    // Calculate totalInventory
-    const totalInventory = body.variants?.reduce((acc: number, variant: TVariant) => {
-      return acc + variant.inventory;
-    }, 0);
+    // Create products and saves it
+    for (const productData of body) {
+      const variantsArr = productData.variants.map(variantData => {
+        // Creates slug for each variant
+        const slug = slugify(productData.title + ` ${ variantData.color } ${ (variantData.size !== 'UNIQUE') ? variantData.size : '' }`);
+        const variant = new Variant({ ...variantData, slug });
 
-    // Create product and saves it
-    const product = new Product({
-      ...body,
-      totalInventory,
-    });
-    await product.save();
+        variant.save()
+          .then(() => variant)
+          .catch(error => console.log(error));
+
+        return variant;
+      });
+
+      // Sum all variants invetories to get product total inventory
+      const totalInventory = productData.variants?.reduce((acc: number, variant: TVariant) => {
+        return acc + variant.inventory;
+      }, 0);
+
+      const product = new Product({
+        ...productData,
+        totalInventory,
+        variants: variantsArr
+      });
+
+      const newProduct = await product.save();
+      products = [...products, newProduct];
+    }
 
     return res.json({
       ok: true,
-      product
+      products
     });
     
   } catch (error) {

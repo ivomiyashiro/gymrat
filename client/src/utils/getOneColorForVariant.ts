@@ -2,14 +2,15 @@ import { IProduct } from '@/interfaces';
 
 export const getOneColorForVariant = (products: IProduct[]) => {
   return products.map(product => {
-    let colors: string[] = [];
+    const colors = new Set();
+
     return {
       ...product,
       variantsToPrint: product.variants.filter(variant => {
-        if (!(colors.includes(variant.color))){
-          colors = [ ...colors, variant.color ];
-          return variant;
-        }
+        if (colors.has(variant.color)) return false; 
+
+        colors.add(variant.color);
+        return true;
       })
     };
   });

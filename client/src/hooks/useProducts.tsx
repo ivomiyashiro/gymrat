@@ -1,9 +1,7 @@
 'use client';
 import { useEffect, useState } from 'react';
-
-import { IProduct, IProductFilters } from '@/interfaces';
-import { getOneColorForVariant } from '@/utils';
 import { useSearchParams } from 'next/navigation';
+import { IProduct, IProductFilters } from '@/interfaces';
 
 interface IParams {
   limit: number;
@@ -26,6 +24,7 @@ export const useProducts = (params: IParams, asAdmin: boolean = false) => {
   const searchParams = useSearchParams();
 
   const { limit = DEFAULT_LIMIT, page = DEFAULT_PAGE, sortBy = DEFAULT_SORTBY, orderBy = DEFAULT_ORDERBY } = params;
+
   const filters = searchParams.get('filters') as string;
   const adaptedURLFilters = encodeURIComponent(filters);
 
@@ -36,13 +35,13 @@ export const useProducts = (params: IParams, asAdmin: boolean = false) => {
       try {
         const url = `${process.env.API_BASE_URL}/${asAdmin ? 'admin' : 'storefront'}/products?limit=${limit}&page=${page}&sortBy=${sortBy}&orderBy=${orderBy}&${filters && `filters=${ adaptedURLFilters }`}`;
         const resp = await fetch(url);
-        const { ok, products: fetchedProducts, totalPages, error: apiError } = await resp.json();
+        const { ok, products, totalPages, error: apiError } = await resp.json();
 
         if (!ok) {
           return setError(apiError);
         }
 
-        setProducts(getOneColorForVariant(fetchedProducts));
+        setProducts(products);
 
         setPages(totalPages);
 

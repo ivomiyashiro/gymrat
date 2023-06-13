@@ -2,7 +2,8 @@ import { IProductFilters } from '../interfaces';
 
 export const adaptProductReqFilters = (filtersReq: IProductFilters[]) => {
 
-  const filters: any = {};
+  const modelFilters: any = {};
+  const populateFilters: any = {};
 
   for (let i = 0; i < filtersReq.length; i++) {
     const keys = Object.keys(filtersReq[i]);
@@ -27,44 +28,45 @@ export const adaptProductReqFilters = (filtersReq: IProductFilters[]) => {
         });
       });
 
-      filters['price'] = { 
+      modelFilters['price'] = { 
         $lte: maxNumber,
         $gte: minNumber
       };   
     }
 
     if (keys.includes('category')) {
-      filters['category'] = filtersReq[i].category;
-    }
-
-    if (keys.includes('color')) {
-      filters['variants.color'] = { $in: filtersReq[i].color };
-    }
-
-    if (keys.includes('includeOutOfStock') && filtersReq[i].includeOutOfStock === false) {
-      filters['variants.inventory'] = { $gt: 0 };
-    }
-
-    if (keys.includes('size')) {
-      filters['variants.size'] = { $in: filtersReq[i].size };
+      modelFilters['category'] = filtersReq[i].category;
     }
 
     if (keys.includes('status') && filtersReq[i].status === 'ACTIVE') {
-      filters['status'] = 'ACTIVE';
+      modelFilters['status'] = 'ACTIVE';
     }
 
     if (keys.includes('status') && filtersReq[i].status === 'DRAFT') {
-      filters['status'] = 'DRAFT';
+      modelFilters['status'] = 'DRAFT';
     }
 
     if (keys.includes('fitType')) {
-      filters['fitType'] = { $in: filtersReq[i].fitType };
+      modelFilters['fitType'] = { $in: filtersReq[i].fitType };
     }
 
     if (keys.includes('gender')) {
-      filters['gender'] = { $in: filtersReq[i].gender };
+      modelFilters['gender'] = { $in: filtersReq[i].gender };
+    }
+
+    if (keys.includes('color')) {
+      populateFilters['color'] = { $in: filtersReq[i].color };
+    }
+
+    if (keys.includes('includeOutOfStock') && filtersReq[i].includeOutOfStock === false) {
+      populateFilters['inventory'] = { $gt: 0 };
+    }
+
+    if (keys.includes('size')) {
+      populateFilters['size'] = { $in: filtersReq[i].size };
+      populateFilters['inventory'] = { $gt: 0 };
     }
   }
 
-  return filters;
+  return { modelFilters, populateFilters };
 };
