@@ -5,6 +5,7 @@ import { ICatalogSorting, IProduct, IProductFilters } from '@/interfaces';
 export type SortKeys = 'TITLE' | 'PRICE' | 'BEST_SELLING'
 
 interface ContextProps {
+  adaptedProducts: IProduct[];
   checkedFilters: number;
   filters: IProductFilters[];
   loadingFilters: boolean;

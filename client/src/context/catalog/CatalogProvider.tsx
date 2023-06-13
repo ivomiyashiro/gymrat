@@ -23,7 +23,7 @@ export const CatalogProvider: FC<Props> = ({ children }) => {
     handleSortingChange
   } = useFiltersMenu();
 
-  const { products, loading: loadingProducts } = useProducts({ 
+  const { adaptedProducts, products, loading: loadingProducts } = useProducts({ 
     limit: 10,
     sortBy: sortingOptions.filter(sortVal => sortVal.checked)[0].sortBy,
     orderBy: sortingOptions.filter(sortVal => sortVal.checked)[0].orderBy,
@@ -41,6 +41,7 @@ export const CatalogProvider: FC<Props> = ({ children }) => {
 
   return (
     <CatalogContext.Provider value={ {
+      adaptedProducts,
       checkedFilters,
       filters,
       loadingFilters,
