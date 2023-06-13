@@ -21,10 +21,19 @@ module.exports = {
           '100%': {
             boxShadow: '0 0 0 0 hsla(0,0%,100%,0)'
           }
+        },
+        'skeleton-loading': {
+          '0%': {
+            backgroundColor: 'hsl(200, 15%, 85%)',
+          },
+          '100%': {
+            backgroundColor: 'hsl(200, 20%, 90%)'
+          }
         }
       },
       animation: {
-        'pulse': 'pulse 2s linear infinite'
+        'pulse': 'pulse 2s linear infinite',
+        'skeleton-loading': 'skeleton-loading 0.7s linear infinite alternate'
       }
     },
   },
