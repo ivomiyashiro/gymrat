@@ -1,13 +1,13 @@
 import { Router } from 'express';
 import { check } from 'express-validator';
 import { validateFields, validateJWTSuperAdmin } from '../middlewares';
-import { createProduct, deleteProduct, getAllProducts, getOneProduct, updateProduct } from '../controllers/products.controller';
+import { createProduct, deleteProduct, getAllProducts, getProductBySlug, updateProduct } from '../controllers/products.controller';
 
 const router = Router();
 
 router.get('/' ,getAllProducts);
  
-router.get('/:id', getOneProduct);
+router.get('/:slug', getProductBySlug);
 
 // Protected routes
 router.use(validateJWTSuperAdmin);

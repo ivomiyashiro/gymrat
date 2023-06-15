@@ -43,9 +43,6 @@ const ProductSchema = new Schema<IProduct>({
     enum : ['ACTIVE', 'DRAFT'],
     default: 'ACTIVE'
   },
-  images: {
-    type: [String]
-  },
   tags: {
     type: [String],
     default: []

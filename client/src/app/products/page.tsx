@@ -1,6 +1,6 @@
 'use client';
 import { CatalogProvider } from '@/context';
-import { Header, ProductsList, FiltersMenu } from '@/components/pages/products';
+import { Header, ProductsList, FiltersMenu } from '@/components/sections/products';
 
 export default function Products() {
   return (

@@ -16,7 +16,6 @@ interface Props {
 }
 
 export const SearchMenu = ({ inputValue, open, handleInputValue, handleOpen }: Props) => {
-
   const { 
     loading,
     products, 
@@ -26,7 +25,7 @@ export const SearchMenu = ({ inputValue, open, handleInputValue, handleOpen }: P
   } = useSearchMenu({ open, inputValue });
 
   return (
-    <Modal isOpen={ open } handleOpen={ handleOpen } withBackground justify='start'>
+    <Modal open={ open } onClose={ () => handleOpen(false) } withBackground justify='start'>
       <aside className={ `fixed top-0 h-screen bg-white overflow-y-auto transition-all lg:h-auto scrollbar-hidden ${ open ? 'w-full' : 'w-0'}` }>
         <div className='relative p-4 flex items-center gap-4 lg:justify-center lg:border-b'>
           <button className='lg:hidden' onClick={ () => handleOpen(false) }>
@@ -48,8 +47,8 @@ export const SearchMenu = ({ inputValue, open, handleInputValue, handleOpen }: P
         </div>
         {
           (inputValue !== '' && !loading)
-            ? <SearchedProducts products={ products } inputValue={ inputValue } />
-            : <div className='p-4 max-w-[975px] mx-auto'><TrendingSearches /></div>
+            ? <SearchedProducts products={ products } inputValue={ inputValue } handleOpen={ handleOpen } />
+            : <div className='p-4 max-w-[975px] mx-auto'><TrendingSearches handleOpen={ handleOpen } /></div>
         }
       </aside>
     </Modal>

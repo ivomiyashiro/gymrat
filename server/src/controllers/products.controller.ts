@@ -113,7 +113,7 @@ export const getStorefrontProducts = async (req: Request, res: Response) => {
     limit: reqLimit, 
     page: reqPage, 
     filters: reqFilters, 
-    search 
+    search: searchText
   } = req.query as IDataReq;
 
   let products;
@@ -126,40 +126,22 @@ export const getStorefrontProducts = async (req: Request, res: Response) => {
   try {
     const { modelFilters, populateFilters } = adaptProductReqFilters(reqFilters ? JSON.parse(reqFilters as unknown as string) : DEFAULT_FILTERS);
 
-    if (!!search) {
+    if (!!searchText) {
       products = await Product.aggregate([
         {
-          $match: {
-            'variants.inventory': { $gt: 0 },
-            $or: [
-              { title: { $regex: search, $options: 'i' } },
-              { 'variants.color': { $regex: search, $options: 'i' } }
-            ],
-            status: 'ACTIVE'
+          $lookup: {
+            from: 'variants',
+            localField: 'variants',
+            foreignField: '_id',
+            as: 'variants'
           }
         },
         {
-          $project: {
-            title: 1,
-            description: 1,
-            price: 1,
-            colors: 1,
-            gender: 1,
-            sizes: 1,
-            discountPrice: 1,
-            totalInventory: 1,
-            category: 1,
-            status: 1,
-            images: 1,
-            tags: 1,
-            fitType: 1,
-            variants: {
-              $filter: {
-                input: '$variants',
-                as: 'variant',
-                cond: { $gt: ['$$variant.inventory', 0] }
-              }
-            }
+          $match: {
+            $or: [
+              { title: { $regex: searchText, $options: 'i' } },
+              { 'variants.color': { $regex: searchText, $options: 'i' } }
+            ]
           }
         },
         { $sort: { [sortBy]: Number(orderBy) as 1 | -1 } },
@@ -203,9 +185,21 @@ export const getStorefrontProducts = async (req: Request, res: Response) => {
   }
 };
 
-export const getOneProduct = async (req: Request, res: Response) => {
+export const getProductBySlug = async (req: Request, res: Response) => {
+  const { slug } = req.params;
+
   try {
-    const product = await Product.findById(req.params.id);
+    const product = await Product.aggregate([
+      {
+        $lookup: {
+          from: 'variants', // Nombre de la colección de Variantes
+          localField: 'variants',
+          foreignField: '_id',
+          as: 'variants'
+        }
+      },
+      { $match: { 'variants.slug': slug } },
+    ]);
 
     return res.json({
       ok: true,

@@ -3,13 +3,15 @@ import { IProduct } from '@/interfaces';
 
 import { SearchedProductsList } from './SearchedProductsList';
 import { TrendingSearches } from './TrendingSearches';
+import { Dispatch, SetStateAction } from 'react';
 
 interface Props {
   products: IProduct[];
   inputValue: string;
+  handleOpen: Dispatch<SetStateAction<boolean>>;
 }
 
-export const SearchedProducts = ({ products, inputValue }: Props) => {
+export const SearchedProducts = ({ products, inputValue, handleOpen }: Props) => {
   return (
     <>
       <div className='p-4 max-w-[975px] mx-auto'>
@@ -21,7 +23,7 @@ export const SearchedProducts = ({ products, inputValue }: Props) => {
                 <SearchedProductsList products={ products } />
                 <div className='border-t flex justify-end mt-10 lg:mt-4 pt-3'>
                   <Link href={ `/products?search=${ inputValue }` }>
-                      View all &quot;<span className='font-semibold underline'>{ inputValue }</span>&quot;
+                    View all &quot;<span className='font-semibold underline'>{ inputValue }</span>&quot;
                   </Link>
                 </div>
               </>
@@ -31,7 +33,7 @@ export const SearchedProducts = ({ products, inputValue }: Props) => {
                 <p className='block font-semibold lg:pb-2'>NO RESULTS FOUND</p>
                 <p className='text-gray-500'>We are sorry but we can’t find any results for &quot;{ inputValue }&quot;</p>
                 <div className='mt-8'>
-                  <TrendingSearches />
+                  <TrendingSearches handleOpen={ handleOpen } />
                 </div>
               </>
             )

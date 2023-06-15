@@ -9,9 +9,10 @@ import { CartContext } from '@/context';
 interface Props { 
   product: IProductCart; 
   variant: TVariant;
+  handleCloseModal: () => void;
 }
 
-export const CartItem = ({ product, variant }: Props) => {
+export const CartItem = ({ product, variant, handleCloseModal }: Props) => {
 
   const { removeFromCart, updateProductQuantity } = useContext(CartContext);
   const id = useId();
@@ -19,7 +20,7 @@ export const CartItem = ({ product, variant }: Props) => {
   return (
     <article className='flex relative w-full overflow-visible'>
       <div className='relative block w-[8rem] max-h-[10rem] min-h-[10rem] lg:w-[10rem] lg:max-h-[12.5rem] lg:min-h-[12.5rem] mr-4'>
-        <Link href={ `/products/${ variant.slug }` } className='block'>
+        <Link href={ `/products/${ variant.slug }` } className='block' onClick={ handleCloseModal }>
           <Image 
             src={ product.featImageUrl }
             alt={ product.title }
@@ -29,7 +30,7 @@ export const CartItem = ({ product, variant }: Props) => {
         </Link>
       </div>
       <div className='flex-[1_1] flex flex-col gap-1 w-full'>
-        <Link href={ `/products/${ variant.slug }` }>
+        <Link href={ `/products/${ variant.slug }` } onClick={ handleCloseModal }>
           <p>{ product.title }</p>
         </Link>
         <p className='text-gray-500 text-sm'>

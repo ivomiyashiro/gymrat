@@ -23,6 +23,7 @@ export const MobileNavItems = ({ open, href, imageUrl, altText, children }: Prop
               objectFit: 'cover',
               borderRadius: '0.5em'
             } }
+            sizes='100vw'
             fill
           />
         </div>
