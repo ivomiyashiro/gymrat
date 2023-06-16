@@ -39,8 +39,8 @@ export const ColorAndSizeForm = ({ product, variant }: Props) => {
         <button 
           className='flex items-center gap-2 justify-center bg-blue-600 w-full text-white p-3 rounded hover:scale-95 transition'
         >
-          <ShoppingBag fontSize={ 14 }/>
-          <span className='font-semibold text-lg mt-[3px]'>ADD TO BAG</span>
+          <ShoppingBag fontSize={ 13 } strokeWidth={ 2.2 }/>
+          <span className='font-semibold text mt-[3px]'>ADD TO BAG</span>
         </button>
       </div>
     </form>

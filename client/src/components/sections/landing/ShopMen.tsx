@@ -4,7 +4,6 @@ import { useProducts } from '@/hooks';
 import { ProductsCarrousel } from '@/components/ui';
 
 export const ShopMen = () => {
-
   const { adaptedProducts } = useProducts({ limit: 4, filters: [{ gender: 'MEN' }] });
 
   return (
