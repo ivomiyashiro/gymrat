@@ -15,7 +15,7 @@ export const Colors = ({ product, variant }: Props) => {
   const router = useRouter();
 
   return (
-    <div className='mt-6 lg:mt-8'>
+    <div>
       <h3 className='font-semibold'>
         COLOR: 
         <span className='text-gray-500 font-normal ml-2'>{ variant?.color }</span>

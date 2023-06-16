@@ -22,7 +22,7 @@ export const ColorAndSizeForm = ({ product, variant }: Props) => {
 
   
   return (
-    <form onSubmit={ handleSubmit }>
+    <form className='lg:mt-6' onSubmit={ handleSubmit }>
       <Colors
         product={ product }
         variant={ variant }
