@@ -1,6 +1,5 @@
 import { Dispatch, SetStateAction } from 'react';
 import Image from 'next/image';
-import { createGalleryClassName } from '@/utils';
 
 interface Props {
   productTitle: string;
@@ -13,7 +12,7 @@ interface Props {
 
 export const DesktopGallery = ({ productTitle, images, handleOpenModal }: Props) => {
   return (
-    <div className='hidden md:flex flex-wrap w-full h-full'>
+    <div className='hidden md:flex flex-wrap w-full'>
       {
         images?.map((image, i) => {
           let className = 'min-w-full mb-[0.19rem] px-[0.3129rem]';
@@ -29,12 +28,12 @@ export const DesktopGallery = ({ productTitle, images, handleOpenModal }: Props)
           }
         
           if (images.length === 4) {
-            if (i === 0 || i === 2) {
-              className = 'max-w-[calc(50%-0.625rem)] flex-[1_1_50%] ml-0 mx-[0.3129rem] mb-[0.19rem]';
+            if (i === 0) {
+              className = 'order-4 md:min-w-full mb-[0.19rem] px-[0.3129rem]';
             }
-        
-            if (i === 1 || i === 3) {
-              className = 'max-w-[calc(50%-0.625rem)] flex-[1_1_50%] mx-[0.3129rem] mb-[0.19rem]';
+
+            if (i === 1 || i === 2 || i === 3) {
+              className = 'max-w-[calc(33.33%-0.625rem)] flex-[1_1_33.33%] mx-[0.3129rem] mb-[0.19rem]';
             }
           }
         
