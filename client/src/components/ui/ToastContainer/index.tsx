@@ -8,7 +8,7 @@ export const ToastContainer = () => {
   return (
     <div className={ `fixed flex justify-center w-full px-4 transition-all duration-300 ${show ? 'opacity-100 bottom-6 ' : 'opacity-0 -bottom-96'}` }>
       {toast && (
-        <div className="relative bg-green-400 text-white px-6 py-4 pl-6 pr-16 rounded-xl flex gap-10 shadow-xl">
+        <div className="relative bg-green-400 text-white px-6 py-4 pl-6 pr-16 rounded flex gap-10 shadow-xl">
           <div className="flex items-center gap-3">
             <CheckCircle color='white' width={ 28 } height={ 28 } />
             <div>
