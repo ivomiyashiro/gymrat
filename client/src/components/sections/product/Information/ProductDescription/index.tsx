@@ -10,8 +10,8 @@ export const ProductDescription = ({ description }: Props) => {
 
   return (
     <div className='mt-8'>
-      <details className='border-t border-b p-4' onClick={ () => setOpen(prev => !prev) } open>
-        <summary className='flex justify-between cursor-pointer'>
+      <details className='border-t border-b p-4' open>
+        <summary className='flex justify-between cursor-pointer' onClick={ () => setOpen(prev => !prev) }>
           <h5 className='font-semibold'>DESCRIPTION</h5>
           {
             open
@@ -20,7 +20,7 @@ export const ProductDescription = ({ description }: Props) => {
           }
         </summary>
         <div className='pt-4'>
-          <p className='text-sm text-gray-500'>{ description }</p>
+          <p className='text-sm text-gray-500 leading-6'>{ description }</p>
         </div>
       </details>
     </div>
