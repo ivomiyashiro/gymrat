@@ -1,5 +1,5 @@
 import { getProductBySlug } from '@/services';
-import { Gallery, Information } from '@/components/sections';
+import { Gallery, Information, Recommendations } from '@/components/sections/product';
 
 interface Props { params: { slug: string } }
 
@@ -21,6 +21,9 @@ export default async function Product({ params }: Props) {
           product={ product }
           variant={ currentVariant! }
         />
+      </section>
+      <section>
+        <Recommendations />
       </section>
     </main>
   );
