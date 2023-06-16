@@ -11,7 +11,7 @@ export const getOneColorForVariant = (products: IProduct[]) => {
 
         colors.add(variant.color);
         return true;
-      })
+      }).sort((a, b) => a.name.localeCompare(b.name))
     };
   });
 };

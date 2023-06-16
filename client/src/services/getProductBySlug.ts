@@ -8,7 +8,7 @@ export const getProductBySlug = async (slug: string): Promise<ApiResponse> => {
   try {
     const apiUrl = `${process.env.API_BASE_URL}/storefront/products/${slug}`;
 
-    const response = await fetch(apiUrl, { next: { revalidate: 60 * 60 * 24 } });
+    const response = await fetch(apiUrl, { next: { revalidate: 1 } });
     if (!response.ok) throw new Error('Error while fetching product.');
 
     const { product, error: apiError } = await response.json();
