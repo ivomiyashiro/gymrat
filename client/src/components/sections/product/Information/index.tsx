@@ -2,6 +2,7 @@
 import { IProduct, TVariant } from '@/interfaces';
 import { MainInfo } from './MainInfo';
 import { ColorAndSizeForm } from './ColorAndSizeForm';
+import { ProductInfoDelivery } from './ProductInfoDelivery';
 
 interface Props {
   product: IProduct;
@@ -18,9 +19,7 @@ export const Information = ({ product, variant }: Props) => {
         title={ product.title }
       />
       <ColorAndSizeForm product={ product } variant={ variant } />
-      <div>
-
-      </div>
+      <ProductInfoDelivery />
     </div>
   );
 };
