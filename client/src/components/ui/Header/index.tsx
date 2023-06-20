@@ -70,7 +70,7 @@ export const Header = () => {
           <button className='hidden lg:block xl:hidden' onClick={ () => setSearchMenuOpen(true) }>
             <Search width={ 30 } height={ 30 } />
           </button>
-          <Link href='/signin'>
+          <Link href='/auth/login'>
             <User width={ 30 } height={ 30 } />
           </Link>
           <button className='relative' onClick={ () => setCartMenuOpen(true) }>
