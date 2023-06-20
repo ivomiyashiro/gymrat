@@ -26,13 +26,13 @@ export const useProducts = (params: IParams, asAdmin: boolean = false) => {
   const searchParams = useSearchParams();
 
   let adaptedURLFilters = '';
-  const paramsFilters = searchParams.get('filters') as string;
 
   const { limit = DEFAULT_LIMIT, page = DEFAULT_PAGE, sortBy = DEFAULT_SORTBY, orderBy = DEFAULT_ORDERBY, filters } = params;
   
-  if (filters) {
+  if (filters) { // if hook has params use it.
     adaptedURLFilters = encodeURIComponent(JSON.stringify(filters));
-  } else {
+  } else { // otherwise use url params
+    const paramsFilters = searchParams.get('filters') as string; // Check if has filters in url params
     adaptedURLFilters = encodeURIComponent(paramsFilters);
   }
 
@@ -41,7 +41,7 @@ export const useProducts = (params: IParams, asAdmin: boolean = false) => {
       setLoading(true);
 
       try {
-        const url = `${process.env.API_BASE_URL}/${asAdmin ? 'admin' : 'storefront'}/products?limit=${limit}&page=${page}&sortBy=${sortBy}&orderBy=${orderBy}${paramsFilters ? `&filters=${ adaptedURLFilters }` : ''}`;
+        const url = `${process.env.API_BASE_URL}/${asAdmin ? 'admin' : 'storefront'}/products?limit=${limit}&page=${page}&sortBy=${sortBy}&orderBy=${orderBy}${adaptedURLFilters !== 'null' ? `&filters=${ adaptedURLFilters }` : ''}`;
         const resp = await fetch(url);
         const { ok, products: fetchedProducts, totalPages, error: apiError } = await resp.json();
 
