@@ -13,7 +13,6 @@ const DEFAULT_SORT_BY = 'createdAt';
 const DEFAULT_ORDER_BY = 1;
 
 export const getAllProducts = async (req: IAuthRequest, res: Response) => {
-
   const { 
     sortBy: reqSortBy, 
     orderBy: reqOrderBy, 
@@ -29,7 +28,7 @@ export const getAllProducts = async (req: IAuthRequest, res: Response) => {
   const sortBy = adaptSortBy(reqSortBy) || DEFAULT_SORT_BY;
   const limit = Number(reqLimit) || DEFAULT_LIMIT;
   const page = Number(reqPage) || DEFAULT_PAGE;
-
+  
   try {
     const filters = adaptProductReqFilters(reqFilters ? JSON.parse(reqFilters as unknown as string) : DEFAULT_FILTERS);
 
@@ -127,27 +126,14 @@ export const getStorefrontProducts = async (req: Request, res: Response) => {
     const { modelFilters, populateFilters } = adaptProductReqFilters(reqFilters ? JSON.parse(reqFilters as unknown as string) : DEFAULT_FILTERS);
 
     if (!!searchText) {
-      products = await Product.aggregate([
-        {
-          $lookup: {
-            from: 'variants',
-            localField: 'variants',
-            foreignField: '_id',
-            as: 'variants'
-          }
-        },
-        {
-          $match: {
-            $or: [
-              { title: { $regex: searchText, $options: 'i' } },
-              { 'variants.color': { $regex: searchText, $options: 'i' } }
-            ]
-          }
-        },
-        { $sort: { [sortBy]: Number(orderBy) as 1 | -1 } },
-      ])
+      products = await Product.find({
+        title: { $regex: searchText, $options: 'i' },
+        status: 'ACTIVE' 
+      })
+        .populate('variants')
         .limit(limit)
         .skip((page - 1) * limit)
+        .sort([[sortBy, orderBy as SortOrder]])
         .exec();
 
     } else {

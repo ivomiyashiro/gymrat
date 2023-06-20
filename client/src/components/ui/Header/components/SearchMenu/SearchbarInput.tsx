@@ -20,7 +20,7 @@ export const SearchbarInput = ({ focus, reference, value, loading, onChange, onF
       <Search width={ 25 } height={ 25 } />
       <input 
         type="text" 
-        placeholder='Try a product or color'
+        placeholder='Try a product title'
         className='bg-transparent outline-none w-full text-sm'
         ref={ reference }
         value={ value }

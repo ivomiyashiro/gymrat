@@ -63,7 +63,7 @@ export const Header = () => {
               { 
                 inputValue 
                   ? <span> { inputValue } </span>
-                  : <span className='text-gray-500'> Try a product or color </span>
+                  : <span className='text-gray-500'> Try a product title </span>
               }
             </p>
           </button>
