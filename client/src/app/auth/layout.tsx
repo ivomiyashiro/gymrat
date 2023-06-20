@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
 
-import { getUserByToken } from '@/services';
+import { checkToken } from '@/services';
 
 import { GymratLogo } from '@/components/svgs';
 import { RoutesButtons } from '@/components/sections';
@@ -14,7 +14,9 @@ export default async function Layout({ children }: { children: React.ReactNode }
   let user = null;
   const token = cookies().get('token');
 
-  if (token) user = getUserByToken(token.value);
+  if (token) {
+    user = await checkToken(token.value);
+  } 
 
   if (user) redirect('/');
 
@@ -28,7 +30,7 @@ export default async function Layout({ children }: { children: React.ReactNode }
           <p className='mt-2 text-white'>Keep track the status of your orders and more!</p>
         </div>
       </section>
-      <section className='w-full pt-[5rem] lg:pt-[7rem] flex justify-center'>
+      <section className='w-full pt-[5rem] px-4 lg:pt-[7rem] flex justify-center'>
         <div className='w-[375px]'>
           <div className='flex flex-col items-center justify-center gap-4'>
             <Link href='/'>

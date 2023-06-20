@@ -1,9 +1,9 @@
 'use client';
 import { useContext, useState } from 'react';
 import Link from 'next/link';
-import { MenuScale, Search, ShoppingBag, User } from 'iconoir-react';
+import { DashboardDots, LogOut, MenuScale, PeopleTag, Search, ShoppingBag, User } from 'iconoir-react';
 
-import { CartContext } from '@/context';
+import { AuthContext, CartContext } from '@/context';
 
 import { GymratLogo } from '@/components/svgs';
 import { DesktopNavItems, MobileMenu, SearchMenu, CartMenu } from './components';
@@ -11,6 +11,7 @@ import { DesktopNavItems, MobileMenu, SearchMenu, CartMenu } from './components'
 export const Header = () => {
 
   const { totalProducts } = useContext(CartContext);
+  const { user, signout } = useContext(AuthContext);
 
   const [inputValue, setInputValue] = useState('');
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -70,9 +71,39 @@ export const Header = () => {
           <button className='hidden lg:block xl:hidden' onClick={ () => setSearchMenuOpen(true) }>
             <Search width={ 30 } height={ 30 } />
           </button>
-          <Link href='/auth/login'>
-            <User width={ 30 } height={ 30 } />
-          </Link>
+          {
+            user
+              ? (
+                <>
+                  <div className='mt-[0.20em] flex items-center gap-1 group relative'>
+                    <PeopleTag  width={ 30 } height={ 30 } />
+                    <p className='text-sm hidden sm:block'>Hi, { user.name.split(' ')[0] }</p>
+                    <div className='pt-[8.5rem] hidden group-hover:block absolute right-0'>
+                      <div className='bg-white w-36 py-3 rounded shadow'>
+                        {
+                          user.role === 'ADMIN' || user.role === 'SUPERADMIN'
+                          &&
+                          <Link href='/dashboard' className='font-semibold flex items-center justify-center gap-2 mx-auto'>
+                            <DashboardDots />
+                            DASHBOARD
+                          </Link>
+                        }
+                        <button className='font-semibold flex items-center justify-center gap-2 mx-auto' onClick={ signout }>
+                          <LogOut />
+                          LOG OUT
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  
+                </>
+              )
+              : (
+                <Link href='/auth/login'>
+                  <User width={ 30 } height={ 30 } />
+                </Link>
+              )
+          }
           <button className='relative' onClick={ () => setCartMenuOpen(true) }>
             <ShoppingBag width={ 30 } height={ 30 } />
             {

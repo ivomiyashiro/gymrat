@@ -1,2 +1,4 @@
 export * from './getProductBySlug';
-export * from './getUserByToken';
+export * from './checkToken';
+export * from './loginWithCredentials';
+export * from './signupWithCredentials';

@@ -3,6 +3,7 @@ import { Poppins } from 'next/font/google';
 
 import { ToastProvider, CartProvider, LayoutProvider } from '@/context';
 import { ToastContainer } from '@/components/ui';
+import { AuthProvider } from '@/context/auth';
 
 const poppins = Poppins({ 
   subsets: ['latin'],
@@ -19,11 +20,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en">
       <body className={ poppins.className }>
         <ToastProvider>
-          <CartProvider>
-            <LayoutProvider>
-              { children }
-            </LayoutProvider>
-          </CartProvider>
+          <AuthProvider>
+            <CartProvider>
+              <LayoutProvider>
+                { children }
+              </LayoutProvider>
+            </CartProvider>
+          </AuthProvider>
           <ToastContainer />
         </ToastProvider>
       </body>

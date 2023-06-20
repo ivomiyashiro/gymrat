@@ -5,7 +5,6 @@ import { genJWT, genPassword } from '../helpers';
 import { getGoogleOAuthTokens, getGoogleUser } from '../services';
 
 export const signUp = async (req: Request, res: Response) => {
-
   const { email } = req.body;
 
   try {
@@ -43,7 +42,6 @@ export const signUp = async (req: Request, res: Response) => {
 };
 
 export const singIn = async (req: Request, res: Response) => {
-
   const { email, password } = req.body;
 
   try {
