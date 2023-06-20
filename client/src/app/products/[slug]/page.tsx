@@ -1,7 +1,22 @@
+import { Metadata } from 'next';
 import { getProductBySlug } from '@/services';
 import { Gallery, Information, Recommendations } from '@/components/sections/product';
 
 interface Props { params: { slug: string } }
+ 
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { product } = await getProductBySlug(params.slug);
+  const currentVariant = product?.variants.filter(variant => variant.slug === params.slug)[0];
+
+  const title = product?.title.toLowerCase().replace(/\b\w/g, function(l) {
+    return l.toUpperCase();
+  }).replace(/-t/g, ' T');
+
+  return {
+    title: title + ` - ${currentVariant?.color} | Gymrat`,
+    description: product?.description
+  };
+}
 
 export default async function Product({ params }: Props) {
   const { product } = await getProductBySlug(params.slug);
@@ -22,9 +37,7 @@ export default async function Product({ params }: Props) {
           variant={ currentVariant! }
         />
       </section>
-      <section>
-        <Recommendations />
-      </section>
+      <Recommendations category={ product.category } />
     </main>
   );
 }
