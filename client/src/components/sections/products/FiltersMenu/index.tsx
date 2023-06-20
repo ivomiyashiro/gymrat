@@ -19,7 +19,7 @@ export const FiltersMenu = () => {
   } = useContext(CatalogContext);
 
   return (
-    <Modal isOpen={ menuOpen } handleOpen={ toggleFilterMenu } withBackground>
+    <Modal open={ menuOpen } onClose={ toggleFilterMenu } withBackground>
       <aside className={ `fixed top-0 right-0 h-screen bg-white z-50 transition-all overflow-hidden ${ menuOpen ? 'w-full lg:w-[470px]' : 'w-[0px]' }` }>
         <div className='flex flex-col h-full relative'>
           <div className='p-4 shadow flex items-center justify-between'>
