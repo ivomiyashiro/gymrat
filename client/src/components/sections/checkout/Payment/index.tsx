@@ -1,31 +1,43 @@
 import { ChangeEvent, useContext } from 'react';
 import Link from 'next/link';
-import { NavArrowLeft, NavArrowRight } from 'iconoir-react';
+import { ClipboardCheck, NavArrowLeft, NavArrowRight } from 'iconoir-react';
 
 import { CheckoutContext } from '@/context';
 
-import { Input } from '@/components/ui';
+import { Input, Spinner } from '@/components/ui';
 
 export const Payment = () => {
   const {
+    loading,
     paymentError,
     payment,
     handlePaymentSubmit,
-    handleCardNumber,
+    handleCardNumberChange,
     handleNameOnCard,
-    handleExpDate,
+    handleExpirationDateChange,
+    handleExpirationDateKeyDown,
     handleCVV,
+    randomAutoFillPayment
   } = useContext(CheckoutContext);
 
   return (
     <form onSubmit={ handlePaymentSubmit }> 
-      <h3 className='font-semibold text-lg mb-3'>PAYMENT</h3>
+      <div className='flex items-center justify-between mt-8'>
+        <h3 className='font-semibold text-lg mb-3'>PAYMENT</h3>
+        <button
+          type='button'
+          className='flex items-center gap-2 underline text-blue-600 text-sm'
+          onClick={ randomAutoFillPayment }>
+          <ClipboardCheck fontSize={ 12 } />
+            Quick random autofill
+        </button>
+      </div>
       <Input
         label='Card Number'
         placeholder='Card number...'
         type='text'
         value={ payment.cartNumber }
-        onChange={ (e: ChangeEvent<HTMLInputElement>) => handleCardNumber(e.target.value) }
+        onChange={ handleCardNumberChange }
       />
       <div className='mt-3'>
         <Input 
@@ -42,13 +54,16 @@ export const Payment = () => {
           placeholder='Expiration date (MM/YY)...'
           type='text'
           value={ payment.expDate }
-          onChange={ (e: ChangeEvent<HTMLInputElement>) => handleExpDate(e.target.value) }
+          maxLength={ 5 }
+          onChange={ handleExpirationDateChange }
+          onKeyDown={ handleExpirationDateKeyDown }
         />
         <Input 
           label='Security Code'
           placeholder='Security code...'
           type='text'
           value={ payment.cvv }
+          maxLength={ 3 }
           onChange={ (e: ChangeEvent<HTMLInputElement>) => handleCVV(e.target.value) }
         />
       </div>
@@ -63,8 +78,16 @@ export const Payment = () => {
           Return to shipping
         </Link>
         <button type='submit' className='bg-blue-600 font-semibold text-white p-3 px-6 rounded flex items-center gap-2 text-sm'>
-          CONFIRM PURCHASE
-          <NavArrowRight width={ 16 } height={ 16 } />
+          {
+            loading
+              ? <Spinner />
+              : (
+                <>
+                  CONFIRM PURCHASE
+                  <NavArrowRight width={ 16 } height={ 16 } />
+                </>
+              )
+          }
         </button>
       </div>
     </form>

@@ -1,14 +1,16 @@
-import { ChangeEvent, useId } from 'react';
+import { ChangeEvent, KeyboardEvent, useId } from 'react';
 
 interface Props {
   value :string;
   placeholder: string;
   type: string;
   label: string;
-  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
+  maxLength?: number;
+  onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
+  onKeyDown?: (e: KeyboardEvent<HTMLInputElement>) => void;
 }
 
-export const Input = ({ value, placeholder, type, label, onChange }: Props) => {
+export const Input = ({ value, placeholder, type, label, maxLength, onChange, onKeyDown }: Props) => {
   const id = useId();
 
   return (
@@ -19,8 +21,10 @@ export const Input = ({ value, placeholder, type, label, onChange }: Props) => {
         id={ id }
         value={ value }
         placeholder={ placeholder }
-        className='w-full border h-12 text-md rounded px-3'
+        maxLength={ maxLength }
         onChange={ onChange }
+        onKeyDown={ onKeyDown }
+        className='w-full border h-12 text-md rounded px-3'
       />
     </div>
   );

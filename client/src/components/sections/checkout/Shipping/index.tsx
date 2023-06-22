@@ -1,7 +1,7 @@
 import { ChangeEvent, useContext } from 'react';
 import { CheckoutContext } from '@/context';
 import { Input } from '@/components/ui';
-import { NavArrowRight } from 'iconoir-react';
+import { ClipboardCheck, NavArrowRight } from 'iconoir-react';
 
 export const Shipping = () => {
   const {
@@ -13,12 +13,22 @@ export const Shipping = () => {
     handleLocality,
     handleZip,
     handlePhoneNumber,
+    randomAutoFillShipping
   } = useContext(CheckoutContext);
 
   return (
     <form onSubmit={ handleShippingSubmit }>
       <div className='mt-8'>
-        <h3 className='font-semibold text-lg mb-3'>SHIPPING ADDRESS</h3>
+        <div className='flex justify-between items-center'>
+          <h3 className='font-semibold text-lg mb-3'>SHIPPING ADDRESS</h3>
+          <button
+            type='button'
+            className='flex items-center gap-2 underline text-blue-600 text-sm'
+            onClick={ randomAutoFillShipping }>
+            <ClipboardCheck fontSize={ 12 } />
+            Quick random autofill
+          </button>
+        </div>
         <div>
           <Input
             label='City'

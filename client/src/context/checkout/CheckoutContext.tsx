@@ -1,5 +1,5 @@
 'use client';
-import { Dispatch, FormEvent, SetStateAction, createContext } from 'react';
+import { ChangeEvent, Dispatch, FormEvent, KeyboardEvent, SetStateAction, createContext } from 'react';
 
 interface ContextProps {
   shippingInfo: {
@@ -18,6 +18,7 @@ interface ContextProps {
     expDate: string,
     cvv: string,
   },
+  loading: boolean;
 
   //Methods
   handleShippingSubmit: (e: FormEvent<HTMLFormElement>) => void;
@@ -27,10 +28,13 @@ interface ContextProps {
   handleLocality: Dispatch<SetStateAction<string>>;
   handleAdress: Dispatch<SetStateAction<string>>;
   handleZip: Dispatch<SetStateAction<string>>;
-  handleCardNumber: Dispatch<SetStateAction<string>>;
+  handleCardNumberChange: (e: ChangeEvent<HTMLInputElement>) => void;
+  handleExpirationDateChange: (e: ChangeEvent<HTMLInputElement>) => void;
+  handleExpirationDateKeyDown: (e: KeyboardEvent<HTMLInputElement>) => void
   handleNameOnCard: Dispatch<SetStateAction<string>>;
-  handleExpDate: Dispatch<SetStateAction<string>>;
   handleCVV: Dispatch<SetStateAction<string>>;
+  randomAutoFillShipping: () => void;
+  randomAutoFillPayment: () => void;
 }
 
 export const CheckoutContext = createContext({} as ContextProps);
