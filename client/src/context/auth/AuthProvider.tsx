@@ -7,6 +7,7 @@ import { loginWithCredentials, checkToken, signupWithCredentials } from '@/servi
 
 import { AuthContext } from './AuthContext';
 import { authReducer } from './authReducer';
+import { useRouter } from 'next/navigation';
 
 export interface AuthState { user: IUser | null }
 
@@ -16,6 +17,7 @@ const AUTH_INITIAL_STATE: AuthState = {
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [state, dispatch] = useReducer(authReducer, AUTH_INITIAL_STATE);
+  const router = useRouter();
 
   // Check if token is valid and login user again
   useEffect(() => {
@@ -77,6 +79,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const signout = () => {
     Cookies.remove('token');
     dispatch({ type: '[AUTH] - Signout' });
+    router.refresh();
   };
 
 

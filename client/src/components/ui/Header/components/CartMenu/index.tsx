@@ -57,7 +57,10 @@ export const CartMenu = ({ open, handleOpen }: Props) => {
                       <p className='font-semibold'>${ orderTotalPrice }</p>
                     </div>
                   </div>
-                  <Link href='/cart/checkout?step=1' className='text-white font-semibold p-5 text-center block rounded bg-blue-600 hover:scale-95 transition'>
+                  <Link 
+                    href='/cart/checkout?step=1' 
+                    className='text-white font-semibold p-5 text-center block rounded bg-blue-600 hover:scale-95 transition'
+                  >
                     GO TO CHECKOUT
                   </Link>
                 </div>

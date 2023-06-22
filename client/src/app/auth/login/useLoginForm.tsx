@@ -26,14 +26,12 @@ export const useLoginForm = () => {
 
     setLoading(true);
     const user = await login(emailValue, passwordValue);
-    setLoading(false);
 
     if (!user) return setError(error);
 
     setError('');
 
-    router.push('/');
-
+    router.refresh();
   };
 
   return {
