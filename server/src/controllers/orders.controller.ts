@@ -88,7 +88,7 @@ export const getOneOrder = async (req: Request, res: Response) => {
 };
 
 export const createOrder = async (req: IAuthRequest, res: Response) => {
-  
+
   let orderNumber: number;
 
   try {

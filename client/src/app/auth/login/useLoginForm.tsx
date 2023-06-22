@@ -4,10 +4,12 @@ import { AuthContext } from '@/context';
 
 export const useLoginForm = () => {
   const { login } = useContext(AuthContext);
+
   const [emailValue, setEmailValue] = useState('');
   const [passwordValue, setPasswordValue] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+
   const router = useRouter();
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
@@ -30,7 +32,8 @@ export const useLoginForm = () => {
 
     setError('');
 
-    router.replace('/');
+    router.push('/');
+
   };
 
   return {

@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { getGoogleOAuthURL } from '@/utils';
 import { useSigninForm } from './useSigninForm';
 
-import { Spinner } from '@/components/ui';
+import { Spinner, Input } from '@/components/ui';
 
 export default function Signup() {
 
@@ -25,39 +25,27 @@ export default function Signup() {
   
   return (
     <form className='flex flex-col gap-4' onSubmit={ handleSubmit }>
-      <div className='flex flex-col gap-1'>
-        <label htmlFor="" className='font-semibold text-sm'>Full name</label>
-        <input 
-          type="text"
-          id='signup-name'
-          value={ nameValue }
-          placeholder='Enter your name...' 
-          className='w-full border h-12 text-md rounded px-3'
-          onChange={ (e: ChangeEvent<HTMLInputElement>) => handleNameValue(e.target.value) }
-        />
-      </div>
-      <div className='flex flex-col gap-1'>
-        <label htmlFor="" className='font-semibold text-sm'>Email</label>
-        <input 
-          type="email"
-          id='signup-email'
-          value={ emailValue }
-          className='w-full border h-12 text-md rounded px-3' 
-          placeholder='Enter your email...' 
-          onChange={ (e: ChangeEvent<HTMLInputElement>) => handleEmailValue(e.target.value) }
-        />
-      </div>
-      <div className='flex flex-col gap-1'>
-        <label htmlFor="" className='font-semibold text-sm'>Password</label>
-        <input 
-          type="password"
-          id='signup-password'
-          value={ passwordValue }
-          className='w-full border h-12 text-md rounded px-3' 
-          placeholder='Enter your password...' 
-          onChange={ (e: ChangeEvent<HTMLInputElement>) => handlePasswordValue(e.target.value) }
-        />
-      </div>
+      <Input 
+        label='Full name'
+        placeholder='Enter your name...'
+        type='text'
+        value={ nameValue }
+        onChange={ (e: ChangeEvent<HTMLInputElement>) => handleNameValue(e.target.value) }
+      />
+      <Input 
+        label='Enter email'
+        placeholder='Enter your email...'
+        type='email'
+        value={ emailValue }
+        onChange={ (e: ChangeEvent<HTMLInputElement>) => handleEmailValue(e.target.value) }
+      />
+      <Input 
+        label='Password'
+        placeholder='Enter your password...'
+        type='password'
+        value={ passwordValue }
+        onChange={ (e: ChangeEvent<HTMLInputElement>) => handlePasswordValue(e.target.value) }
+      />
       {
         error
         &&

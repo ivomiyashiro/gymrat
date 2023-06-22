@@ -20,7 +20,7 @@ export const isDBPriceCorrect = async (totalPrice: string, { req }: any) => {
       const price = product[0].price * items[i].quantity;
       dbTotalPrice += price;
     }
-  
+
     if (Number(totalPrice) !== dbTotalPrice) {
       console.log(totalPrice, dbTotalPrice);
       throw new Error();

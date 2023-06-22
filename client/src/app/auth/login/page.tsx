@@ -6,6 +6,7 @@ import { getGoogleOAuthURL } from '@/utils';
 import { useLoginForm } from './useLoginForm';
 
 import { Spinner } from '@/components/ui';
+import { Input } from '@/components/ui/Input';
 
 export default function Login() {
 
@@ -23,28 +24,20 @@ export default function Login() {
 
   return (
     <form className='flex flex-col gap-4' onSubmit={ handleSubmit }>
-      <div className='flex flex-col gap-1'>
-        <label htmlFor="login-email" className='font-semibold text-sm'>Enter email</label>
-        <input 
-          type="email"
-          id='login-email'
-          value={ emailValue }
-          placeholder='Enter your email...' 
-          className='w-full border h-12 text-md rounded px-3'
-          onChange={ (e: ChangeEvent<HTMLInputElement>) => handleEmailValue(e.target.value) }
-        />
-      </div>
-      <div className='flex flex-col gap-1'>
-        <label htmlFor="login-password" className='font-semibold text-sm'>Password</label>
-        <input 
-          type="password"
-          id='login-password'
-          value={ passwordValue }
-          className='w-full border h-12 text-md rounded px-3' 
-          placeholder='Enter your password...' 
-          onChange={ (e: ChangeEvent<HTMLInputElement>) => handlePasswordValue(e.target.value) }
-        />
-      </div>
+      <Input 
+        label='Enter email'
+        placeholder='Enter your email...'
+        type='email'
+        value={ emailValue }
+        onChange={ (e: ChangeEvent<HTMLInputElement>) => handleEmailValue(e.target.value) }
+      />
+      <Input 
+        label='Password'
+        placeholder='Enter your password...'
+        type='password'
+        value={ passwordValue }
+        onChange={ (e: ChangeEvent<HTMLInputElement>) => handlePasswordValue(e.target.value) }
+      />
       {
         error
         &&

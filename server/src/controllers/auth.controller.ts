@@ -24,7 +24,7 @@ export const signUp = async (req: Request, res: Response) => {
     return res.status(201).json({
       ok: true,
       user: {
-        uid: user.id,
+        _id: user.id,
         email: user.email,
         name: user.name,
         role: user.role
@@ -65,7 +65,7 @@ export const singIn = async (req: Request, res: Response) => {
     return res.status(200).json({
       ok: true,
       user: {
-        uid: user.id,
+        _id: user.id,
         email: user.email,
         name: user.name,
         role: user.role
@@ -102,7 +102,6 @@ export const signOut = async (_req: Request, res: Response) => {
 
 
 export const renewToken = async (req: IAuthRequest, res: Response) => {
-
   try {
     if (!req.auth) throw new Error;
     const { uid, name, role } = req.auth;
@@ -123,7 +122,7 @@ export const renewToken = async (req: IAuthRequest, res: Response) => {
     return res.json({ 
       ok: true,
       user: {
-        uid: user.id,
+        _id: user.id,
         email: user.email,
         name: user.name,
         role: user.role
@@ -141,7 +140,6 @@ export const renewToken = async (req: IAuthRequest, res: Response) => {
 };
 
 export const googleOauthHandler = async (req: Request, res: Response) => {
-
   const CLIENT_ORIGIN = process.env.CLIENT_ORIGIN as string;
 
   try {

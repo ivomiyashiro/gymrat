@@ -10,7 +10,7 @@ export const LayoutProvider = ({ children }: { children: ReactNode }) => {
   return (
     <>
       {
-        pathname.includes('auth') || pathname.includes('dashboard')
+        pathname.includes('auth') || pathname.includes('dashboard') || pathname.includes('checkout')
           ? <>{ children }</>
           : (
             <>

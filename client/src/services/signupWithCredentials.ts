@@ -15,7 +15,6 @@ export const signupWithCredentials = async (name: string, email: string, passwor
       })
     });
 
-
     const { ok, user, msg }: {ok: boolean, user: IUser, msg: string } = await response.json();
     if (!ok) throw new Error(msg);
 

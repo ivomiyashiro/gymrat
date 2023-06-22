@@ -83,7 +83,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
 
   const addToCart = (product: IProductCart) => {
     const productInCart = state.cart.find(prod => prod.variant._id === product.variant._id);
-    
+
     if (productInCart) {
       showToast({ 
         type: 'SUCCESS', 

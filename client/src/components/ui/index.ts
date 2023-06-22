@@ -6,4 +6,5 @@ export * from './FadeUpContainer';
 export * from './Footer';
 export * from './Banner';
 export * from './ToastContainer';
+export * from './Input';
 export { default as ProductsCarrousel } from './ProductsCarrousel';
