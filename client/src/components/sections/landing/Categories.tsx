@@ -5,7 +5,11 @@ import { NavArrowRight } from 'iconoir-react';
 
 export const Categories = () => {
 
-  const categories = [{ id: 1, title: 'SHOP WOMEN', image: '/images/women-mobile.jpeg' }, { id: 2, title: 'SHOP MEN', image: '/images/men-mobile.jpeg' }, { id: 3, title: 'SHOP ACCESORIES', image: '/images/accesories-mobile.jpeg' }];
+  const categories = [
+    { id: 1, title: 'SHOP WOMEN', image: '/images/women-mobile.jpeg', href: '/products?filters=%5B%7B%22gender%22%3A%5B%22WOMEN%22%5D%7D%5D&sortBy=CREATEDAT&orderBy=-1' }, 
+    { id: 2, title: 'SHOP MEN', image: '/images/men-mobile.jpeg', href: '/products?filters=%5B%7B%22gender%22%3A%5B%22MEN%22%5D%7D%5D&sortBy=CREATEDAT&orderBy=-1' }, 
+    { id: 3, title: 'SHOP ACCESORIES', image: '/images/accesories-mobile.jpeg', href: '/products?filters=%5B%7B%22category%22%3A%5B%22ACCESSORIES%22%5D%7D%5D&sortBy=CREATEDAT&orderBy=-1' }
+  ];
 
   return (
     <section className='px-4 pY-12 lg:px-24 max-w-[1640px] mx-auto'>
@@ -13,7 +17,7 @@ export const Categories = () => {
         {
           categories.map(card => (
             <div key={ card.id } className='relative flex-shrink-0 overflow-hidden md:w-[21.525rem] xl:w-[calc(100%/3+0.369rem-(2)*0.492rem)] md:h-[26.72rem] lg:h-auto'>
-              <Link href='/products?gender=women'>
+              <Link href={ card.href }>
                 <article>
                   <div className='w-full pt-[130.5%]'></div>
                   <div className='absolute top-0 left-0 h-full flex flex-col justify-end w-full overflow-hidden rounded-[1em] px-6 py-9'>

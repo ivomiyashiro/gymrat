@@ -1,7 +1,7 @@
-import { NavArrowRight } from 'iconoir-react';
+import { ReactNode } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ReactNode } from 'react';
+import { NavArrowRight } from 'iconoir-react';
 
 interface Props {
   open: boolean;
@@ -9,11 +9,12 @@ interface Props {
   imageUrl: string;
   altText: string;
   children: ReactNode;
+  onClick: () => void;
 }
 
-export const MobileNavItems = ({ open, href, imageUrl, altText, children }: Props) => {
+export const MobileNavItems = ({ open, href, imageUrl, altText, children, onClick }: Props) => {
   return (
-    <li className='h-full relative top-0'>
+    <li className='h-full relative top-0' onClick={ onClick }>
       <Link href={ href }>
         <div className='w-full h-full absolute top-0'>
           <Image

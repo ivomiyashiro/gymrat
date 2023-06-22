@@ -57,25 +57,28 @@ export const MobileMenu = ({ open, inputValue, handleOpen, handleOpenSearchMenu 
           <ul className='grid grid-rows-3 h-full gap-4'>
             <MobileNavItems 
               open={ open }
-              href='/products?gender=women'
+              href='/products?filters=%5B%7B%22gender%22%3A%5B%22WOMEN%22%5D%7D%5D&sortBy=CREATEDAT&orderBy=-1'
               imageUrl='/images/women.jpeg'
               altText='Image of 2 women taking a pick with a phone'
+              onClick={ () => handleOpen(false) }
             >
               WOMEN
             </MobileNavItems>          
             <MobileNavItems 
               open={ open }
-              href='/products?gender=men'
+              href='/products?filters=%5B%7B%22gender%22%3A%5B%22MEN%22%5D%7D%5D&sortBy=CREATEDAT&orderBy=-1'
               imageUrl='/images/men.png'
               altText='Image of 2 men posing'
+              onClick={ () => handleOpen(false) }
             >
               MEN
             </MobileNavItems>
             <MobileNavItems 
               open={ open }
-              href='/products?category=accesories'
+              href='/products?filters=%5B%7B%22category%22%3A%5B%22ACCESSORIES%22%5D%7D%5D&sortBy=CREATEDAT&orderBy=-1'
               imageUrl='/images/accesories.jpeg'
               altText='Image of a men benching'
+              onClick={ () => handleOpen(false) }
             >
               ACCESSORIES
             </MobileNavItems>

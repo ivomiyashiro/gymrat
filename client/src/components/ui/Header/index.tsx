@@ -45,13 +45,13 @@ export const Header = () => {
           </Link>
           <nav className='hidden lg:flex h-full'>
             <ul className='flex gap-10'>
-              <DesktopNavItems href='/products?gender=women'>
+              <DesktopNavItems href='/products?filters=%5B%7B%22gender%22%3A%5B%22WOMEN%22%5D%7D%5D&sortBy=CREATEDAT&orderBy=-1'>
                 Women
               </DesktopNavItems>
-              <DesktopNavItems href='/products?gender=women'>
+              <DesktopNavItems href='/products?filters=%5B%7B%22gender%22%3A%5B%22MEN%22%5D%7D%5D&sortBy=CREATEDAT&orderBy=-1'>
                 Men
               </DesktopNavItems>
-              <DesktopNavItems href='/products?category=accesories'>
+              <DesktopNavItems href='/products?filters=%5B%7B%22category%22%3A%5B%22ACCESSORIES%22%5D%7D%5D&sortBy=CREATEDAT&orderBy=-1'>
                 Accesories
               </DesktopNavItems>
             </ul>
