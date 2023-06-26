@@ -11,7 +11,6 @@ const DEFAULT_SORT_BY = 'createdAt';
 const DEFAULT_ORDER_BY = 'asc';
 
 export const getAllOrders = async (req: Request, res: Response) => {
-
   const { 
     sortBy: reqSortBy, 
     orderBy: reqOrderBy, 
@@ -53,6 +52,7 @@ export const getAllOrders = async (req: Request, res: Response) => {
     return res.json({
       ok: true,
       orders,
+      count,
       totalPages: Math.ceil(count / limit)
     });
 
@@ -67,7 +67,6 @@ export const getAllOrders = async (req: Request, res: Response) => {
 };
 
 export const getOneOrder = async (req: Request, res: Response) => {
-
   try {
     const order = await Order.findById(req.params.id)
       .populate('customer', '-password -role -createdAt -updatedAt');
@@ -88,7 +87,6 @@ export const getOneOrder = async (req: Request, res: Response) => {
 };
 
 export const createOrder = async (req: IAuthRequest, res: Response) => {
-
   let orderNumber: number;
 
   try {
@@ -136,7 +134,6 @@ export const createOrder = async (req: IAuthRequest, res: Response) => {
 };
 
 export const updateOrderStatus = async (req: Request, res: Response) => {
-  
   const orderIDs = JSON.parse(req.params.id);
   const orderStatus = req.body.status.toUpperCase();
 

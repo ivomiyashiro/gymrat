@@ -29,7 +29,7 @@ export type TVariant = {
   slug: string;
 }
 
-export interface IUser extends Document {
+export interface IUser {
   _id: string;
   email: string;
   name: string;
@@ -68,7 +68,8 @@ export interface IProductCart {
   variant: TVariant;
 }
 
-export interface IOrder extends Document {
+export interface IOrder {
+  _id: string;
   number: string;
   items: {
     title: string;
@@ -91,6 +92,8 @@ export interface IOrder extends Document {
     apartment?: string;
     zip: string;
   }
+  createdAt: Date;
+  updatedAt: Date;
 }
 
 export interface IProductFilters {

@@ -7,4 +7,7 @@ export * from './Footer';
 export * from './Banner';
 export * from './ToastContainer';
 export * from './Input';
+export * from './Table';
 export { default as ProductsCarrousel } from './ProductsCarrousel';
+export * from './Pagination';
+export * from './Select';

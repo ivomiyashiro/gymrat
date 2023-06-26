@@ -1,5 +1,6 @@
 'use client';
 import { useReducer, useEffect, ReactNode } from 'react';
+import { useRouter } from 'next/navigation';
 import Cookies from 'js-cookie';
 
 import { IUser } from '@/interfaces';
@@ -7,7 +8,6 @@ import { loginWithCredentials, checkToken, signupWithCredentials } from '@/servi
 
 import { AuthContext } from './AuthContext';
 import { authReducer } from './authReducer';
-import { useRouter } from 'next/navigation';
 
 export interface AuthState { user: IUser | null }
 

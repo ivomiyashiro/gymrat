@@ -1,7 +1,7 @@
 import { Response } from 'express';
+import { SortOrder } from 'mongoose';
 import { Order, User } from '../models';
 import { IAuthRequest, IDataReq } from '../interfaces';
-import { SortOrder } from 'mongoose';
 
 const DEFAULT_LIMIT = 10;
 const DEFAULT_PAGE = 1;
@@ -10,27 +10,43 @@ const DEFAULT_SORT_BY = 'created_at';
 const DEFAULT_ORDER_BY = 'asc';
 
 export const getCustomerOrders = async (req: IAuthRequest, res: Response) => {
+  let orders = [];
+  const { sortBy: reqSortBy, orderBy: reqOrderBy, limit: reqLimit, page: reqPage, filters: reqFilters, search: searchText }: any = req.query;
 
-  const { sortBy: reqSortBy, orderBy: reqOrderBy, limit: reqLimit, page: reqPage, filters: reqFilters }: any = req.query;
-
-  const filters = { ...JSON.parse(reqFilters), id: req.auth?.uid } || { ...DEFAULT_FILTERS, id: req.auth?.uid };
   const orderBy = reqOrderBy || DEFAULT_ORDER_BY;
   const sortBy = reqSortBy || DEFAULT_SORT_BY;
   const limit = Number(reqLimit) || DEFAULT_LIMIT;
   const page = Number(reqPage) || DEFAULT_PAGE;
 
   try {
-    const orders = await Order.find(filters)
-      .limit(limit)
-      .skip((page - 1) * limit)
-      .sort([[sortBy, orderBy]])
-      .exec();
+    const filters = { 
+      ...JSON.parse(reqFilters || JSON.stringify(DEFAULT_FILTERS)), 
+      'customerInfo._id': req.auth?.uid 
+    };
+
+    if (!!searchText) {
+      orders = await Order.find({ 
+        ...filters, 
+        number: { $regex: searchText, $options: 'i' } 
+      })
+        .limit(limit)
+        .skip((page - 1) * limit)
+        .sort([['createdAt', orderBy as SortOrder]])
+        .exec();
+    } else {
+      orders = await Order.find(filters)
+        .limit(limit)
+        .skip((page - 1) * limit)
+        .sort([['createdAt', orderBy as SortOrder]])
+        .exec();
+    }
 
     const count = await Order.count();
 
     return res.json({
       ok: true,
       orders,
+      count,
       totalPages: Math.ceil(count / limit)
     });
 
@@ -45,7 +61,6 @@ export const getCustomerOrders = async (req: IAuthRequest, res: Response) => {
 };
 
 export const getCustomerOrder = async (req: IAuthRequest, res: Response) => {
-
   try {
     const order = await Order.findOne({ id: req.params.id });
 
@@ -64,8 +79,27 @@ export const getCustomerOrder = async (req: IAuthRequest, res: Response) => {
   }
 };
 
-export const getAllUsers = async (req: IAuthRequest, res: Response) => {
+export const updateCustomerOrder = async (req: IAuthRequest, res: Response) => {
+  try {
+    const order = await Order.findOneAndUpdate({ _id: req.params.id }, {
+      status: 'CANCELLED'
+    });
 
+    return res.json({
+      ok: true,
+      order
+    });
+  } catch (error) {
+    console.log(error);
+
+    return res.status(500).json({
+      ok: false,
+      msg: 'Internal server error.'
+    });
+  }
+};
+
+export const getAllUsers = async (req: IAuthRequest, res: Response) => {
   const { sortBy: reqSortBy, orderBy: reqOrderBy, limit: reqLimit, page: reqPage, search } = req.query as IDataReq;
   
   const orderBy = reqOrderBy || DEFAULT_ORDER_BY;
@@ -130,7 +164,6 @@ export const getAllUsers = async (req: IAuthRequest, res: Response) => {
 };
 
 export const updateUser = async (req: IAuthRequest, res: Response) => {
-
   const { ids } = req.query;
 
   if (!ids) {
@@ -175,7 +208,6 @@ export const updateUser = async (req: IAuthRequest, res: Response) => {
 };
 
 export const deleteUser = async (req: IAuthRequest, res: Response) => {
-
   const usersIDs = JSON.parse(req.params.id);
 
   if (usersIDs.length === 0) {

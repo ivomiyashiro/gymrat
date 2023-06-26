@@ -1,13 +1,13 @@
 import { Router } from 'express';
 import { validateCustomer } from '../middlewares';
-import { getCustomerOrder, getCustomerOrders } from '../controllers/user.controller';
+import { getCustomerOrder, getCustomerOrders, updateCustomerOrder } from '../controllers/user.controller';
  
 const router = Router();
 
-router.use(validateCustomer);
+router.get('/:uid/orders', validateCustomer, getCustomerOrders);
 
-router.get('/:uid/orders', getCustomerOrders);
+router.get('/:uid/orders/:id', validateCustomer, getCustomerOrder);
 
-router.get('/:uid/orders/:id', getCustomerOrder);
+router.put('/:uid/orders/:id', validateCustomer, updateCustomerOrder);
 
 export default router;
