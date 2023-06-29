@@ -77,10 +77,10 @@ export const Payment = () => {
           <NavArrowLeft width={ 16 } height={ 16 } />
           Return to shipping
         </Link>
-        <button type='submit' className='bg-blue-600 font-semibold text-white p-3 px-6 rounded flex items-center gap-2 text-sm'>
+        <button type='submit' className='bg-blue-600 font-semibold text-white p-3 px-6 w-[225px] justify-center rounded flex items-center gap-2 text-sm'>
           {
             loading
-              ? <Spinner />
+              ? <Spinner size='5' />
               : (
                 <>
                   CONFIRM PURCHASE
@@ -89,6 +89,11 @@ export const Payment = () => {
               )
           }
         </button>
+      </div>
+      <div className='mt-10'>
+        <p className='text-sm text-gray-400'>
+          * NOTE: This is only an academic project, it is not necessary to complete the fields with real data.
+        </p>
       </div>
     </form>
   );

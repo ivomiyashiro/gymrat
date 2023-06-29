@@ -84,6 +84,11 @@ export const Shipping = () => {
           <NavArrowRight width={ 16 } height={ 16 } />
         </button>
       </div>
+      <div className='mt-10'>
+        <p className='text-sm text-gray-400'>
+          * NOTE: This is only an academic project, it is not necessary to complete the fields with real data.
+        </p>
+      </div>
     </form>
   );
 };
