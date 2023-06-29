@@ -62,7 +62,10 @@ export const getCustomerOrders = async (req: IAuthRequest, res: Response) => {
 
 export const getCustomerOrder = async (req: IAuthRequest, res: Response) => {
   try {
-    const order = await Order.findOne({ id: req.params.id });
+    const order = await Order.findOne({ 
+      _id: req.params.id, 
+      'customerInfo._id': req.auth?.uid
+    });
 
     return res.json({
       ok: true,
@@ -81,7 +84,7 @@ export const getCustomerOrder = async (req: IAuthRequest, res: Response) => {
 
 export const updateCustomerOrder = async (req: IAuthRequest, res: Response) => {
   try {
-    const order = await Order.findOneAndUpdate({ _id: req.params.id }, {
+    const order = await Order.findOneAndUpdate({ _id: req.auth?.uid }, {
       status: 'CANCELLED'
     });
 
