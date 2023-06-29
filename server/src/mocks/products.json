@@ -142,6 +142,163 @@
         ]
     },
     {
+        "title": "POWER T-SHIRT",
+        "description": "Lifting is the pursuit of failure. Fail hard. Fail fast. Fail with gusto. Fail with pride. Fail together. Until one day, you don't. The Power collection is made to fail with you, time and time again. Durable fabrics support you through every lift, while ribbed detailing gives you the freedom to flex and move without distractions. The Power collection. With you until failure.",
+        "category": "T-SHIRTS & TOPS",
+        "price": 36,
+        "status": "ACTIVE",
+        "fitType": "OVERSIZED",
+        "gender": "MEN",
+        "colors": [
+            "Blue",
+            "Yellow"
+        ],
+        "sizes": [
+            "xs",
+            "s",
+            "m",
+            "l",
+            "xl"
+        ],
+        "variants": [
+            {
+                "name": "Blue / XS",
+                "color": "Blue",
+                "size": "XS",
+                "inventory": 3,
+                "images": [
+                    "https://cdn.shopify.com/s/files/1/0156/6146/products/PowerT-ShirtEveningBlue-A2A1X-UBZF-2361.515_9c45c282-f894-410f-b4f8-fee5c9b8d3b9_3840x.jpg?v=1676998924",
+                    "https://cdn.shopify.com/s/files/1/0156/6146/products/PowerT-ShirtEveningBlueA2A1X-UBZF-2406.516_6db2d794-8c24-4a99-8b96-446ef2701c8e_750x.jpg?v=1676998924",
+                    "https://cdn.shopify.com/s/files/1/0156/6146/products/PowerT-ShirtEveningBlue-A2A1X-UBZF-2384.188_ba457696-1bf1-4669-b041-766b02dbf7e3_640x.jpg?v=1676998924",
+                    "https://cdn.shopify.com/s/files/1/0156/6146/products/PowerT-ShirtEveningBlue-A2A1X-UBZF-2401.190_d45ead4c-1ea8-4c39-82e8-c8eae026403c_640x.jpg?v=1676998924",
+                    "https://cdn.shopify.com/s/files/1/0156/6146/products/PowerT-ShirtEveningBlue-A2A1X-UBZF-2408.192_34c7220f-5d93-4828-86dc-46df4a1b33ca_640x.jpg?v=1676998924"
+                ]
+            },
+            {
+                "name": "Blue / S",
+                "color": "Blue",
+                "size": "S",
+                "inventory": 8,
+                "images": [
+                    "https://cdn.shopify.com/s/files/1/0156/6146/products/PowerT-ShirtEveningBlue-A2A1X-UBZF-2361.515_9c45c282-f894-410f-b4f8-fee5c9b8d3b9_3840x.jpg?v=1676998924",
+                    "https://cdn.shopify.com/s/files/1/0156/6146/products/PowerT-ShirtEveningBlueA2A1X-UBZF-2406.516_6db2d794-8c24-4a99-8b96-446ef2701c8e_750x.jpg?v=1676998924",
+                    "https://cdn.shopify.com/s/files/1/0156/6146/products/PowerT-ShirtEveningBlue-A2A1X-UBZF-2384.188_ba457696-1bf1-4669-b041-766b02dbf7e3_640x.jpg?v=1676998924",
+                    "https://cdn.shopify.com/s/files/1/0156/6146/products/PowerT-ShirtEveningBlue-A2A1X-UBZF-2401.190_d45ead4c-1ea8-4c39-82e8-c8eae026403c_640x.jpg?v=1676998924",
+                    "https://cdn.shopify.com/s/files/1/0156/6146/products/PowerT-ShirtEveningBlue-A2A1X-UBZF-2408.192_34c7220f-5d93-4828-86dc-46df4a1b33ca_640x.jpg?v=1676998924"
+                ]
+            },
+            {
+                "name": "Blue / M",
+                "color": "Blue",
+                "size": "M",
+                "inventory": 14,
+                "images": [
+                    "https://cdn.shopify.com/s/files/1/0156/6146/products/PowerT-ShirtEveningBlue-A2A1X-UBZF-2361.515_9c45c282-f894-410f-b4f8-fee5c9b8d3b9_3840x.jpg?v=1676998924",
+                    "https://cdn.shopify.com/s/files/1/0156/6146/products/PowerT-ShirtEveningBlueA2A1X-UBZF-2406.516_6db2d794-8c24-4a99-8b96-446ef2701c8e_750x.jpg?v=1676998924",
+                    "https://cdn.shopify.com/s/files/1/0156/6146/products/PowerT-ShirtEveningBlue-A2A1X-UBZF-2384.188_ba457696-1bf1-4669-b041-766b02dbf7e3_640x.jpg?v=1676998924",
+                    "https://cdn.shopify.com/s/files/1/0156/6146/products/PowerT-ShirtEveningBlue-A2A1X-UBZF-2401.190_d45ead4c-1ea8-4c39-82e8-c8eae026403c_640x.jpg?v=1676998924",
+                    "https://cdn.shopify.com/s/files/1/0156/6146/products/PowerT-ShirtEveningBlue-A2A1X-UBZF-2408.192_34c7220f-5d93-4828-86dc-46df4a1b33ca_640x.jpg?v=1676998924"
+                ]
+            },
+            {
+                "name": "Blue / L",
+                "color": "Blue",
+                "size": "L",
+                "inventory": 9,
+                "images": [
+                    "https://cdn.shopify.com/s/files/1/0156/6146/products/PowerT-ShirtEveningBlue-A2A1X-UBZF-2361.515_9c45c282-f894-410f-b4f8-fee5c9b8d3b9_3840x.jpg?v=1676998924",
+                    "https://cdn.shopify.com/s/files/1/0156/6146/products/PowerT-ShirtEveningBlueA2A1X-UBZF-2406.516_6db2d794-8c24-4a99-8b96-446ef2701c8e_750x.jpg?v=1676998924",
+                    "https://cdn.shopify.com/s/files/1/0156/6146/products/PowerT-ShirtEveningBlue-A2A1X-UBZF-2384.188_ba457696-1bf1-4669-b041-766b02dbf7e3_640x.jpg?v=1676998924",
+                    "https://cdn.shopify.com/s/files/1/0156/6146/products/PowerT-ShirtEveningBlue-A2A1X-UBZF-2401.190_d45ead4c-1ea8-4c39-82e8-c8eae026403c_640x.jpg?v=1676998924",
+                    "https://cdn.shopify.com/s/files/1/0156/6146/products/PowerT-ShirtEveningBlue-A2A1X-UBZF-2408.192_34c7220f-5d93-4828-86dc-46df4a1b33ca_640x.jpg?v=1676998924"
+                ]
+            },
+            {
+                "name": "Blue / XL",
+                "color": "Blue",
+                "size": "XL",
+                "inventory": 4,
+                "images": [
+                    "https://cdn.shopify.com/s/files/1/0156/6146/products/PowerT-ShirtEveningBlue-A2A1X-UBZF-2361.515_9c45c282-f894-410f-b4f8-fee5c9b8d3b9_3840x.jpg?v=1676998924",
+                    "https://cdn.shopify.com/s/files/1/0156/6146/products/PowerT-ShirtEveningBlueA2A1X-UBZF-2406.516_6db2d794-8c24-4a99-8b96-446ef2701c8e_750x.jpg?v=1676998924",
+                    "https://cdn.shopify.com/s/files/1/0156/6146/products/PowerT-ShirtEveningBlue-A2A1X-UBZF-2384.188_ba457696-1bf1-4669-b041-766b02dbf7e3_640x.jpg?v=1676998924",
+                    "https://cdn.shopify.com/s/files/1/0156/6146/products/PowerT-ShirtEveningBlue-A2A1X-UBZF-2401.190_d45ead4c-1ea8-4c39-82e8-c8eae026403c_640x.jpg?v=1676998924",
+                    "https://cdn.shopify.com/s/files/1/0156/6146/products/PowerT-ShirtEveningBlue-A2A1X-UBZF-2408.192_34c7220f-5d93-4828-86dc-46df4a1b33ca_640x.jpg?v=1676998924"
+                ]
+            },
+            {
+                "name": "Yellow / XS",
+                "color": "Yellow",
+                "size": "XS",
+                "inventory": 5,
+                "images": [
+                    "https://cdn.shopify.com/s/files/1/0156/6146/products/PowerT-ShirtSunnyYellow-A2A1X-YBG7-0795.567_dd748e40-74c2-4100-8435-afc4e57bd9a1.jpg?v=1676998924",
+                    "https://cdn.shopify.com/s/files/1/0156/6146/products/PowerT-ShirtSunnyYellow-A2A1X-YBG7-0756.285_e5cf00e0-b14f-4b3f-b23c-72e229193f11.jpg?v=1676998924",
+                    "https://cdn.shopify.com/s/files/1/0156/6146/products/PowerT-ShirtSunnyYellow-A2A1X-YBG7-0867.290_18d6d76d-974a-461f-b695-98d073c8ab9f.jpg?v=1676998924",
+                    "https://cdn.shopify.com/s/files/1/0156/6146/products/PowerT-ShirtSunnyYellow-A2A1X-YBG7-0780.286_85040aa6-741a-42ab-b3c7-ceac3f9bbd76.jpg?v=1676998924",
+                    "https://cdn.shopify.com/s/files/1/0156/6146/products/PowerT-ShirtSunnyYellow-A2A1X-YBG7-0814.288_aae65fbd-afc7-4c8f-a038-4431c27191ea.jpg?v=1676998924",
+                    "https://cdn.shopify.com/s/files/1/0156/6146/products/PowerT-ShirtSunnyYellow-A2A1X-YBG7-0816.289_6553505b-728d-405e-b303-b056669699d0.jpg?v=1676998924"
+                ]
+            },
+            {
+                "name": "Yellow / S",
+                "color": "Yellow",
+                "size": "S",
+                "inventory": 0,
+                "images": [
+                    "https://cdn.shopify.com/s/files/1/0156/6146/products/PowerT-ShirtSunnyYellow-A2A1X-YBG7-0795.567_dd748e40-74c2-4100-8435-afc4e57bd9a1.jpg?v=1676998924",
+                    "https://cdn.shopify.com/s/files/1/0156/6146/products/PowerT-ShirtSunnyYellow-A2A1X-YBG7-0756.285_e5cf00e0-b14f-4b3f-b23c-72e229193f11.jpg?v=1676998924",
+                    "https://cdn.shopify.com/s/files/1/0156/6146/products/PowerT-ShirtSunnyYellow-A2A1X-YBG7-0867.290_18d6d76d-974a-461f-b695-98d073c8ab9f.jpg?v=1676998924",
+                    "https://cdn.shopify.com/s/files/1/0156/6146/products/PowerT-ShirtSunnyYellow-A2A1X-YBG7-0780.286_85040aa6-741a-42ab-b3c7-ceac3f9bbd76.jpg?v=1676998924",
+                    "https://cdn.shopify.com/s/files/1/0156/6146/products/PowerT-ShirtSunnyYellow-A2A1X-YBG7-0814.288_aae65fbd-afc7-4c8f-a038-4431c27191ea.jpg?v=1676998924",
+                    "https://cdn.shopify.com/s/files/1/0156/6146/products/PowerT-ShirtSunnyYellow-A2A1X-YBG7-0816.289_6553505b-728d-405e-b303-b056669699d0.jpg?v=1676998924"
+                ]
+            },
+            {
+                "name": "Yellow / M",
+                "color": "Yellow",
+                "size": "M",
+                "inventory": 6,
+                "images": [
+                    "https://cdn.shopify.com/s/files/1/0156/6146/products/PowerT-ShirtSunnyYellow-A2A1X-YBG7-0795.567_dd748e40-74c2-4100-8435-afc4e57bd9a1.jpg?v=1676998924",
+                    "https://cdn.shopify.com/s/files/1/0156/6146/products/PowerT-ShirtSunnyYellow-A2A1X-YBG7-0756.285_e5cf00e0-b14f-4b3f-b23c-72e229193f11.jpg?v=1676998924",
+                    "https://cdn.shopify.com/s/files/1/0156/6146/products/PowerT-ShirtSunnyYellow-A2A1X-YBG7-0867.290_18d6d76d-974a-461f-b695-98d073c8ab9f.jpg?v=1676998924",
+                    "https://cdn.shopify.com/s/files/1/0156/6146/products/PowerT-ShirtSunnyYellow-A2A1X-YBG7-0780.286_85040aa6-741a-42ab-b3c7-ceac3f9bbd76.jpg?v=1676998924",
+                    "https://cdn.shopify.com/s/files/1/0156/6146/products/PowerT-ShirtSunnyYellow-A2A1X-YBG7-0814.288_aae65fbd-afc7-4c8f-a038-4431c27191ea.jpg?v=1676998924",
+                    "https://cdn.shopify.com/s/files/1/0156/6146/products/PowerT-ShirtSunnyYellow-A2A1X-YBG7-0816.289_6553505b-728d-405e-b303-b056669699d0.jpg?v=1676998924"
+                ]
+            },
+            {
+                "name": "Yellow / L",
+                "color": "Yellow",
+                "size": "L",
+                "inventory": 12,
+                "images": [
+                    "https://cdn.shopify.com/s/files/1/0156/6146/products/PowerT-ShirtSunnyYellow-A2A1X-YBG7-0795.567_dd748e40-74c2-4100-8435-afc4e57bd9a1.jpg?v=1676998924",
+                    "https://cdn.shopify.com/s/files/1/0156/6146/products/PowerT-ShirtSunnyYellow-A2A1X-YBG7-0756.285_e5cf00e0-b14f-4b3f-b23c-72e229193f11.jpg?v=1676998924",
+                    "https://cdn.shopify.com/s/files/1/0156/6146/products/PowerT-ShirtSunnyYellow-A2A1X-YBG7-0867.290_18d6d76d-974a-461f-b695-98d073c8ab9f.jpg?v=1676998924",
+                    "https://cdn.shopify.com/s/files/1/0156/6146/products/PowerT-ShirtSunnyYellow-A2A1X-YBG7-0780.286_85040aa6-741a-42ab-b3c7-ceac3f9bbd76.jpg?v=1676998924",
+                    "https://cdn.shopify.com/s/files/1/0156/6146/products/PowerT-ShirtSunnyYellow-A2A1X-YBG7-0814.288_aae65fbd-afc7-4c8f-a038-4431c27191ea.jpg?v=1676998924",
+                    "https://cdn.shopify.com/s/files/1/0156/6146/products/PowerT-ShirtSunnyYellow-A2A1X-YBG7-0816.289_6553505b-728d-405e-b303-b056669699d0.jpg?v=1676998924"
+                ]
+            },
+            {
+                "name": "Yellow / XL",
+                "color": "Yellow",
+                "size": "XL",
+                "inventory": 0,
+                "images": [
+                    "https://cdn.shopify.com/s/files/1/0156/6146/products/PowerT-ShirtSunnyYellow-A2A1X-YBG7-0795.567_dd748e40-74c2-4100-8435-afc4e57bd9a1.jpg?v=1676998924",
+                    "https://cdn.shopify.com/s/files/1/0156/6146/products/PowerT-ShirtSunnyYellow-A2A1X-YBG7-0756.285_e5cf00e0-b14f-4b3f-b23c-72e229193f11.jpg?v=1676998924",
+                    "https://cdn.shopify.com/s/files/1/0156/6146/products/PowerT-ShirtSunnyYellow-A2A1X-YBG7-0867.290_18d6d76d-974a-461f-b695-98d073c8ab9f.jpg?v=1676998924",
+                    "https://cdn.shopify.com/s/files/1/0156/6146/products/PowerT-ShirtSunnyYellow-A2A1X-YBG7-0780.286_85040aa6-741a-42ab-b3c7-ceac3f9bbd76.jpg?v=1676998924",
+                    "https://cdn.shopify.com/s/files/1/0156/6146/products/PowerT-ShirtSunnyYellow-A2A1X-YBG7-0814.288_aae65fbd-afc7-4c8f-a038-4431c27191ea.jpg?v=1676998924",
+                    "https://cdn.shopify.com/s/files/1/0156/6146/products/PowerT-ShirtSunnyYellow-A2A1X-YBG7-0816.289_6553505b-728d-405e-b303-b056669699d0.jpg?v=1676998924"
+                ]
+            }
+        ]
+    },
+    {
         "title": "TRAINING OVERSIZED SWEATSHIRT",
         "description": "Your pre/post workout throw-on just levelled up. Meet the Training Oversized Sweatshirt. This oversized fleece-back sweatshirt is just what you need for instant comfort to and from the gym, or for an off-duty rest day look. An oversized slouchy fit and rib cuffs are brought together by the classic sharkhead logo, so you can pair this piece with anything.",
         "category": "HOODIES & JACKETS",
@@ -294,6 +451,148 @@
         ]
     },
     {
+        "title": "SOCIAL CLUB JOGGERS",
+        "description": "Show them which club you belong to. With bold Gymshark Lifting Club branding in a collegiate-style seasonal colour, the Gymshark Social Club collection is your new must-have.",
+        "category": "JOGGERS & SWEATPANTS",
+        "price": 44,
+        "status": "ACTIVE",
+        "fitType": "REGULAR",
+        "gender": "WOMEN",
+        "colors": [
+            "Brown",
+            "Olive"
+        ],
+        "sizes": [
+            "xs",
+            "s",
+            "m",
+            "l",
+            "xl"
+        ],
+        "variants": [
+            {
+                "name": "Brown / XS",
+                "color": "Brown",
+                "size": "XS",
+                "inventory": 3,
+                "images": [
+                    "https://cdn.shopify.com/s/files/1/0156/6146/products/GFXSocialClubJoggerCherryBrown-B4A6N-NBCF-1583.156_3840x.jpg?v=1678719571",
+                    "https://cdn.shopify.com/s/files/1/0156/6146/products/GFXSocialClubJoggerCherryBrown-B4A6N-NBCF-1607.158_3840x.jpg?v=1678719571",
+                    "https://cdn.shopify.com/s/files/1/0156/6146/products/GFXSocialClubJoggerCherryBrown-B4A6N-NBCF-1608.159_750x.jpg?v=1678719571"
+                ]
+            },
+            {
+                "name": "Brown / S",
+                "color": "Brown",
+                "size": "S",
+                "inventory": 8,
+                "images": [
+                    "https://cdn.shopify.com/s/files/1/0156/6146/products/GFXSocialClubJoggerCherryBrown-B4A6N-NBCF-1583.156_3840x.jpg?v=1678719571",
+                    "https://cdn.shopify.com/s/files/1/0156/6146/products/GFXSocialClubJoggerCherryBrown-B4A6N-NBCF-1607.158_3840x.jpg?v=1678719571",
+                    "https://cdn.shopify.com/s/files/1/0156/6146/products/GFXSocialClubJoggerCherryBrown-B4A6N-NBCF-1608.159_750x.jpg?v=1678719571"
+                ]
+            },
+            {
+                "name": "Brown / M",
+                "color": "Brown",
+                "size": "M",
+                "inventory": 14,
+                "images": [
+                    "https://cdn.shopify.com/s/files/1/0156/6146/products/GFXSocialClubJoggerCherryBrown-B4A6N-NBCF-1583.156_3840x.jpg?v=1678719571",
+                    "https://cdn.shopify.com/s/files/1/0156/6146/products/GFXSocialClubJoggerCherryBrown-B4A6N-NBCF-1607.158_3840x.jpg?v=1678719571",
+                    "https://cdn.shopify.com/s/files/1/0156/6146/products/GFXSocialClubJoggerCherryBrown-B4A6N-NBCF-1608.159_750x.jpg?v=1678719571"
+                ]
+            },
+            {
+                "name": "Brown / L",
+                "color": "Brown",
+                "size": "L",
+                "inventory": 9,
+                "images": [
+                    "https://cdn.shopify.com/s/files/1/0156/6146/products/GFXSocialClubJoggerCherryBrown-B4A6N-NBCF-1583.156_3840x.jpg?v=1678719571",
+                    "https://cdn.shopify.com/s/files/1/0156/6146/products/GFXSocialClubJoggerCherryBrown-B4A6N-NBCF-1607.158_3840x.jpg?v=1678719571",
+                    "https://cdn.shopify.com/s/files/1/0156/6146/products/GFXSocialClubJoggerCherryBrown-B4A6N-NBCF-1608.159_750x.jpg?v=1678719571"
+                ]
+            },
+            {
+                "name": "Brown / XL",
+                "color": "Brown",
+                "size": "XL",
+                "inventory": 4,
+                "images": [
+                    "https://cdn.shopify.com/s/files/1/0156/6146/products/GFXSocialClubJoggerCherryBrown-B4A6N-NBCF-1583.156_3840x.jpg?v=1678719571",
+                    "https://cdn.shopify.com/s/files/1/0156/6146/products/GFXSocialClubJoggerCherryBrown-B4A6N-NBCF-1607.158_3840x.jpg?v=1678719571",
+                    "https://cdn.shopify.com/s/files/1/0156/6146/products/GFXSocialClubJoggerCherryBrown-B4A6N-NBCF-1608.159_750x.jpg?v=1678719571"
+                ]
+            },
+            {
+                "name": "Olive / XS",
+                "color": "Olive",
+                "size": "XS",
+                "inventory": 5,
+                "images": [
+                    "https://cdn.shopify.com/s/files/1/0156/6146/products/GFXSOCIALCLUBJOGGERB4A6N-EBRM.1157.3.jpg?v=1668441392",
+                    "https://cdn.shopify.com/s/files/1/0156/6146/products/GFXSOCIALCLUBJOGGERB4A6N-EBRM.1158.4.jpg?v=1668441392",
+                    "https://cdn.shopify.com/s/files/1/0156/6146/products/GFXSOCIALCLUBJOGGERB4A6N-EBRM.1203.7_290d2055-c60a-420c-bbc2-96f504210150.jpg?v=1668441392",
+                    "https://cdn.shopify.com/s/files/1/0156/6146/products/GFXSOCIALCLUBJOGGERB4A6N-EBRM.1202.6.jpg?v=1668441392",
+                    "https://cdn.shopify.com/s/files/1/0156/6146/products/GFXSOCIALCLUBJOGGERB4A6N-EBRM.1159.5.jpg?v=1668441392"
+                ]
+            },
+            {
+                "name": "Olive / S",
+                "color": "Olive",
+                "size": "S",
+                "inventory": 10,
+                "images": [
+                    "https://cdn.shopify.com/s/files/1/0156/6146/products/GFXSOCIALCLUBJOGGERB4A6N-EBRM.1157.3.jpg?v=1668441392",
+                    "https://cdn.shopify.com/s/files/1/0156/6146/products/GFXSOCIALCLUBJOGGERB4A6N-EBRM.1158.4.jpg?v=1668441392",
+                    "https://cdn.shopify.com/s/files/1/0156/6146/products/GFXSOCIALCLUBJOGGERB4A6N-EBRM.1203.7_290d2055-c60a-420c-bbc2-96f504210150.jpg?v=1668441392",
+                    "https://cdn.shopify.com/s/files/1/0156/6146/products/GFXSOCIALCLUBJOGGERB4A6N-EBRM.1202.6.jpg?v=1668441392",
+                    "https://cdn.shopify.com/s/files/1/0156/6146/products/GFXSOCIALCLUBJOGGERB4A6N-EBRM.1159.5.jpg?v=1668441392"
+                ]
+            },
+            {
+                "name": "Olive / M",
+                "color": "Olive",
+                "size": "M",
+                "inventory": 6,
+                "images": [
+                    "https://cdn.shopify.com/s/files/1/0156/6146/products/GFXSOCIALCLUBJOGGERB4A6N-EBRM.1157.3.jpg?v=1668441392",
+                    "https://cdn.shopify.com/s/files/1/0156/6146/products/GFXSOCIALCLUBJOGGERB4A6N-EBRM.1158.4.jpg?v=1668441392",
+                    "https://cdn.shopify.com/s/files/1/0156/6146/products/GFXSOCIALCLUBJOGGERB4A6N-EBRM.1203.7_290d2055-c60a-420c-bbc2-96f504210150.jpg?v=1668441392",
+                    "https://cdn.shopify.com/s/files/1/0156/6146/products/GFXSOCIALCLUBJOGGERB4A6N-EBRM.1202.6.jpg?v=1668441392",
+                    "https://cdn.shopify.com/s/files/1/0156/6146/products/GFXSOCIALCLUBJOGGERB4A6N-EBRM.1159.5.jpg?v=1668441392"
+                ]
+            },
+            {
+                "name": "Olive / L",
+                "color": "Olive",
+                "size": "L",
+                "inventory": 12,
+                "images": [
+                    "https://cdn.shopify.com/s/files/1/0156/6146/products/GFXSOCIALCLUBJOGGERB4A6N-EBRM.1157.3.jpg?v=1668441392",
+                    "https://cdn.shopify.com/s/files/1/0156/6146/products/GFXSOCIALCLUBJOGGERB4A6N-EBRM.1158.4.jpg?v=1668441392",
+                    "https://cdn.shopify.com/s/files/1/0156/6146/products/GFXSOCIALCLUBJOGGERB4A6N-EBRM.1203.7_290d2055-c60a-420c-bbc2-96f504210150.jpg?v=1668441392",
+                    "https://cdn.shopify.com/s/files/1/0156/6146/products/GFXSOCIALCLUBJOGGERB4A6N-EBRM.1202.6.jpg?v=1668441392",
+                    "https://cdn.shopify.com/s/files/1/0156/6146/products/GFXSOCIALCLUBJOGGERB4A6N-EBRM.1159.5.jpg?v=1668441392"
+                ]
+            },
+            {
+                "name": "Olive / XL",
+                "color": "Olive",
+                "size": "XL",
+                "inventory": 3,
+                "images": [
+                    "https://cdn.shopify.com/s/files/1/0156/6146/products/GFXSOCIALCLUBJOGGERB4A6N-EBRM.1157.3.jpg?v=1668441392",
+                    "https://cdn.shopify.com/s/files/1/0156/6146/products/GFXSOCIALCLUBJOGGERB4A6N-EBRM.1158.4.jpg?v=1668441392",
+                    "https://cdn.shopify.com/s/files/1/0156/6146/products/GFXSOCIALCLUBJOGGERB4A6N-EBRM.1203.7_290d2055-c60a-420c-bbc2-96f504210150.jpg?v=1668441392",
+                    "https://cdn.shopify.com/s/files/1/0156/6146/products/GFXSOCIALCLUBJOGGERB4A6N-EBRM.1202.6.jpg?v=1668441392",
+                    "https://cdn.shopify.com/s/files/1/0156/6146/products/GFXSOCIALCLUBJOGGERB4A6N-EBRM.1159.5.jpg?v=1668441392"
+                ]
+            }
+        ]
+    },
+    {
         "title": "FIGURE 8 LIFTING STRAPS",
         "description": "Give your workout the boost it needs with the Gymshark Figure 8 Lifting Straps. With highly durable materials you can lift more, whilst reducing grip fatigue. Your safety is always our main priority, so put your trust in us; we'd never let you down.",
         "price": 18,
@@ -317,6 +616,36 @@
                 "images": [
                     "https://cdn.shopify.com/s/files/1/0156/6146/products/LiftingStraps_Strongmanetc_BlackI1A5A-BBBB155_3840x.jpg?v=1679324845",
                     "https://cdn.shopify.com/s/files/1/0156/6146/products/LiftingStraps_Strongmanetc_BlackI1A5A-BBBB156_1200x.jpg?v=1679324845"
+                ]
+            }
+        ]
+    },
+    {
+        "title": "33OZ WATER BOTTLE",
+        "description": "In the gym, at home or out and about, be hydration-ready. The Gymshark 1L Water Bottle features a convenient side-handle and metal crew top lid to make carrying it everywhere with you as effortless as possible.",
+        "price": 14,
+        "category": "ACCESSORIES",
+        "status": "ACTIVE",
+        "gender": "BOTH",
+        "fitType": "UNIQUE",
+        "sizes": [
+            "BOTH"
+        ],
+        "colors": [
+            "Black"
+        ],
+        "variants": [
+            {
+                "name": "Black",
+                "size": "UNIQUE",
+                "color": "Black",
+                "inventory": 50,
+                "images": [
+                    "https://cdn.shopify.com/s/files/1/0156/6146/products/1LWaterBottleBlack-I2A6T-BBBB20.jpg?v=1674661001",
+                    "https://cdn.shopify.com/s/files/1/0156/6146/products/1LWaterBottleBlack-I2A6T-BBBB-0708.66.jpg?v=1674661001",
+                    "https://cdn.shopify.com/s/files/1/0156/6146/products/1LWaterBottleBlack-I2A6T-BBBB-0714.67.jpg?v=1674661001",
+                    "https://cdn.shopify.com/s/files/1/0156/6146/products/1LWaterBottleBlack-I2A6T-BBBB21.jpg?v=1674661001",
+                    "https://cdn.shopify.com/s/files/1/0156/6146/products/1LWaterBottleBlack-I2A6T-BBBB22.jpg?v=1674661001"    
                 ]
             }
         ]
