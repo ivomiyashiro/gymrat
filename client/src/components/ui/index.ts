@@ -11,3 +11,4 @@ export * from './Table';
 export { default as ProductsCarrousel } from './ProductsCarrousel';
 export * from './Pagination';
 export * from './Select';
+export * from './ProductCardSkeleton';
