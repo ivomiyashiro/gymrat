@@ -41,9 +41,9 @@ export const OrderSummary = () => {
           ${ orderTotalPrice }
         </h3>
       </button>
-      <div className={ `lg:max-w-[475px] mx-auto gap-6 flex flex-col lg:items-center lg:pt-[5em] px-4 overflow-hidden lg:!h-full ${ open ? 'h-full my-4' : 'h-0'}` }>
+      <div className={ `lg:max-w-[475px] mx-auto gap-6 flex flex-col lg:items-center lg:pt-[5em] px-4  lg:!h-full ${ open ? 'h-full my-4 overflow-auto scrollbar-hidden max-h-[650px]' : 'h-0 overflow-hidden'}` }>
         {
-          cart.map(({ title, featImageUrl, variant, _id, price, fitType }) => (
+          cart.map(({ title, featImageUrl, variant, _id, price, fitType, quantity }) => (
             <SummaryItem 
               key={ _id }
               title={ title }
@@ -51,6 +51,7 @@ export const OrderSummary = () => {
               variant={ variant }
               price={ price }
               fitType={ fitType }
+              quantity={ quantity }
             />
           ))
         }
