@@ -17,7 +17,7 @@ export const ProductCard = ({ product, variant, width = 'auto' }: Props) => {
     <article className='flex flex-col min-w-0 relative group flex-shrink-0 xl:flex-[1_1]' style={ { width } }>
       <div className='relative'>
         <Link href={ `/products/${ variant.slug }` }>
-          <div className='relative w-full h-full pt-[119%] overflow-hidden rounded-[1rem]'>
+          <div className='relative w-full h-full pt-[119%] overflow-hidden rounded-[1rem] bg-gray-100'>
             <Image
               src={ variant.images[0] }
               alt={ product.title }

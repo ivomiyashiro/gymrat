@@ -68,7 +68,7 @@ export const DesktopGallery = ({ productTitle, images, handleOpenModal }: Props)
           return (
             <div key={ i } className={ className }>
               <button 
-                className='relative pt-[119.5%] md:h-auto w-full overflow-hidden rounded-xl cursor-zoom-in'
+                className='relative pt-[119.5%] md:h-auto w-full overflow-hidden rounded-xl cursor-zoom-in bg-gray-100'
                 onClick={ () => handleOpenModal({ open: true, slide: i }) }
               >
                 <Image

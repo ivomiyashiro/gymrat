@@ -27,7 +27,7 @@ export const Colors = ({ product, variant }: Props) => {
               <button
                 key={ vari._id }
                 type='button'
-                className={ `relative max-w-[4.6875rem] min-w-[3.125rem] float-left block h-[5.5rem] w-[calc(20%-0.25em)] rounded overflow-hidden border ${ variant?.color === vari.color ? 'border-black' : 'border-transparent'}` }
+                className={ `relative max-w-[4.6875rem] min-w-[3.125rem] float-left block h-[5.5rem] w-[calc(20%-0.25em)] bg-gray-100 rounded overflow-hidden border ${ variant?.color === vari.color ? 'border-black' : 'border-transparent'}` }
                 disabled={ vari.color === variant.color }
                 onClick={ () => router.push(`/products/${ vari.slug }`) }
               >
