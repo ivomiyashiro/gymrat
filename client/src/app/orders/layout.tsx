@@ -12,7 +12,7 @@ export default async function Layout({ children }: { children: React.ReactNode }
     user = await checkToken(token.value);
   } 
 
-  if (!user) redirect('/login?returnUrl=/orders');
+  if (!user) redirect('/auth/login?returnUrl=/orders');
 
   return (
     <>
