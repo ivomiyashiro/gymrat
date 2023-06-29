@@ -18,7 +18,6 @@ export const OrdersTable = () => {
     count, 
     totalPages, 
     orders,
-    cancelOrder,
     handlePageClick, 
     handleLimit,
     handleSearchText
@@ -39,7 +38,7 @@ export const OrdersTable = () => {
         </TableHeader>
         <TableBody>
           { orders.map(order => ( 
-            <BodyRow key={ order._id } order={ order } handleCancelOrder={ cancelOrder } /> 
+            <BodyRow key={ order._id } order={ order } /> 
           )) }
         </TableBody>
       </Table>
