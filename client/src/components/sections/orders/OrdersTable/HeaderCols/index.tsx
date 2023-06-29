@@ -16,10 +16,10 @@ export const HeaderCols = () => {
         Total Price
       </TableHead>
       <TableHead className='min-w-[110px] font-semibold uppercase'>
-        Status
+        Shipping To
       </TableHead>
       <TableHead className='font-semibold uppercase text-right'>
-        Actions
+        Status
       </TableHead>
     </>
   );
