@@ -25,7 +25,7 @@ export const FadeUpContainer = ({ index = 0, children, className, delayFactor = 
       {Children.map(children, () => (
         <div
           ref={ ref }
-          className={ `transition duration-500 delay-150 ${ className } ${visible ? 'opacity-100 translate-y-none' : 'opacity-0 translate-y-[100px]'}` }
+          className={ `transition duration-500 delay-150 ${ className } ${visible ? 'opacity-100 translate-y-none' : 'opacity-0 translate-y-[150px]'}` }
           style={ {
             transitionDelay: `${delayFactor > 0 ? index * delayFactor + 'ms' : '0'}`,
           } }
