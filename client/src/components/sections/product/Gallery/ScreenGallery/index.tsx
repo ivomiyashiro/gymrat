@@ -30,6 +30,7 @@ export const ScreenGallery = ({
   handleOpenModal 
 }: Props) => {
   const [animationStarted, setAnimationStarted] = useState(false);
+  
   return (
     <Modal open={ open } onClose={ () => handleOpenModal({ open: false, slide: null }) } withBackground >
       <button 
@@ -41,7 +42,7 @@ export const ScreenGallery = ({
       { 
         open 
         && 
-        <div className='relative w-screen max-w-[698px]  lg:h-screen overflow-hidden' >
+        <div className='relative w-screen max-w-[698px] lg:h-screen overflow-hidden bg-gray-100' >
           <Swiper
             loop={ true }
             scrollbar={ {
