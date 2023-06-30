@@ -13,7 +13,7 @@ const ProductsCarrousel = ({ products, limit, loading }: Props) => {
   let printedItems = 0;
   
   return (
-    <div className='flex gap-4 overflow-x-scroll scrollbar-hidden mt-6'>
+    <div className='flex gap-4 overflow-x-scroll scrollbar-hidden py-6'>
       {
         loading
           ? ( new Array(4).fill(null).map((_val, i) => <ProductCardSkeleton key={ i } width='17rem' />) )
