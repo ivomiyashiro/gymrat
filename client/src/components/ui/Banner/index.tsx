@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { NavArrowRight } from 'iconoir-react';
+import { FadeUpContainer } from '../FadeUpContainer';
 
 interface Props {
   title: string;
@@ -28,21 +29,23 @@ export const Banner = ({ title, p1, p2, image, altText, reverse, buttonText }: P
           quality={ 100 }
         />
       </div>
-      <div className='lg:w-[34.7222222222vw] flex-[1_1] lg:flex-[unset]'>
-        <h2 className='font-bold leading-[1.15em]'>
-          { title }
-        </h2>
-        <p className='mt-4'>
-          { p1 }
-        </p>
-        <p className='mt-4'>
-          { p2 }
-        </p>
-        <Link href='/products' className='mt-8 text-white px-6 py-3 w-[185px] rounded flex justify-center items-center gap-2 font-semibold bg-blue-600 transition hover:scale-95'>
-          { buttonText }
-          <NavArrowRight width={ 16 } height={ 16 } />
-        </Link>
-      </div>
+      <FadeUpContainer>
+        <div className='lg:w-[34.7222222222vw] flex-[1_1] lg:flex-[unset]'>
+          <h2 className='font-bold leading-[1.15em]'>
+            { title }
+          </h2>
+          <p className='mt-4'>
+            { p1 }
+          </p>
+          <p className='mt-4'>
+            { p2 }
+          </p>
+          <Link href='/products' className='mt-8 text-white px-6 py-3 w-[185px] rounded flex justify-center items-center gap-2 font-semibold bg-blue-600 transition hover:scale-95'>
+            { buttonText }
+            <NavArrowRight width={ 16 } height={ 16 } />
+          </Link>
+        </div>
+      </FadeUpContainer>
     </div>
   );
 };
