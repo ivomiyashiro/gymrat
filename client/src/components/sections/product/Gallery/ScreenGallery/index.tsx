@@ -1,15 +1,14 @@
-import { Dispatch, SetStateAction, useEffect, useRef, useState } from 'react';
-import Image from 'next/image';
+import { Dispatch, SetStateAction, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Scrollbar } from 'swiper';
 import { Cancel } from 'iconoir-react';
 
 import { Modal } from '@/components/ui';
 import { NavButton } from './NavButton';
+import { Slide } from './Slide';
 
 import 'swiper/css';
 import 'swiper/css/scrollbar';
-import { Slide } from './Slide';
 
 interface Props {
   open: boolean;
@@ -30,7 +29,7 @@ export const ScreenGallery = ({
   handleOpenModal 
 }: Props) => {
   const [animationStarted, setAnimationStarted] = useState(false);
-  
+
   return (
     <Modal open={ open } onClose={ () => handleOpenModal({ open: false, slide: null }) } withBackground >
       <button 
