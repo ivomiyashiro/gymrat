@@ -10,14 +10,15 @@ interface GoogleTokensResult {
 }
 
 export async function getGoogleOAuthTokens({ code }: { code: string }): Promise<GoogleTokensResult> {
-  
   const url = 'https://oauth2.googleapis.com/token';
 
   const values = {
     code,
     client_id: process.env.GOOGLE_CLIENT_ID,
     client_secret: process.env.GOOGLE_CLIENT_SECRET,
-    redirect_uri: process.env.GOOGLE_OAUTH_REDIRECT_URL,
+    redirect_uri: process.env.NODE_ENV === 'development' 
+      ? process.env.GOOGLE_OAUTH_REDIRECT_URL 
+      : process.env.GOOGLE_OAUTH_REDIRECT_URL_PROD,
     grant_type: 'authorization_code',
   };
 

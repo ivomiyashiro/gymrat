@@ -2,7 +2,9 @@ export const getGoogleOAuthURL = () => {
   const rootUrl = 'https://accounts.google.com/o/oauth2/v2/auth';
 
   const options = {
-    redirect_uri: process.env.GOOGLE_OAUTH_REDIRECT_URL as string,
+    redirect_uri: process.env.NODE_ENV === 'development' 
+      ? process.env.API_BASE_URL_DEV as string
+      : process.env.API_BASE_URL_PROD as string,
     client_id: process.env.GOOGLE_CLIENT_ID as string,
     access_type: 'offline',
     response_type: 'code',
