@@ -22,7 +22,6 @@ export const isDBPriceCorrect = async (totalPrice: string, { req }: any) => {
     }
 
     if (Number(totalPrice) !== dbTotalPrice) {
-      console.log(totalPrice, dbTotalPrice);
       throw new Error();
     }
   
