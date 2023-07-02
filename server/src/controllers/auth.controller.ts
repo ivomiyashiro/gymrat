@@ -19,7 +19,11 @@ export const signUp = async (req: Request, res: Response) => {
     await user.save();
 
     const token = await genJWT({ uid: user.id, name: user.name, role: user.role  });
-    res.cookie('token', token);
+    res.cookie('token', token, {
+      expires: new Date(Date.now() + (10 * 60 * 60 * 1000)),
+      sameSite: 'none',
+      secure: true
+    });
 
     return res.status(201).json({
       ok: true,
@@ -60,7 +64,11 @@ export const singIn = async (req: Request, res: Response) => {
     });
 
     const token = await genJWT({ uid: user.id, name: user.name, role: user.role  });
-    res.cookie('token', token);
+    res.cookie('token', token, {
+      expires: new Date(Date.now() + (10 * 60 * 60 * 1000)),
+      sameSite: 'none',
+      secure: true
+    });
 
     return res.status(200).json({
       ok: true,
@@ -117,7 +125,11 @@ export const renewToken = async (req: IAuthRequest, res: Response) => {
       });
     }
 
-    res.cookie('token', token);
+    res.cookie('token', token, {
+      expires: new Date(Date.now() + (10 * 60 * 60 * 1000)),
+      sameSite: 'none',
+      secure: true
+    });
 
     return res.json({ 
       ok: true,
@@ -178,7 +190,9 @@ export const googleOauthHandler = async (req: Request, res: Response) => {
     const token = await genJWT({ uid: user.id, name: user.name, role: user.role });
 
     res.cookie('token', token, {
-      expires: new Date(Date.now() + (10 * 60 * 60 * 1000))
+      expires: new Date(Date.now() + (10 * 60 * 60 * 1000)),
+      sameSite: 'none',
+      secure: true
     });
     return res.redirect(CLIENT_ORIGIN);
 

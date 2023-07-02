@@ -22,7 +22,7 @@ app.use(cors({
     'https://gymrat-8q7k.onrender.com' 
   ],
   credentials: true,
-  exposedHeaders: ['Set-Cookie'],
+  exposedHeaders: ['set-cookie'],
 }));
 app.use(express.json());
 app.use(cookieParser());
