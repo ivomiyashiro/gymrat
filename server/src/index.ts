@@ -13,7 +13,14 @@ dbConnection();
 
 // Config
 app.use(cors({
-  origin: [ 'http://localhost:4000', 'http://localhost:4040', 'http://127.0.0.1', 'http://104.142.122.231', 'https://gymrat-nextjs.vercel.app' ],
+  origin: [ 
+    'http://localhost:4000', 
+    'http://localhost:4040', 
+    'http://127.0.0.1', 
+    'http://104.142.122.231', 
+    'https://gymrat-nextjs.vercel.app', 
+    'https://gymrat-8q7k.onrender.com' 
+  ],
   credentials: true,
   exposedHeaders: ['set-cookie'],
 }));
