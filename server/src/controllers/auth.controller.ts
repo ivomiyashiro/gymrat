@@ -140,7 +140,9 @@ export const renewToken = async (req: IAuthRequest, res: Response) => {
 };
 
 export const googleOauthHandler = async (req: Request, res: Response) => {
-  const CLIENT_ORIGIN = process.env.CLIENT_ORIGIN as string;
+  const CLIENT_ORIGIN = process.env.NODE_ENV === 'development' 
+    ? process.env.CLIENT_ORIGIN_DEV as string
+    : process.env.CLIENT_ORIGIN_PROD as string;
 
   try {
     const code = req.query.code as string;

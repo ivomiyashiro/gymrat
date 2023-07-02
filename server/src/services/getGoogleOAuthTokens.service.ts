@@ -21,7 +21,7 @@ export async function getGoogleOAuthTokens({ code }: { code: string }): Promise<
       : process.env.GOOGLE_OAUTH_REDIRECT_URL_PROD,
     grant_type: 'authorization_code',
   };
-
+  console.log(values);
   try {
     const res = await axios.post<GoogleTokensResult>(
       url,
@@ -33,7 +33,7 @@ export async function getGoogleOAuthTokens({ code }: { code: string }): Promise<
       }
     );
     return res.data;
-
+    
   } catch (error) {
     console.error(error);
     throw new Error;
