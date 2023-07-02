@@ -1,6 +1,7 @@
 # Server ignores
 /server/node_modules
 /server/.env
+/server/build
 
 # dependencies
 /client/node_modules
