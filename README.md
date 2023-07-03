@@ -1,6 +1,6 @@
 # [Gymrat](https://gymrat-nextjs.vercel.app/)
 
-GymFit is an open source e-commerce platform that focuses on providing gym clothing for fitness enthusiasts with everything new in Next.js 13.
+Gymrat is an open source e-commerce platform that focuses on providing gym clothing for fitness enthusiasts with everything new in Next.js 13.
 
 > **Warning**
 > This project is still in development and is not ready for production use.
