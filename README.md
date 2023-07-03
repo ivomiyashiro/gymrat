@@ -18,6 +18,8 @@ Gymrat is an open source e-commerce platform that focuses on providing gym cloth
 - Customer workflows
 - Customer orders table
 - Products and orders filters
+- Pagination (server and client)
+- Animations
 
 ## Installation
 
